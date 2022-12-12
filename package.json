@@ -1,0 +1,30 @@
+{
+  "name": "eventsliner",
+  "version": "1.0.0",
+  "description": "event management application by AGILEMANTRA-CONSULTING-SERVICES-LLP",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node-dev index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend/issues"
+  },
+  "homepage": "https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0"
+  }
+}
