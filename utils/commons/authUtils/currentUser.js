@@ -1,4 +1,5 @@
 
+import logger from "../../../logger/logger.js";
 import { HttpException } from "./../../index.js";
 import jwtVerify from "./jwtVerify.js";
 
@@ -7,6 +8,7 @@ export const verifyTokenClient = (
     res,
     next
 ) => {
+    
     if (!req.headers.authorization) {
         next(new HttpException(401, "No User Logged In!"));
     } else {
