@@ -13,7 +13,6 @@ const AdminUserSchema = new mongoose.Schema({
         transform(doc, ret) {
             ret.id = ret._id;
             delete ret._id;
-            delete ret.password;
             delete ret.__v;
         }
     }

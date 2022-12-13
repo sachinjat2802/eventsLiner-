@@ -42,9 +42,9 @@ class JwtVerify {
      verfyJwtAdmin(token, next){
         const payload = this.decodeJwt(token);
         const verifyOptions = {
-            issuer: "eventsliner-api-admin",
+            issuer: "eventliners-api-admin",
             subject: payload.sub,
-            audience: payload.aud, // roles/scope of the token *Have to be replaced by regex
+            audience: payload.aud, 
             algorithms: ["HS256"],
         };
         jwt.verify(token, this.jwtKey, verifyOptions, (err, decodeJwt) => {
