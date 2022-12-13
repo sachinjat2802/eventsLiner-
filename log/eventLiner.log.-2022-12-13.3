@@ -1,27 +1,20 @@
-[13 12 2022 14:01:11.349] [INFO] - A:: {}
-[13 12 2022 14:07:55.403] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:07:55.868] [INFO] - 
+[13 12 2022 14:21:21.853] [INFO] - 
 *************MONGODB connected**************
 
-[13 12 2022 14:09:41.365] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:09:41.833] [INFO] - 
-*************MONGODB connected**************
-
-[13 12 2022 14:12:52.649] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:12:53.090] [INFO] - 
-*************MONGODB connected**************
-
-[13 12 2022 14:12:55.866] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:12:56.713] [INFO] - 
-*************MONGODB connected**************
-
-[13 12 2022 14:15:23.088] [INFO] - A:: {}
-[13 12 2022 14:16:15.476] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:16:15.961] [INFO] - 
-*************MONGODB connected**************
-
-[13 12 2022 14:16:27.176] [DEBUG] - Server Started At Port 8000
-[13 12 2022 14:16:27.654] [INFO] - 
-*************MONGODB connected**************
-
-[13 12 2022 14:21:21.379] [DEBUG] - Server Started At Port 8000
+[13 12 2022 14:24:50.981] [ERROR] - Error creating admin user MongoServerError: E11000 duplicate key error collection: EventsLiner.adminusers index: email_1 dup key: { email: "sachinjat2802@gmail.com" }
+    at D:\event listner\Eve-backend\node_modules\mongodb\lib\operations\insert.js:53:33
+    at D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection_pool.js:307:25
+    at D:\event listner\Eve-backend\node_modules\mongodb\lib\sdam\server.js:213:17
+    at handleOperationResult (D:\event listner\Eve-backend\node_modules\mongodb\lib\sdam\server.js:329:20)
+    at Connection.onMessage (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection.js:242:9)
+    at MessageStream.<anonymous> (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection.js:61:60)
+    at MessageStream.emit (node:events:527:28)
+    at MessageStream.emit (node:domain:475:12)
+    at processIncomingData (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\message_stream.js:125:16)
+    at MessageStream._write (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\message_stream.js:33:9) {
+  index: 0,
+  code: 11000,
+  keyPattern: { email: 1 },
+  keyValue: { email: 'sachinjat2802@gmail.com' },
+  [Symbol(errorLabels)]: Set(0) {}
+}

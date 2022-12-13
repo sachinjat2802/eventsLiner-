@@ -77,8 +77,8 @@ changePassword(request, response, next) {
 //remove admin user
  removeUser(request, response, next) {
   try {
-      const { email } = request.body;
-      AdminAuthService.removeAdminUser(email, (err, result) => {
+      const id = request.params.id; 
+      AdminAuthService.removeAdminUser(id, (err, result) => {
           if (err) {
               next(new HttpException(400, err));
           } else {

@@ -85,15 +85,16 @@ class AdminAuthService {
     }
 
      //remove admin user
-      async removeAdminUser(email, next) {
+      async removeAdminUser(id, next) {
         try {
-            const adminUser = await new CrudOperations(AdminUser).getDocument({ email: email }, {});
+            const adminUser = await new CrudOperations(AdminUser).getDocument({ _id: id }, {});
             if (adminUser) {
-                await new CrudOperations(AdminUser).updateDocument({ email: email }, { isDeleted: true });
-                return next(null, "User Removed");
+                await new CrudOperations(AdminUser).updateDocument({ _id: id }, { isDeleted: true });
+                return next(null, "Admin Removed");
             } else {
                 next("No User Found To Remove!");
             }
+            
         } catch (error) {
             logger.error("Error removing admin user", error);
             next("Something went wrong");
