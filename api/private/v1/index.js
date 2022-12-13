@@ -1,20 +1,13 @@
 import { Router } from "express";
 
 
-
-import adminUserRoutes from "./AdminUserModule/adminUserAuth.router.js";
-
-
+import userRoutes from "./userModule/user.router.js";
 
 
 const router = Router();
 
+router.use("/user", userRoutes)
 
-
-
-
-
-router.use("/adminUser",adminUserRoutes);
 
 
 
