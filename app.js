@@ -14,7 +14,6 @@ import cookieParser from "cookie-parser";
 import publicV1APIs from "./api/public/index.js";
 //import privateV1APIs from "./api/private/client";
 //import adminV1APIs from "./api/private/admin";
-//import internalV1APIs from "./api/internal";
 import logger from "./logger/logger.js";
 import MongoDBConnection from "./utils/db/mongodb.connection.js";
 import errorMiddleware from "./utils/httpErrorHandlerMiddleware.js"
@@ -41,8 +40,7 @@ export default class App {
     initializeAPIs(){
     this.app.use("/public", publicV1APIs);
 //     this.app.use("/private", verifyTokenClient, requireAuth, privateV1APIs);
-//     this.app.use("/admin", adminPublicV1APIs);
-//     this.app.use("/admin/public",verifyTokenAdmin, requireAuth, adminPrivateV1APIs);
+   // this.app.use("/admin/private",verifyTokenAdmin, requireAuth, adminPrivateV1APIs);
 }
    initializeErrorHandling() {
     this.app.use(errorMiddleware);
@@ -71,7 +69,7 @@ export default class App {
 
   echo(){
     this.app.get("/version", (req, res) => {
-      res.status(200).send({ "eventLiner": process.env.npm_package_version });
+      res.status(200).send({ "eventsLiner": process.env.npm_package_version });
     });
     this.app.get("/:ping", (req, res) => {
       if (req.params.ping === "ping") {
