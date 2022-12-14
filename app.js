@@ -12,13 +12,13 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import publicV1APIs from "./api/public/index.js";
-//import privateV1APIs from "./api/private/client";
-//import adminV1APIs from "./api/private/admin";
+import adminPrivateV1APIs from "./api/admin/index.js";
+import privateV1APIs from "./api/private/index.js";
 import logger from "./logger/logger.js";
 import MongoDBConnection from "./utils/db/mongodb.connection.js";
 import errorMiddleware from "./utils/httpErrorHandlerMiddleware.js"
 import cors from "cors";
-//import { requireAuth, verifyTokenClient, verifyTokenAdmin } from "./commons/authUtils";
+import { requireAuth, verifyTokenAdmin,verifyTokenClient } from "./utils/commons/authUtils/index.js";
 import passport from "passport";
 dotenv.config({ silent: process.env });
 
@@ -39,19 +39,19 @@ export default class App {
 
     initializeAPIs(){
     this.app.use("/public", publicV1APIs);
-//     this.app.use("/private", verifyTokenClient, requireAuth, privateV1APIs);
-   // this.app.use("/admin/private",verifyTokenAdmin, requireAuth, adminPrivateV1APIs);
+    this.app.use("/private", verifyTokenClient, requireAuth, privateV1APIs);
+   this.app.use("/admin/private",verifyTokenAdmin, requireAuth, adminPrivateV1APIs);
 }
    initializeErrorHandling() {
     this.app.use(errorMiddleware);
   }
 
    initializeMiddlewares() {
-    this.app.use(passport.initialize());
+     this.app.use(passport.initialize());
      this.app.use(cookieParser());
      this.app.enable("trust proxy");
      this.app.use(bodyParser.json());
-    this.app.use(cors({
+     this.app.use(cors({
       origin: process.env
         .CORS_OPTIONS
         .WHITELISTDOMAINS

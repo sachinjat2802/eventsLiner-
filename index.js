@@ -4,7 +4,6 @@ import App from "./app.js";
 
 dotenv.config({ silent: process.env });
 process.stdout.write("\n*******************************************************************************************************************************\n");
-console.log(process.env.name)
 process.stdout.write(
     `\n Starting Service:: ${process.env.name} at ${new Date()} \n` 
 );
