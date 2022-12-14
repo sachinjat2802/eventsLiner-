@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import process from "node:process"
 import _ from "lodash";
 dotenv.config({ silent: process.env });
+import mongoose from "mongoose";
 
 
 
@@ -61,9 +62,9 @@ class userService {
         }
     }
     
-    async socialLogin(email, password , next){
+    // async socialLogin(email, password , next){
         
-    }
+    // }
 
 
     async getUser(id,next){
@@ -132,20 +133,25 @@ class userService {
         
         try {
             let searchHistory
-           const existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ _id: user}, {});
+           const existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ userId: mongoose.Types.ObjectId(user)}, {});
+           logger.info(existingSearch)
             if (existingSearch ) {
-                existingSearch.searchText.push({
+                existingSearch.searchs.push({
                     searchText: searchText,
                     createdAt: new Date()
                 })
-                searchHistory = await new CrudOperations(UserSearchHistory).updateDocument({ _id: user}, {})
+                searchHistory = await new CrudOperations(UserSearchHistory).updateDocument({ _id: existingSearch._id}, {existingSearch})
             } 
             else{
-                const searchs = {
-                    searchText:searchText,
-                    createdAt: new Date()
+                const object =
+                {
+                    userId:mongoose.Types.ObjectId(user),
+                    searchs:[{
+                        searchText:searchText,
+                        createdAt: new Date()
+                    }]
                 }
-                const newSearch= new UserSearchHistory(searchs);
+                const newSearch= new UserSearchHistory(object);
                  searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
             } 
             next(null, "searchHistry created",searchHistory);
