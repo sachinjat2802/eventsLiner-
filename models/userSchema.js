@@ -21,13 +21,7 @@ const UserSchema = new mongoose.Schema({
     uuid:{ type:String},
     location:{type:Object},
     deviceInfo:{type:Object},
-    // venueHistory:{type:[Object]},
-    // searchHistory:{type:[Object]},
-    // eventHistory:{type:[Object]},
     // sellerHistory:{type:[Object]},
-    // locationHistory:{type:[Object]},
-    // deviceInfo:{type:[Object]},
-    // loginHistory:{type:[Object]},
     last_logged_in_time:{type:Date, default:Date.now},
 
 }, {

@@ -161,6 +161,23 @@ class userService {
         }
     }
 
+    async getSearch(id,next){
+        try{
+        const user = await new CrudOperations(UserSearchHistory).getDocument({userId:id}, {});
+
+        if(!user){
+            return next('No User Found');
+        }
+       next(null, user);
+    }
+    catch (error) {
+        logger.error("Error ", error);
+        next("Something went wrong");
+    }
+    }
+
+
+
 
 
     
