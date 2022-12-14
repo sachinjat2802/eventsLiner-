@@ -60,6 +60,11 @@ class userService {
             next("Something went wrong");
         }
     }
+    
+    async socialLogin(email, password , next){
+        
+    }
+
 
     async getUser(id,next){
         try{
@@ -81,7 +86,8 @@ class userService {
         try {
             const oldUser = await new CrudOperations(User).getDocument({ _id: id }, {});
            const updatedUser = _.extend(oldUser, UserDoc);
-           await new CrudOperations(User).updateDocument({ _id: id }, updatedUser).then((result) => { next(null, result); }).catch((error) => { next(error); });
+           await new CrudOperations(User).updateDocument({ _id: id }, updatedUser).then((result) => {
+             next(null, result); }).catch((error) => { next(error); });
         }
         catch (err) {
             logger.error("UpdateUser->", err);

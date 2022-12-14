@@ -150,6 +150,9 @@ export class UserController {
           next(new HttpException(400, "Something went wrong"));
         }
       }
+
+     
+
 }
 
 export default new UserController();
