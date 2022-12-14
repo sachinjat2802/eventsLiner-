@@ -1,0 +1,103 @@
+[14 12 2022 23:37:09.557] [DEBUG] - Server Started At Port 8000
+[14 12 2022 23:37:10.024] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 23:37:42.190] [DEBUG] - Server Started At Port 8000
+[14 12 2022 23:37:42.955] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 23:38:23.453] [DEBUG] - Server Started At Port 8000
+[14 12 2022 23:38:23.911] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 23:43:48.700] [DEBUG] - Server Started At Port 8000
+[14 12 2022 23:43:49.168] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 23:44:04.961] [ERROR] - Update Organizations-> CastError: Cast to string failed for value "{
+  name: 'sachin',
+  contactPersonName: 'monnu choudhary jat ',
+  contactPersonNumber: 9075371697,
+  logo: {
+    url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',
+    name: 'Default-Avatar',
+    size: 300000,
+    type: 'img/jpg'
+  },
+  coverImage: {
+    url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',
+    name: 'Default-Avatar',
+    size: 300000,
+    type: 'img/jpg'
+  },
+  bio: 'xyz',
+  members: [ '63999ae6365258da51daed36' ],
+  isDeleted: false,
+  isOrganizationActive: false,
+  socialMediaDetails: { whatsapp: 9075371697 },
+  organizationRating: 0,
+  kycVerified: false,
+  block: false,
+  ban: false
+}" (type Object) at path "members" for model "Organization"
+    at model.Query.exec (D:\event listner\Eve-backend\node_modules\mongoose\lib\query.js:4897:21)
+    at model.Query.Query.then (D:\event listner\Eve-backend\node_modules\mongoose\lib\query.js:4996:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  messageFormat: undefined,
+  stringValue: '"{\n' +
+    "  name: 'sachin',\n" +
+    "  contactPersonName: 'monnu choudhary jat ',\n" +
+    '  contactPersonNumber: 9075371697,\n' +
+    '  logo: {\n' +
+    "    url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',\n" +
+    "    name: 'Default-Avatar',\n" +
+    '    size: 300000,\n' +
+    "    type: 'img/jpg'\n" +
+    '  },\n' +
+    '  coverImage: {\n' +
+    "    url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',\n" +
+    "    name: 'Default-Avatar',\n" +
+    '    size: 300000,\n' +
+    "    type: 'img/jpg'\n" +
+    '  },\n' +
+    "  bio: 'xyz',\n" +
+    "  members: [ '63999ae6365258da51daed36' ],\n" +
+    '  isDeleted: false,\n' +
+    '  isOrganizationActive: false,\n' +
+    '  socialMediaDetails: { whatsapp: 9075371697 },\n' +
+    '  organizationRating: 0,\n' +
+    '  kycVerified: false,\n' +
+    '  block: false,\n' +
+    '  ban: false\n' +
+    '}"',
+  kind: 'string',
+  value: {
+    name: 'sachin',
+    contactPersonName: 'monnu choudhary jat ',
+    contactPersonNumber: 9075371697,
+    logo: {
+      url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',
+      name: 'Default-Avatar',
+      size: 300000,
+      type: 'img/jpg'
+    },
+    coverImage: {
+      url: 'https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=',
+      name: 'Default-Avatar',
+      size: 300000,
+      type: 'img/jpg'
+    },
+    bio: 'xyz',
+    members: [ '63999ae6365258da51daed36' ],
+    isDeleted: false,
+    isOrganizationActive: false,
+    socialMediaDetails: { whatsapp: 9075371697 },
+    organizationRating: 0,
+    kycVerified: false,
+    block: false,
+    ban: false
+  },
+  path: 'members',
+  reason: null,
+  valueType: 'Object'
+}

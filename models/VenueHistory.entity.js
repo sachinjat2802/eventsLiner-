@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const VenueHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Types.ObjectId, required: true},
-    venues :{type:[Object]}
+    venues :{type:Object}
 });
 
 VenueHistorySchema.set("timestamps", true);

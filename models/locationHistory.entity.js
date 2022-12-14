@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const LocationHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Types.ObjectId, required: true},
-    locations :{type:[Object]}
+    locations :{type:Object}
 });
 
 LocationHistorySchema.set("timestamps", true);

@@ -10,6 +10,7 @@ router.put("/updateUser", userController.updateUser)
 router.get("/getAllUsers", userController.getAllUsers)
 router.delete("/removeUser/:id", userController.removeUser)
 
+
 //router.post("/resetPasswordThroughLink", AdminUserController.changePasswordThroughLink);
 
 

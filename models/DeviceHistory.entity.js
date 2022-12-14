@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const DeviceHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Types.ObjectId, required: true},
-    devices :{type:[Object]}
+    devices :{type:Object}
 });
 
 DeviceHistorySchema.set("timestamps", true);

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const EventHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Types.ObjectId, required: true},
-    events :{type:[Object]}
+    events :{type:Object}
 });
 
 EventHistorySchema.set("timestamps", true);

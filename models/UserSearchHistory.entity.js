@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const UserSearchHistorySchema = new mongoose.Schema({
     userId: { type: mongoose.Types.ObjectId, required: true},
-    searchs :{type:[Object]}
+    searchText :{type:String}
 });
 
 UserSearchHistorySchema.set("timestamps", true);
