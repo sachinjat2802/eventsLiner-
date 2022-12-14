@@ -41,6 +41,7 @@ export class AdminUserController {
         next(new HttpException(400, "Something went wrong"));
     }
 }
+
  updateAdminUser(request, response, next) {
   try {
     const id= request.currentUser?.id;
