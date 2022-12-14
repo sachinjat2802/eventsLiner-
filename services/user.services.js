@@ -5,7 +5,9 @@ import {Password,JwtGenerator} from "../utils/index.js"
 import dotenv from "dotenv";
 import process from "node:process"
 import _ from "lodash";
+import satelize from 'satelize'
 dotenv.config({ silent: process.env });
+import ipware from 'ipware'
 
 
 
@@ -40,9 +42,10 @@ class userService {
         }
     }
 
-    async signIn(email, password, next) {
+    async signIn(req, email, password, next) {
         try {
-            const user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
+            console.log(req)
+            let user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
             
             if (!user) {
                 return next("No User Found");
@@ -51,6 +54,32 @@ class userService {
             if (passwordMatch == false) {
                 return next("Invalid Credentials");
             }
+
+            
+            let getIP = ipware().get_ip;
+            
+            let location = {}
+            let ipInfo = getIP(req)
+            console.log(ipInfo)
+            satelize.satelize({ip:'49.204.165.186'}, (err, payload) => {
+              if (err)
+                res.status(500).send({ "error": err })
+              else {
+                console.log(payload)
+               
+                //result = result.payload.country
+                location={
+                  "continent":payload.continent.en,
+                  "country_code":payload.country_code,
+                  "country":payload.country.en
+        
+                }
+                console.log(location)
+              }
+            })
+            user.location =location
+
+            user.save()
             const userJwt = this.jwtGenerator.generateJwtClient(user._id, user.email);
             const userData = { accessToken: userJwt, user: user, refreshToken: "" };
             next(null, userData);
@@ -60,9 +89,7 @@ class userService {
         }
     }
     
-    async socialLogin(email, password , next){
-        
-    }
+   
 
 
     async getUser(id,next){

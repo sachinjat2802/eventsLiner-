@@ -26,6 +26,8 @@ const UserSchema = new mongoose.Schema({
     sellerHistory:{type:[String]},
     
 
+    
+
     last_logged_in_time:{type:Date, default:Date.now},  
 }, {
     toJSON: {
