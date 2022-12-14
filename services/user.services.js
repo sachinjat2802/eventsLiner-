@@ -163,6 +163,7 @@ class userService {
 
     async getSearch(id,next){
         try{
+            
         const user = await new CrudOperations(UserSearchHistory).getDocument({userId:id}, {});
 
         if(!user){

@@ -3,6 +3,12 @@
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
 import userServices from "../../../../services/user.services.js";
 import  logger  from "../../../../logger/logger.js";
+import { User} from "../../../../models/userSchema.js";
+import CrudOperations  from "../../../../utils/db/mongo.crud.js";
+import {JwtGenerator} from "../../../../utils/index.js";
+import dotenv from "dotenv";
+import process from "node:process"
+dotenv.config({ silent: process.env });
 
 export class UserController {
    createUser(request, response, next) {
@@ -104,6 +110,61 @@ export class UserController {
 //     }
 //   }
 // ));
+
+async socialSignIn(user, typeOfLogin, state, next) {
+    const loginId = user.id;
+    if (state.type === "LOGIN") {
+      const existingUser = await new CrudOperations(User).getDocument({ email: user.email }, {});
+      if (existingUser) {
+        if (!existingUser.typeOfLogin.includes(typeOfLogin)) {
+          await new CrudOperations(User).updateDocument({ email: user.email }, { $push: { typeOfLogin: typeOfLogin } });
+        }
+        const userJwt = new JwtGenerator(process.env.JWT_KEY).generateJwtClient(existingUser._id, existingUser.username);
+        const userData = { redirectQuery: state, accessToken: userJwt, user: existingUser, refreshToken: "" };
+        next(null, userData);
+      } else {
+        return next("Account Does Not Exist! Please SignUp");
+      }
+    } else {
+      
+      
+      let username = user.email ? user.email.replace(/@.*$/, "") : `${user.name.replace(/ /g, "")}${Math.floor(1000 + Math.random() * 9000)}`;
+      if (await new CrudOperations(User).getDocument({ username: username }, {})) {
+        username = `${username}${Math.floor(1000 + Math.random() * 9000)}`;
+      }
+      const userModel = new User({
+        username: username,
+        name: user.name ?? username,
+        email: user.email,
+        isBanned: false,
+        profilePicture: user.profilePicture ? {
+          url: user.profilePicture,
+          name: "Default-Avatar",
+          size: 300000,
+          type: "img/jpg",
+          createdAt: new Date()
+        } : {
+          url: "https://media.istockphoto.com/id/587805078/vector/profile-picture-vector-illustration.jpg?s=612x612&w=0&k=20&c=sUCdx-Likqe7eBEcbn1FT8ybOQQHXDgBKLsJc99MtCA=",
+          name: "Default-Avatar",
+          size: 300000,
+          type: "img/jpg",
+          createdAt: new Date(),
+        },
+        is18AndAbove: true,
+        isDeleted: false,
+        isEmailVerified: user.email ? true : false,
+      });
+      userModel.typeOfLogin.push(typeOfLogin);
+      userModel.ssouid = [];
+      userModel.ssouid.push(loginId);
+      const savedUser = await new CrudOperations(User).save(userModel);
+    
+     
+      const userJwt = new JwtGenerator(process.env.JWT_KEY).generateJwtClient(savedUser._id, savedUser.username);
+      const userData = { redirectQuery: state, accessToken: userJwt, user: savedUser, refreshToken: "" };
+      next(null, userData);
+    }
+  }
 }
 
 export default new UserController();

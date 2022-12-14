@@ -5,11 +5,12 @@ import userServices from "../../../../services/user.services.js";
 
 export class UserController {
     getSearch(request, response, next) {
+       
     try {
         const user = request.params.id;
        
        
-        userServices.search(user, search ,(err, result, saveSearch) => {
+        userServices.getSearch(user ,(err, result, saveSearch) => {
             if (err) {
                 next(new HttpException(400, err));
             } else {
