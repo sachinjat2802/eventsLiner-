@@ -6,6 +6,7 @@ const router = Router();
 router.post("/createUser", userController.createUser ); 
 router.post("/signIn", userController.signIn);
 router.get("/getUser", userController.getUser);
+
 //router.post("/resetPasswordThroughLink", AdminUserController.changePasswordThroughLink);
 
 

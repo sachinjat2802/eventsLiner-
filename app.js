@@ -47,11 +47,11 @@ export default class App {
   }
 
    initializeMiddlewares() {
-    this.app.use(passport.initialize());
+     this.app.use(passport.initialize());
      this.app.use(cookieParser());
      this.app.enable("trust proxy");
      this.app.use(bodyParser.json());
-    this.app.use(cors({
+     this.app.use(cors({
       origin: process.env
         .CORS_OPTIONS
         .WHITELISTDOMAINS

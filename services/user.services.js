@@ -1,13 +1,15 @@
 import  logger  from "../logger/logger.js";
 import { User} from "../models/userSchema.js";
+import {UserSearchHistory} from "../models/UserSearchHistory.entity.js";
 import CrudOperations  from "../utils/db/mongo.crud.js";
 import {Password,JwtGenerator} from "../utils/index.js"
 import dotenv from "dotenv";
 import process from "node:process"
 import _ from "lodash";
 import satelize from 'satelize'
-dotenv.config({ silent: process.env });
 import ipware from 'ipware'
+import DeviceDetector from "node-device-detector";
+dotenv.config({ silent: process.env });
 
 
 
@@ -71,13 +73,25 @@ class userService {
                 location={
                   "continent":payload.continent.en,
                   "country_code":payload.country_code,
-                  "country":payload.country.en
+                  "country":payload.country.en,
+                  "latitude":payload.latitude,
+                  "longitude":payload.longitude,
+                  "timezone":payload.timezone
         
                 }
                 console.log(location)
               }
             })
             user.location =location
+
+            const detector = new DeviceDetector({
+                clientIndexes: true,
+                deviceIndexes: true,
+                deviceAliasCode: false,
+              });
+              const userAgent = 'Mozilla/5.0 (Linux; Android 5.0; NX505J Build/KVT49L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.78 Mobile Safari/537.36';
+              const result = detector.detect(userAgent);
+              console.log('result parse', result);
 
             user.save()
             const userJwt = this.jwtGenerator.generateJwtClient(user._id, user.email);
@@ -89,7 +103,9 @@ class userService {
         }
     }
     
-   
+    async socialLogin(email, password , next){
+        
+    }
 
 
     async getUser(id,next){
@@ -153,6 +169,42 @@ class userService {
             next("Something went wrong");
         }
     }
+
+    async search(user,searchText, next) {
+        
+        try {
+            let searchHistory
+           let existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ userId: mongoose.Types.ObjectId(user)}, {});
+            if (existingSearch ) {
+                existingSearch.searchs.push({
+                    searchText: searchText,
+                    createdAt: new Date()
+                })
+                searchHistory = await new CrudOperations(UserSearchHistory).save(existingSearch)
+
+            } 
+            else{
+                const object =
+                {
+                    userId:mongoose.Types.ObjectId(user),
+                    searchs:[{
+                        searchText:searchText,
+                        createdAt: new Date()
+                    }]
+                }
+                const newSearch= new UserSearchHistory(object);
+                 searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
+            } 
+            next(null, "searchHistry created",searchHistory);
+        }   catch (error) {
+            logger.error("Error creating admin user", error);
+            next("Something went wrong");
+        }
+    }
+
+
+
+    
 }
 
 
