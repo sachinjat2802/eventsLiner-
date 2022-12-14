@@ -6,7 +6,7 @@ import userServices from "../../../../services/user.services.js";
 export class UserController {
    search(request, response, next) {
     try {
-        const user = request.params.id;
+        const user = request.currentUser?.id;
         const search = request.body.search;
        
         userServices.search(user, search ,(err, result, saveSearch) => {

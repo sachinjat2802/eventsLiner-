@@ -1,29 +1,31 @@
-[14 12 2022 14:55:55.541] [INFO] - 639991f15bfd6d571b054069
-[14 12 2022 14:55:55.579] [INFO] - null
-[14 12 2022 14:55:55.583] [ERROR] - Error creating admin user Error: UserSearchHistory validation failed: userId: Path `userId` is required.
-    at ValidationError.inspect (D:\event listner\Eve-backend\node_modules\mongoose\lib\error\validation.js:50:26)
-    at formatValue (node:internal/util/inspect:782:19)
-    at inspect (node:internal/util/inspect:347:10)
-    at formatWithOptionsInternal (node:internal/util/inspect:2167:40)
-    at Object.format (node:internal/util/inspect:2021:10)
-    at Object.formatMessage [as m] (D:\event listner\Eve-backend\node_modules\log4js\lib\layouts.js:214:17)
-    at replaceToken (D:\event listner\Eve-backend\node_modules\log4js\lib\layouts.js:372:42)
-    at D:\event listner\Eve-backend\node_modules\log4js\lib\layouts.js:432:29
-    at app (D:\event listner\Eve-backend\node_modules\log4js\lib\appenders\file.js:98:23)
-    at D:\event listner\Eve-backend\node_modules\log4js\lib\log4js.js:43:5 {
-  errors: {
-    userId: ValidatorError: Path `userId` is required.
-        at validate (D:\event listner\Eve-backend\node_modules\mongoose\lib\schematype.js:1346:13)
-        at ObjectId.SchemaType.doValidate (D:\event listner\Eve-backend\node_modules\mongoose\lib\schematype.js:1330:7)
-        at D:\event listner\Eve-backend\node_modules\mongoose\lib\document.js:2903:18
-        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
-      properties: [Object],
-      kind: 'required',
-      path: 'userId',
-      value: undefined,
-      reason: undefined,
-      [Symbol(mongoose:validatorError)]: true
-    }
-  },
-  _message: 'UserSearchHistory validation failed'
+[14 12 2022 15:12:35.412] [DEBUG] - Server Started At Port 8000
+[14 12 2022 15:12:35.842] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 15:12:41.881] [DEBUG] - Server Started At Port 8000
+[14 12 2022 15:12:42.289] [INFO] - 
+*************MONGODB connected**************
+
+[14 12 2022 15:12:50.072] [INFO] - {
+  _id: new ObjectId("639997053e5fa07d6c060507"),
+  userId: new ObjectId("639991f15bfd6d571b054069"),
+  searchs: [
+    { searchText: 'xyz', createdAt: 2022-12-14T09:27:33.141Z },
+    { searchText: 'xyzs', createdAt: 2022-12-14T09:42:50.072Z }
+  ],
+  createdAt: 2022-12-14T09:27:33.151Z,
+  updatedAt: 2022-12-14T09:41:19.255Z,
+  __v: 0
+}
+[14 12 2022 15:12:52.033] [INFO] - {
+  _id: new ObjectId("639997053e5fa07d6c060507"),
+  userId: new ObjectId("639991f15bfd6d571b054069"),
+  searchs: [
+    { searchText: 'xyz', createdAt: 2022-12-14T09:27:33.141Z },
+    { searchText: 'xyzs', createdAt: 2022-12-14T09:42:50.072Z },
+    { searchText: 'xyzs', createdAt: 2022-12-14T09:42:52.033Z }
+  ],
+  createdAt: 2022-12-14T09:27:33.151Z,
+  updatedAt: 2022-12-14T09:42:50.081Z,
+  __v: 1
 }

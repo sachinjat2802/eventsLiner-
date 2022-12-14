@@ -133,14 +133,14 @@ class userService {
         
         try {
             let searchHistory
-           const existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ userId: mongoose.Types.ObjectId(user)}, {});
-           logger.info(existingSearch)
+           let existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ userId: mongoose.Types.ObjectId(user)}, {});
             if (existingSearch ) {
                 existingSearch.searchs.push({
                     searchText: searchText,
                     createdAt: new Date()
                 })
-                searchHistory = await new CrudOperations(UserSearchHistory).updateDocument({ _id: existingSearch._id}, {existingSearch})
+                searchHistory = await new CrudOperations(UserSearchHistory).save(existingSearch)
+
             } 
             else{
                 const object =
