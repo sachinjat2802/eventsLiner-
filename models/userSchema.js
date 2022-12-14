@@ -11,6 +11,8 @@ const UserSchema = new mongoose.Schema({
     is18AndAbove:{type:Boolean, default: false},
     isVerified:{type:Boolean, default:false},
     isDeleted:{type:Boolean, default:false},
+    isBanned:{type:Boolean, default:false},
+    isBlocked:{type:Boolean, default:false},
     isVenuePartner:{type:Boolean, default: false},
     isAddOnSeller:{type:Boolean, default:false},
     name: { type: String, required: false },

@@ -97,6 +97,7 @@ class userService {
 
     async getAllUsers(clauses, projections, options, sort, next) {
         try {
+            logger.info(clauses)
             const count = await new CrudOperations(User).countAllDocuments({ ...clauses, isDeleted: false });
             const results = await new CrudOperations(User).getAllDocuments({ ...clauses, isDeleted: false }, projections, options, sort);
             const response = {
@@ -115,8 +116,8 @@ class userService {
         try {
             const user = await new CrudOperations(User).getDocument({ _id: id }, {});
             if (user) {
-                await new CrudOperations(User).updateDocument({ _id: id }, { isDeleted: true });
-                return next(null, "User Removed");
+              const user = await new CrudOperations(User).updateDocument({ _id: id }, { isDeleted: true });
+                return next(null, "User Removed",user);
             } else {
                 next("No User Found To Remove!");
             }
