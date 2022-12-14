@@ -1,5 +1,6 @@
 import  logger  from "../logger/logger.js";
 import { User} from "../models/userSchema.js";
+import {UserSearchHistory} from "../models/UserSearchHistory.entity.js";
 import CrudOperations  from "../utils/db/mongo.crud.js";
 import {Password,JwtGenerator} from "../utils/index.js"
 import dotenv from "dotenv";
@@ -120,6 +121,37 @@ class userService {
             next("Something went wrong");
         }
     }
+
+    async search(user,searchText, next) {
+        
+        try {
+            let searchHistory
+           const existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ _id: user}, {});
+            if (existingSearch ) {
+                existingSearch.searchText.push({
+                    searchText: searchText,
+                    createdAt: new Date()
+                })
+                searchHistory = await new CrudOperations(UserSearchHistory).updateDocument({ _id: user}, {})
+            } 
+            else{
+                const searchs = {
+                    searchText:searchText,
+                    createdAt: new Date()
+                }
+                const newSearch= new UserSearchHistory(searchs);
+                 searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
+            } 
+            next(null, "searchHistry created",searchHistory);
+        }   catch (error) {
+            logger.error("Error creating admin user", error);
+            next("Something went wrong");
+        }
+    }
+
+
+
+    
 }
 
 

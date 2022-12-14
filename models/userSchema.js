@@ -6,13 +6,12 @@ const UserSchema = new mongoose.Schema({
     typeOfLogin:{type: [String], required:true },
     phone:{type:Number, required:true},
     userName:{type:String, required:false},
-    location:{type:Object},
-    deviceInfo:{type:Object},
     is18AndAbove:{type:Boolean, default: false},
     isVerified:{type:Boolean, default:false},
     isDeleted:{type:Boolean, default:false},
     isBanned:{type:Boolean, default:false},
     isBlocked:{type:Boolean, default:false},
+    address:{type:Object, required:false},
     isVenuePartner:{type:Boolean, default: false},
     isAddOnSeller:{type:Boolean, default:false},
     name: { type: String, required: false },
@@ -24,9 +23,11 @@ const UserSchema = new mongoose.Schema({
     searchHistory:{type:[String]},
     eventHistory:{type:[String]},
     sellerHistory:{type:[String]},
-    
+    location:{type:[String]},
+    deviceInfo:{type:[Object]},
+    loginHistory:{type:[Object]},
+    last_logged_in_time:{type:Date, default:Date.now},
 
-    last_logged_in_time:{type:Date, default:Date.now},  
 }, {
     toJSON: {
         transform(doc, ret) {
