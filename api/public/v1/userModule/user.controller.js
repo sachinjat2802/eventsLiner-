@@ -14,7 +14,7 @@ export class UserController {
    createUser(request, response, next) {
     try {
         const user = request.body;
-       
+        
         userServices.createUser(user, (err, result,savedUser) => {
             if (err) {
                 next(new HttpException(400, err));
@@ -31,8 +31,9 @@ export class UserController {
      signIn(request, response, next) {
         try {
             const { email, password } = request.body;
-            //console.log(request.body)
-            userServices.signIn(email, password, (err, result) => {
+            
+            
+            userServices.signIn(request, email, password, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {

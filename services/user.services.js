@@ -1,13 +1,16 @@
 import  logger  from "../logger/logger.js";
 import { User} from "../models/userSchema.js";
 import {UserSearchHistory} from "../models/UserSearchHistory.entity.js";
+import{LocationHistory} from "../models/locationHistory.entity.js";
 import CrudOperations  from "../utils/db/mongo.crud.js";
 import {Password,JwtGenerator} from "../utils/index.js"
 import dotenv from "dotenv";
 import process from "node:process"
 import _ from "lodash";
-dotenv.config({ silent: process.env });
+import satelize from 'satelize'
+import ipware from 'ipware'
 import mongoose from "mongoose";
+dotenv.config({ silent: process.env });
 
 
 
@@ -42,9 +45,10 @@ class userService {
         }
     }
 
-    async signIn(email, password, next) {
+    async signIn(req, email, password, next) {
         try {
-            const user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
+            console.log(req)
+            let user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
             
             if (!user) {
                 return next("No User Found");
@@ -53,6 +57,43 @@ class userService {
             if (passwordMatch == false) {
                 return next("Invalid Credentials");
             }
+
+            
+            let getIP = ipware().get_ip;
+            
+            let location = {}
+            let ipInfo = getIP(req)
+            console.log(ipInfo)
+            satelize.satelize({ip:'49.204.165.186'}, (err, payload) => {
+              if (err)
+              next(err);
+              else {
+                location={
+                  "continent":payload.continent.en,
+                  "country_code":payload.country_code,
+                  "country":payload.country.en,
+                  "latitude":payload.latitude,
+                  "longitude":payload.longitude,
+                  "timezone":payload.timezone
+        
+                }
+              }
+            })
+            user.location =location
+           const existingLocation = await new CrudOperations(LocationHistory).getDocument({userId:user.id},{})
+           if(existingLocation){
+            existingLocation.locations.push(user.location)
+             await new CrudOperations(LocationHistory).save(existingLocation)
+            }else{
+                const object =
+                {
+                    userId:mongoose.Types.ObjectId(user),
+                    locations:[user.location]
+                }
+                  const newSearch= new LocationHistory(object);
+                await new CrudOperations(LocationHistory).save(newSearch);
+            }
+            user.save()
             const userJwt = this.jwtGenerator.generateJwtClient(user._id, user.email);
             const userData = { accessToken: userJwt, user: user, refreshToken: "" };
             next(null, userData);
