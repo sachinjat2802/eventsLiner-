@@ -13,10 +13,10 @@ const OrganizationSchema = new mongoose.Schema({
     isDeleted: { type: Boolean, required: true },
     isOrganizationActive: { type: Boolean, required: true },
     socialMediaDetails: { type: Object, required: false },
-    organizationRating: { type: Number, required: false },
     kycVerified: { type: Boolean, required: false, default: false },
     block: { type: Boolean, required: false },
     ban: { type: Boolean, required: false },
+    kycDocuments: { type: Object, required: false }
 });
 
 OrganizationSchema.set("timestamps", true);
