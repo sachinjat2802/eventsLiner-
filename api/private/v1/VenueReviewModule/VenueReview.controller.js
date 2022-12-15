@@ -91,7 +91,7 @@ class VenueReviewsController {
         }
     }
 
-    async getVenueReviewss(request, response, next) {
+    async getVenueReviews(request, response, next) {
         try {
             
             const query = request.query;
@@ -131,7 +131,7 @@ class VenueReviewsController {
         }
     }
 
-    async getMyVenueReviewss(request, response, next) {
+    async getMyVenueReviews(request, response, next) {
         try {
             const id = request.currentUser?.id;
             logger.info(id);
