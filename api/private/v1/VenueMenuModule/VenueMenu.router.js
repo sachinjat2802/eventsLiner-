@@ -9,7 +9,7 @@ router.put("/updateVenueMenus/:id",VenueMenusController.updateVenueMenus);
 
 router.delete("/deleteVenueMenus/:id",  VenueMenusController.deleteVenueMenus);
 
-router.get("/getVenueMenuss", VenueMenusController.getVenueMenus);
+router.get("/getVenueMenus", VenueMenusController.getVenueMenus);
 
 
 export default router;

@@ -19,9 +19,9 @@ class VenueService {
         return next("Venue already exists");
       }
       VenueDoc.isDeleted = false;
-      const Venue = new Venue(VenueDoc);
+      const venue = new Venue(VenueDoc);
       await new CrudOperations(Venue)
-        .save(Venue)
+        .save(venue)
         .then((result) => {
           next(null, result);
         })
@@ -33,7 +33,23 @@ class VenueService {
       next("Something went wrong");
     }
   }
-
+  async postMultipeVenue(VenueDoc, next) {
+    try {
+      
+      const Venue = new Venue(VenueDoc);
+      await new CrudOperations(Venue)
+        .insertManyDocuments(Venue,{})
+        .then((result) => {
+          next(null, result);
+        })
+        .catch((error) => {
+          next(error);
+        });
+    } catch (err) {
+      logger.error("CreateVenues->", err);
+      next("Something went wrong");
+    }
+  }
   async updateVenue(id,userId ,VenueDoc, next) {
     try {
       const oldVenueDoc = await new CrudOperations(

@@ -91,7 +91,7 @@ class VenueMenusController {
         }
     }
 
-    async getVenueMenuss(request, response, next) {
+    async getVenueMenus(request, response, next) {
         try {
             
             const query = request.query;

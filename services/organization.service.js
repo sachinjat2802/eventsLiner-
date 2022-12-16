@@ -38,7 +38,7 @@ class OrganizationService {
     try {
       const oldOrganizationDoc = await new CrudOperations(
         Organization
-      ).getDocument({ _id: id, isDeleted: false,members:userId }, {});
+      ).getDocument({ _id: id, isDeleted: false }, {});
 
       const updatedOrganizationDoc = _.extend(oldOrganizationDoc, organizationDoc);
 

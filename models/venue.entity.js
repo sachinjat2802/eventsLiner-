@@ -27,6 +27,8 @@ const VenueSchema = new mongoose.Schema({
     timing:{ type: String, required: false },
     location:{type: Object, required: false},
     rating:{type:Number,required:false},
+    kycDocuments: { type: Object, required: false }
+
     });
 
 VenueSchema.set("timestamps", true);

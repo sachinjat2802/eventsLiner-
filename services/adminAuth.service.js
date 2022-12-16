@@ -31,7 +31,9 @@ class AdminAuthService {
             }
             adminUser.isDeleted = false;
             const admin = new AdminUser(adminUser);
-            const savedAdminUser = await new CrudOperations(AdminUser).save(admin);
+            let savedAdminUser = await new CrudOperations(AdminUser).save(admin);
+            savedAdminUser=savedAdminUser.toObject()
+            delete savedAdminUser.password;
              next(null, "User Created",savedAdminUser);
         } catch (error) {
             logger.error("Error creating admin user", error);
@@ -50,7 +52,8 @@ class AdminAuthService {
                 return next("Invalid Credentials");
             }
             const userJwt = this.jwtGenerator.generateJwtAdmin(adminUser._id, adminUser.email);
-            const userData = { accessToken: userJwt, user: adminUser, refreshToken: "" };
+            const userData = { accessToken: userJwt, user: adminUser.toObject(), refreshToken: "" };
+            delete userData.user.password;
             next(null, userData);
         } catch (error) {
             logger.error("Error signing in", error);
