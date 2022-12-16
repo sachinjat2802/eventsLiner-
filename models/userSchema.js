@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
     deviceInfo:{type:Object},
     // sellerHistory:{type:[Object]},
     last_logged_in_time:{type:Date, default:Date.now},
+    bookMarks:{type: [String], required: false }
 
 }, {
     toJSON: {

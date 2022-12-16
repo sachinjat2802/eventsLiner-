@@ -80,19 +80,15 @@ class userService {
               }
             })
             user.location =location
-           const existingLocation = await new CrudOperations(LocationHistory).getDocument({userId:user.id},{})
-           if(existingLocation){
-            existingLocation.locations.push(user.location)
-             await new CrudOperations(LocationHistory).save(existingLocation)
-            }else{
+         
                 const object =
                 {
                     userId:mongoose.Types.ObjectId(user),
-                    locations:[user.location]
+                    locations:user.location
                 }
                   const newSearch= new LocationHistory(object);
                 await new CrudOperations(LocationHistory).save(newSearch);
-            }
+            
             user.save()
             const userJwt = this.jwtGenerator.generateJwtClient(user._id, user.email);
             const userData = { accessToken: userJwt, user: user, refreshToken: "" };
@@ -174,28 +170,16 @@ class userService {
         
         try {
             let searchHistory
-           let existingSearch = await new CrudOperations(UserSearchHistory).getDocument({ userId: mongoose.Types.ObjectId(user)}, {});
-            if (existingSearch ) {
-                existingSearch.searchs.push({
-                    searchText: searchText,
-                    createdAt: new Date()
-                })
-                searchHistory = await new CrudOperations(UserSearchHistory).save(existingSearch)
-
-            } 
-            else{
+            
                 const object =
                 {
                     userId:mongoose.Types.ObjectId(user),
-                    searchs:[{
-                        searchText:searchText,
-                        createdAt: new Date()
-                    }]
-                }
+                    searchText:searchText,
+                    }
                 const newSearch= new UserSearchHistory(object);
                  searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
-            } 
-            next(null, "searchHistry created",searchHistory);
+            
+            next(null, "searchHistory created",searchHistory);
         }   catch (error) {
             logger.error("Error creating admin user", error);
             next("Something went wrong");
@@ -203,14 +187,9 @@ class userService {
     }
 
     async getSearch(id,next){
-        try{
-            
-        const user = await new CrudOperations(UserSearchHistory).getDocument({userId:id}, {});
-
-        if(!user){
-            return next('No User Found');
-        }
-       next(null, user);
+        try{    
+        const userSearchHistory = await new CrudOperations(UserSearchHistory).getAllDocuments({userId:id}, {},{pageNo:0,limit:0},{});
+       next(null, userSearchHistory);
     }
     catch (error) {
         logger.error("Error ", error);
