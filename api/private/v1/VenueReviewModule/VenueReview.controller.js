@@ -79,8 +79,7 @@ class VenueReviewsController {
     deleteVenueReviews(request, response, next) {
         try {
             const id = request.params.id;
-            const userId = request.currentUser?.id
-            VenueReviewsService.deleteVenueReviews(id,userId ,(err, result) => {
+            VenueReviewsService.deleteVenueReviews(id,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {

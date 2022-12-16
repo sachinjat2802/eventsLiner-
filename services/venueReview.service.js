@@ -20,7 +20,7 @@ class VenueReviewsService {
       }
       VenueReviewsDoc.isDeleted = false;
       const venueReviews = new VenueReviews(VenueReviewsDoc);
-    
+      
       await new CrudOperations(VenueReviews)
         .save(venueReviews)
         .then(async (result) => {

@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 
 const VenueMenusSchema = new mongoose.Schema({
     venue:{type:mongoose.Schema.Types.ObjectId,required:true},
-    assert:{type:Object,required:true}
+    assert:{type:Object,required:true},
+    isDeleted: {type:Boolean,default:false}
     });
 
 VenueMenusSchema.set("timestamps", true);
