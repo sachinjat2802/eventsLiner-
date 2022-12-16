@@ -5,11 +5,11 @@ const router = Router();
 
 router.post("/createVenuePhotos", VenuePhotosController.createVenuePhotos);
 
-router.put("/updateVenuePhotos/:id",VenuePhotosController.updateVenuePhotos);
+router.put("/replacePhotos/:id",VenuePhotosController.updateVenuePhotos);
 
 router.delete("/deleteVenuePhotos/:id",  VenuePhotosController.deleteVenuePhotos);
 
-router.get("/getVenuePhotoss", VenuePhotosController.getVenuePhotos);
+router.get("/getVenuePhotos/:id", VenuePhotosController.getVenuePhotoss);
 
 
 export default router;

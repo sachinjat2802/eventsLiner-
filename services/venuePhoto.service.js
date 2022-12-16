@@ -1,5 +1,6 @@
 import logger from "../logger/logger.js";
 import { VenuePhotos } from "../models/venuePhoto.entity.js";
+import mongoose from "mongoose";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";
@@ -12,16 +13,11 @@ class VenuePhotosService {
 
   async createVenuePhotos(VenuePhotosDoc, next) {
     try {
-      const similarVenuePhotos = await new CrudOperations(
-        VenuePhotos
-      ).getDocument({ name: VenuePhotosDoc.name, isDeleted: false }, {});
-      if (similarVenuePhotos) {
-        return next("VenuePhotos already exists");
-      }
+      
       VenuePhotosDoc.isDeleted = false;
-      const VenuePhotos = new VenuePhotos(VenuePhotosDoc);
+      const venuePhotos = new VenuePhotos(VenuePhotosDoc);
       await new CrudOperations(VenuePhotos)
-        .save(VenuePhotos)
+        .save(venuePhotos)
         .then((result) => {
           next(null, result);
         })
@@ -34,11 +30,11 @@ class VenuePhotosService {
     }
   }
 
-  async updateVenuePhotos(id,userId ,VenuePhotosDoc, next) {
+  async updateVenuePhotos(id ,VenuePhotosDoc, next) {
     try {
       const oldVenuePhotosDoc = await new CrudOperations(
         VenuePhotos
-      ).getDocument({ _id: id, isDeleted: false,members:userId }, {});
+      ).getDocument({ _id: mongoose.Types.ObjectId(id), isDeleted: false }, {});
 
       const updatedGameDoc = _.extend(oldVenuePhotosDoc, VenuePhotosDoc);
 
@@ -62,12 +58,12 @@ class VenuePhotosService {
   //   /**
   //    * @method:  Delete VenuePhotos.
   //    */
-  async deleteVenuePhotos(id, userId,next) {
+  async deleteVenuePhotos(id,next) {
     try {
-        const VenuePhotos = await new CrudOperations( VenuePhotos).getDocument({ _id: id, isDeleted: false,members:userId }, { });
-          if(VenuePhotos){
-            VenuePhotos.isDeleted =true;
-            const deletedVenuePhotos = await new CrudOperations( VenuePhotos).updateDocument({ _id: id }, VenuePhotos );
+        const venuePhotos = await new CrudOperations( VenuePhotos).getDocument({ _id: id, isDeleted: false }, { });
+          if(venuePhotos){
+            venuePhotos.isDeleted =true;
+            const deletedVenuePhotos = await new CrudOperations( VenuePhotos).updateDocument({ _id: id }, venuePhotos );
             next(null, deletedVenuePhotos);
          } else {
         next("No VenuePhotos Found To Delete!");

@@ -1,11 +1,22 @@
-[16 12 2022 10:53:19.060] [INFO] - 
+[16 12 2022 15:28:39.936] [DEBUG] - Server Started At Port 8000
+[16 12 2022 15:28:40.438] [INFO] - 
 *************MONGODB connected**************
 
-[16 12 2022 10:57:27.710] [DEBUG] - Server Started At Port 8000
-[16 12 2022 10:57:28.155] [INFO] - 
-*************MONGODB connected**************
-
-[16 12 2022 11:16:59.643] [DEBUG] - Server Started At Port 8000
-[16 12 2022 11:17:00.077] [INFO] - 
+[16 12 2022 15:28:49.916] [INFO] - {
+  results: [
+    {
+      _id: new ObjectId("639c3fecd06c73c8884db25c"),
+      venue: new ObjectId("639bf92e7a342654473d175c"),
+      assert: [Object],
+      isDeleted: false,
+      createdAt: 2022-12-16T09:52:44.846Z,
+      updatedAt: 2022-12-16T09:52:44.846Z,
+      __v: 0
+    }
+  ],
+  totalResult: 1
+}
+[16 12 2022 15:29:14.961] [DEBUG] - Server Started At Port 8000
+[16 12 2022 15:29:15.442] [INFO] - 
 *************MONGODB connected**************
 
