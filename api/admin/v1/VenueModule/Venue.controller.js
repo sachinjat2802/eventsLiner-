@@ -40,46 +40,12 @@ class VenueController {
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            VenueService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
-    addToVenue(request, response, next) {
-        try {
-            const { VenueId, role } = request.body;
-            const userId = request.currentUser?.id;
-            VenueService.addToVenue(VenueId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToVenue", result, "Added In Venue", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToVenueController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
     
 
     deleteVenue(request, response, next) {
         try {
             const id = request.params.id;
-            const userId = request.currentUser?.id
-            VenueService.deleteVenue(id,userId ,(err, result) => {
+            VenueService.deleteVenue(id,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -117,7 +83,6 @@ class VenueController {
                 clauses = { ...clauses, ...searchTerm };
                 delete clauses.searchTerm, delete clauses.searchValue;
             }
-            clauses.members = request.currentUser?.id;
             
             VenueService.getVenue(clauses, projections, options, sort, (err, result) => {
                 if (err) {

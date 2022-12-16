@@ -12,5 +12,7 @@ router.delete("/deleteVenue/:id",  VenueController.deleteVenue);
 
 router.get("/getVenues", VenueController.getVenues);
 
+router.get("/getVenuesWithOrganization/:id",VenueController.getVenues)
+
 
 export default router;
