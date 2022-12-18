@@ -1,13 +1,12 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
 import VenueMenusService from "../../../../services/venueMenus.service.js";
-
+import mongoose from "mongoose";
 class VenueMenusController {
     createVenueMenus(request, response, next) {
         try {
-            const VenueMenus = request.body;
-             VenueMenus.members = [request?.currentUser?.id] ;
-            VenueMenusService.createVenueMenus(VenueMenus, (err, result) => {
+            const venueMenus = request.body;
+            VenueMenusService.createVenueMenus(venueMenus, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -23,9 +22,8 @@ class VenueMenusController {
     updateVenueMenus(request, response, next) {
         try {
             const VenueMenus = request.body;
-            const userId =request.currentUser.id;
-            const id = request.params.id;
-            VenueMenusService.updateVenueMenus(id, userId,VenueMenus, (err, result) => {
+            const id = mongoose.Types.ObjectId(request.params.id) ;
+            VenueMenusService.updateVenueMenus(id,VenueMenus, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -39,46 +37,13 @@ class VenueMenusController {
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            VenueMenusService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
-    addToVenueMenus(request, response, next) {
-        try {
-            const { VenueMenusId, role } = request.body;
-            const userId = request.currentUser?.id;
-            VenueMenusService.addToVenueMenus(VenueMenusId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToVenueMenus", result, "Added In VenueMenus", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToVenueMenusController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
+   
     
 
     deleteVenueMenus(request, response, next) {
         try {
             const id = request.params.id;
-            const userId = request.currentUser?.id
-            VenueMenusService.deleteVenueMenus(id,userId ,(err, result) => {
+            VenueMenusService.deleteVenueMenus(id ,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {

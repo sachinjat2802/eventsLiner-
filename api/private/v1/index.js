@@ -7,7 +7,7 @@ import organizationServiceRoutes from "./OrganizationModule/Organization.router.
 import venueRoutes from "./venueModule/venue.router.js";
 import venueMenuRoutes from "./VenueMenuModule/VenueMenu.router.js"
 import venueReviewRoutes from "./VenueReviewModule/VenueReview.router.js";
-import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js";
+import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js"
 
 
 const router = Router();
