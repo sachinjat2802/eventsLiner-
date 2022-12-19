@@ -1,20 +1,8 @@
-[19 12 2022 10:55:48.920] [DEBUG] - Server Started At Port 8000
-[19 12 2022 10:55:49.467] [INFO] - 
+[19 12 2022 17:40:29.117] [DEBUG] - Server Started At Port 8000
+[19 12 2022 17:40:29.614] [INFO] - 
 *************MONGODB connected**************
 
-[19 12 2022 11:04:18.372] [DEBUG] - Server Started At Port 8000
-[19 12 2022 11:04:18.842] [INFO] - 
+[19 12 2022 17:40:47.070] [DEBUG] - Server Started At Port 8000
+[19 12 2022 17:40:47.529] [INFO] - 
 *************MONGODB connected**************
 
-[19 12 2022 11:04:35.482] [DEBUG] - Server Started At Port 8000
-[19 12 2022 11:04:35.922] [INFO] - 
-*************MONGODB connected**************
-
-[19 12 2022 12:24:38.850] [INFO] - {}
-[19 12 2022 12:25:15.837] [INFO] - {
-  id: '639991f15bfd6d571b054069',
-  username: 'akashtiwarisky290@gmail.com',
-  iat: 1671429416,
-  iss: 'eventsliner-api-client',
-  sub: '639991f15bfd6d571b054069'
-}

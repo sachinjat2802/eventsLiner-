@@ -7,7 +7,9 @@ import organizationServiceRoutes from "./OrganizationModule/Organization.router.
 import venueRoutes from "./venueModule/venue.router.js";
 import venueMenuRoutes from "./VenueMenuModule/VenueMenu.router.js"
 import venueReviewRoutes from "./VenueReviewModule/VenueReview.router.js";
-import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js"
+import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js";
+import venueSlotsRoutes from "./VenueSlotsModule/VenueSlots.router.js";
+import venueBookingRoutes from "./VenueBookingModule/VenueBooking.router.js";
 
 
 const router = Router();
@@ -19,14 +21,17 @@ router.use("/venue",venueRoutes)
 router.use("/venuePhoto",venuePhotoRoutes)
 router.use("/venueMenu",venueMenuRoutes)
 router.use("/venueReview",venueReviewRoutes)
-
-
-
-
-
-
-
-
+router.use("/venueSlots",venueSlotsRoutes)
+router.use("/venueBooking",venueBookingRoutes)
 
 export default router;
+
+
+
+
+
+
+
+
+
 
