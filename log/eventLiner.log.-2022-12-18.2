@@ -1,45 +1,71 @@
-[18 12 2022 11:57:36.298] [INFO] - { venue: new ObjectId("639c4865a44c5c7642314bf2") }
-[18 12 2022 11:57:36.381] [INFO] - [
-  {
-    _id: new ObjectId("639c566b3e8bbc2d7ed72c88"),
-    userId: new ObjectId("63999ae6365258da51daed36"),
-    venue: new ObjectId("639c4865a44c5c7642314bf2"),
-    rating: 5,
-    review: 'nice food',
-    isDeleted: false,
-    createdAt: 2022-12-16T11:28:43.983Z,
-    updatedAt: 2022-12-16T11:28:43.983Z,
-    __v: 0
-  }
-]
-[18 12 2022 11:57:39.065] [INFO] - { venue: new ObjectId("639c4865a44c5c7642314bf2") }
-[18 12 2022 11:57:39.149] [INFO] - [
-  {
-    _id: new ObjectId("639c566b3e8bbc2d7ed72c88"),
-    userId: new ObjectId("63999ae6365258da51daed36"),
-    venue: new ObjectId("639c4865a44c5c7642314bf2"),
-    rating: 5,
-    review: 'nice food',
-    isDeleted: false,
-    createdAt: 2022-12-16T11:28:43.983Z,
-    updatedAt: 2022-12-16T11:28:43.983Z,
-    __v: 0
-  }
-]
-[18 12 2022 12:02:12.318] [ERROR] - Error creating admin user MongoServerError: E11000 duplicate key error collection: EventsLiner.adminusers index: email_1 dup key: { email: "sachinjat2802@gmail.com" }
-    at D:\event listner\Eve-backend\node_modules\mongodb\lib\operations\insert.js:53:33
-    at D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection_pool.js:307:25
-    at D:\event listner\Eve-backend\node_modules\mongodb\lib\sdam\server.js:213:17
-    at handleOperationResult (D:\event listner\Eve-backend\node_modules\mongodb\lib\sdam\server.js:329:20)
-    at Connection.onMessage (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection.js:242:9)
-    at MessageStream.<anonymous> (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\connection.js:61:60)
-    at MessageStream.emit (node:events:527:28)
-    at MessageStream.emit (node:domain:475:12)
-    at processIncomingData (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\message_stream.js:125:16)
-    at MessageStream._write (D:\event listner\Eve-backend\node_modules\mongodb\lib\cmap\message_stream.js:33:9) {
-  index: 0,
-  code: 11000,
-  keyPattern: { email: 1 },
-  keyValue: { email: 'sachinjat2802@gmail.com' },
-  [Symbol(errorLabels)]: Set(0) {}
+[18 12 2022 12:05:26.369] [INFO] - {
+  results: [
+    {
+      _id: new ObjectId("639eab61835477f48252d3dd"),
+      name: 'chicony Rum',
+      contactPersonName: 'sachin jat',
+      contactPersonNumber: 9075371697,
+      logo: [Object],
+      coverImage: [Object],
+      bio: 'xyz',
+      members: [Array],
+      isDeleted: false,
+      isOrganizationActive: false,
+      socialMediaDetails: [Object],
+      kycVerified: false,
+      block: false,
+      ban: false,
+      createdAt: 2022-12-18T05:55:45.767Z,
+      updatedAt: 2022-12-18T05:55:45.767Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("639eab7a835477f48252d3e2"),
+      name: 'chicony ',
+      members: [],
+      isDeleted: false,
+      isOrganizationActive: true,
+      kycVerified: false,
+      kycDocuments: [Object],
+      createdAt: 2022-12-18T05:56:10.853Z,
+      updatedAt: 2022-12-18T05:56:10.853Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("639eac13835477f48252d3ea"),
+      name: 'chicony ',
+      members: [],
+      isDeleted: false,
+      isOrganizationActive: true,
+      kycVerified: false,
+      kycDocuments: [Object],
+      createdAt: 2022-12-18T05:58:43.612Z,
+      updatedAt: 2022-12-18T05:58:43.612Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("639eac1e835477f48252d3ed"),
+      name: 'chicony ',
+      members: [],
+      isDeleted: false,
+      isOrganizationActive: true,
+      kycVerified: false,
+      kycDocuments: [Object],
+      createdAt: 2022-12-18T05:58:54.833Z,
+      updatedAt: 2022-12-18T05:58:54.833Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("639eb49007a4ac15c3c3683f"),
+      name: 'chicony ',
+      members: [],
+      isDeleted: false,
+      isOrganizationActive: true,
+      kycVerified: true,
+      createdAt: 2022-12-18T06:34:56.049Z,
+      updatedAt: 2022-12-18T06:34:56.049Z,
+      __v: 0
+    }
+  ],
+  totalResult: 5
 }
