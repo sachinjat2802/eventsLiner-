@@ -3,13 +3,13 @@ import VenueReviewsController from "./VenueReview.controller.js";
 
 const router = Router();
 
-router.post("/createVenueReviews", VenueReviewsController.createVenueReviews);
+router.post("/createVenueReviews/:id", VenueReviewsController.createVenueReviews);
 
-router.put("/updateVenueReviews/:id",VenueReviewsController.updateVenueReviews);
+router.put("/changeVenueReviews/:id",VenueReviewsController.updateVenueReviews);
 
 router.delete("/deleteVenueReviews/:id",  VenueReviewsController.deleteVenueReviews);
 
-router.get("/getVenueReviews", VenueReviewsController.getVenueReviews);
+router.get("/getVenueReviewss", VenueReviewsController.getVenueReviews);
 
 
 export default router;

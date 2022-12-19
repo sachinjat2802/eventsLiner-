@@ -138,7 +138,7 @@ export class UserController {
      async changePasswordThroughLink(request, response, next) {
         try {
           const { token, newPassword } = request.body;
-          logger.info(token, newPassword);
+         
           userServices.resetPasswordThroughLink(token, newPassword, (err, result) => {
             if (err) {
               next(new HttpException(400, err));
@@ -152,6 +152,67 @@ export class UserController {
       }
 
       
+async addToFavourites(request, response, next){
+    try{
+        const userId=request.currentUser.id
+       const venueId= request.params.id
+       userServices.addToFavourites(userId, venueId, (err, result)=>{
+        logger.log(result)
+        if (err) {
+            next(new HttpException(400, err));
+          } else {
+            response.status(200).send(new HttpResponse("Added To Favourites", result, "you added venue as your favourite one", null, null, null));
+          } 
+       })
+
+}catch (err) {
+    next(new HttpException(400, "Something went wrong"));
+}
+
+}
+
+async removeFromFavourites(request, response, next){
+    try{
+        logger.info(request.params, request.body)
+        const userId = request.currentUser.id
+        logger.log(request.currentUser)
+       const venueId= request.params.venueId
+       
+       userServices.removeFromFavourites(userId, venueId, (err, result)=>{
+        logger.log(result)
+        if (err) {
+            next(new HttpException(400, err));
+          } else {
+            response.status(200).send(new HttpResponse("removed From Favourites", result, "you removed this venue from your Favorites", null, null, null));
+          } 
+       })
+
+}catch (err) {
+    next(new HttpException(400, "Something went wrong"));
+}
+
+}
+
+async getAllFavourites(request, response, next){
+    try{
+        
+        const userId = request.currentUser.id
+       
+       userServices.getAllFavourites(userId, (err, result)=>{
+        logger.log(result)
+        if (err) {
+            next(new HttpException(400, err));
+          } else {
+            response.status(200).send(new HttpResponse("get all favourites", result, "showing all favourites", null, null, null));
+          } 
+       })
+
+}catch (err) {
+    next(new HttpException(400, "Something went wrong"));
+}
+
+}
+
 }
 
 export default new UserController();

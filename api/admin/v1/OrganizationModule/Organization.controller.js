@@ -3,23 +3,7 @@ import { HttpException, HttpResponse } from "../../../../utils/index.js";
 import OrganizationService from "../../../../services/organization.service.js";
 
 class OrganizationController {
-    createOrganization(request, response, next) {
-        try {
-            const organization = request.body;
-             organization.members = [request?.currentUser?.id] ;
-            OrganizationService.createOrganization(organization, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("CreateOrganization", result, "Organization Created", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("CreateOrganizationController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
+    
     updateOrganization(request, response, next) {
         try {
             const Organization = request.body;
@@ -39,39 +23,9 @@ class OrganizationController {
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            OrganizationService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
+    
 
-    addToOrganization(request, response, next) {
-        try {
-            const { organizationId, role } = request.body;
-            const userId = request.currentUser?.id;
-            OrganizationService.addToOrganization(organizationId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToOrganization", result, "Added In Organization", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToOrganizationController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
+   
     
 
     deleteOrganization(request, response, next) {
@@ -116,7 +70,6 @@ class OrganizationController {
                 clauses = { ...clauses, ...searchTerm };
                 delete clauses.searchTerm, delete clauses.searchValue;
             }
-            clauses.members = request.currentUser?.id;
             
             OrganizationService.getOrganization(clauses, projections, options, sort, (err, result) => {
                 if (err) {

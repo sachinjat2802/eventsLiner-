@@ -14,16 +14,18 @@ class VenueReviewsService {
     try {
       const similarVenueReviews = await new CrudOperations(
         VenueReviews
-      ).getDocument({ name: VenueReviewsDoc.name, isDeleted: false }, {});
+      ).getDocument({ id: VenueReviewsDoc.id, isDeleted: false }, {});
       if (similarVenueReviews) {
         return next("VenueReviews already exists");
       }
       VenueReviewsDoc.isDeleted = false;
-      const VenueReviews = new VenueReviews(VenueReviewsDoc);
+      const venueReviews = new VenueReviews(VenueReviewsDoc);
+      
       await new CrudOperations(VenueReviews)
-        .save(VenueReviews)
-        .then((result) => {
-          next(null, result);
+        .save(venueReviews)
+        .then(async (result) => {
+        next(null, result);
+
         })
         .catch((error) => {
           next(error);
@@ -34,16 +36,16 @@ class VenueReviewsService {
     }
   }
 
-  async updateVenueReviews(id,userId ,VenueReviewsDoc, next) {
+  async updateVenueReviews(id ,VenueReviewsDoc, next) {
     try {
       const oldVenueReviewsDoc = await new CrudOperations(
         VenueReviews
-      ).getDocument({ _id: id, isDeleted: false,members:userId }, {});
+      ).getDocument({ _id: id, isDeleted: false}, {});
 
-      const updatedGameDoc = _.extend(oldVenueReviewsDoc, VenueReviewsDoc);
+      const updatedVenueReviewsDoc = _.extend(oldVenueReviewsDoc, VenueReviewsDoc);
 
       await new CrudOperations(VenueReviews)
-        .save(updatedGameDoc)
+        .save(updatedVenueReviewsDoc)
         .then((result) => {
           next(null, result);
         })
@@ -62,10 +64,10 @@ class VenueReviewsService {
   //    */
   async deleteVenueReviews(id, userId,next) {
     try {
-        const VenueReviews = await new CrudOperations( VenueReviews).getDocument({ _id: id, isDeleted: false,members:userId }, { });
-          if(VenueReviews){
-            VenueReviews.isDeleted =true;
-            const deletedVenueReviews = await new CrudOperations( VenueReviews).updateDocument({ _id: id }, VenueReviews );
+        const venueReviews = await new CrudOperations( VenueReviews).getDocument({ _id: id, isDeleted: false,userId:userId }, { });
+          if(venueReviews){
+            venueReviews.isDeleted =true;
+            const deletedVenueReviews = await new CrudOperations( VenueReviews).updateDocument({ _id: id }, venueReviews );
             next(null, deletedVenueReviews);
          } else {
         next("No VenueReviews Found To Delete!");
@@ -81,6 +83,8 @@ class VenueReviewsService {
   //    */
   async getVenueReviews(clauses, projections, options, sort, next) {
     try {
+      logger.info(clauses);
+
       clauses.isDeleted = false;
       const totalResult = await new CrudOperations(
         VenueReviews
@@ -91,13 +95,13 @@ class VenueReviewsService {
         options,
         sort
       );
+      logger.info(results);
 
       const response = { results: results, totalResult: totalResult };
-      logger.info(response);
       next(null, response);
     } catch (err) {
       logger.info(err);
-
+      
       logger.error("GetVenueReviews-> ", err);
       logger.info(err);
       next("Something went wrong");

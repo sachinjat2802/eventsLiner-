@@ -1,62 +1,64 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueMenusService from "../../../../services/venueMenus.service.js";
-import mongoose from "mongoose";
-class VenueMenusController {
-    createVenueMenus(request, response, next) {
-        try {
-            const venueMenus = request.body;
-            VenueMenusService.createVenueMenus(venueMenus, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("CreateVenueMenus", result, "VenueMenus Created", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("CreateVenueMenusController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
+import VenueService from "../../../../services/venue.service.js";
 
-    updateVenueMenus(request, response, next) {
-        try {
-            const VenueMenus = request.body;
-            const id = mongoose.Types.ObjectId(request.params.id) ;
-            VenueMenusService.updateVenueMenus(id,VenueMenus, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("UpdateVenueMenus", result, "VenueMenus Updated", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("UpdateVenueMenusController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-    
-
+class VenueController {
    
+
+    postMultipeVenue(request, response, next) {
+        try {
+            const Venues = request.body;
+            VenueService.postMultipeVenue(Venues, (err, result) => {
+                if (err) {
+                    next(new HttpException(400, err));
+                } else {
+                    response.status(200).send(new HttpResponse("CreateVenue", result, "Venue Created", null, null, null));
+                }
+            });
+        } catch (err) {
+            logger.error("CreateVenueController->", err);
+            next(new HttpException(400, "Something went wrong"));
+        }
+    }
+
+    updateVenue(request, response, next) {
+        try {
+            const Venue = request.body;
+            const userId =request.currentUser.id;
+            const id = request.params.id;
+            VenueService.updateVenue(id, userId,Venue, (err, result) => {
+                if (err) {
+                    next(new HttpException(400, err));
+                } else {
+                    response.status(200).send(new HttpResponse("UpdateVenue", result, "Venue Updated", null, null, null));
+                }
+            });
+        } catch (err) {
+            logger.error("UpdateVenueController->", err);
+            next(new HttpException(400, "Something went wrong"));
+        }
+    }
     
 
-    deleteVenueMenus(request, response, next) {
+    
+
+    deleteVenue(request, response, next) {
         try {
             const id = request.params.id;
-            VenueMenusService.deleteVenueMenus(id ,(err, result) => {
+            VenueService.deleteVenue(id,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("DeleteVenueMenus", result, "VenueMenus Delted", null, null, null));
+                    response.status(200).send(new HttpResponse("DeleteVenue", result, "Venue Delted", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("DeleteVenueMenusController->", err);
+            logger.error("DeleteVenueController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getVenueMenus(request, response, next) {
+    async getVenues(request, response, next) {
         try {
             
             const query = request.query;
@@ -81,22 +83,21 @@ class VenueMenusController {
                 clauses = { ...clauses, ...searchTerm };
                 delete clauses.searchTerm, delete clauses.searchValue;
             }
-            clauses.members = request.currentUser?.id;
             
-            VenueMenusService.getVenueMenus(clauses, projections, options, sort, (err, result) => {
+            VenueService.getVenue(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("GetVenueMenus", result.results, "VenueMenuss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("GetVenue", result.results, "Venues Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetVenueMenussController->", err);
+            logger.error("GetVenuesController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getMyVenueMenus(request, response, next) {
+    async getMyVenues(request, response, next) {
         try {
             const id = request.currentUser?.id;
             logger.info(id);
@@ -127,18 +128,18 @@ class VenueMenusController {
                     $or: [{ "members.admin": id }, { "members.owner": id }],
                 }
             };
-            VenueMenusService.getVenueMenus(clauses, projections, options, sort, (err, result) => {
+            VenueService.getVenue(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("My VenueMenuss", result, "VenueMenuss Returned", null, null, null));
+                    response.status(200).send(new HttpResponse("My Venues", result, "Venues Returned", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("GetMyVenueMenussController->", err);
+            logger.error("GetMyVenuesController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 }
 
-export default new VenueMenusController();
+export default new VenueController();

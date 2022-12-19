@@ -19,9 +19,9 @@ class VenueMenusService {
         return next("VenueMenus already exists");
       }
       VenueMenusDoc.isDeleted = false;
-      const VenueMenus = new VenueMenus(VenueMenusDoc);
+      const venueMenus = new VenueMenus(VenueMenusDoc);
       await new CrudOperations(VenueMenus)
-        .save(VenueMenus)
+        .save(venueMenus)
         .then((result) => {
           next(null, result);
         })
@@ -34,16 +34,16 @@ class VenueMenusService {
     }
   }
 
-  async updateVenueMenus(id,userId ,VenueMenusDoc, next) {
+  async updateVenueMenus(id ,VenueMenusDoc, next) {
     try {
       const oldVenueMenusDoc = await new CrudOperations(
         VenueMenus
-      ).getDocument({ _id: id, isDeleted: false,members:userId }, {});
-
-      const updatedGameDoc = _.extend(oldVenueMenusDoc, VenueMenusDoc);
+      ).getDocument({ _id: id, isDeleted: false}, {});
+console.log(oldVenueMenusDoc)
+      const updatedVenueMenusDoc = _.extend(oldVenueMenusDoc, VenueMenusDoc);
 
       await new CrudOperations(VenueMenus)
-        .save(updatedGameDoc)
+        .save(updatedVenueMenusDoc)
         .then((result) => {
           next(null, result);
         })
@@ -113,7 +113,7 @@ class VenueMenusService {
   //       next("Something went wrong");
   //     }
   //   }
-
+  
   //   /**
   //    * @method: Update VenueMenus.
   //    */
@@ -264,12 +264,12 @@ class VenueMenusService {
   //   /**
   //    * @method:  Delete VenueMenus.
   //    */
-  async deleteVenueMenus(id, userId,next) {
+  async deleteVenueMenus(id,next) {
     try {
-        const VenueMenus = await new CrudOperations( VenueMenus).getDocument({ _id: id, isDeleted: false,members:userId }, { });
-          if(VenueMenus){
-            VenueMenus.isDeleted =true;
-            const deletedVenueMenus = await new CrudOperations( VenueMenus).updateDocument({ _id: id }, VenueMenus );
+        const venueMenus = await new CrudOperations( VenueMenus).getDocument({ _id: id, isDeleted: false }, { });
+          if(venueMenus){
+            venueMenus.isDeleted =true;
+            const deletedVenueMenus = await new CrudOperations( VenueMenus).updateDocument({ _id: id }, venueMenus );
             next(null, deletedVenueMenus);
          } else {
         next("No VenueMenus Found To Delete!");

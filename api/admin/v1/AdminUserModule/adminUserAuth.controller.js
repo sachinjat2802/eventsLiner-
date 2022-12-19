@@ -34,7 +34,7 @@ export class AdminUserController {
             if (err) {
                 next(new HttpException(400, err));
             } else {
-                response.status(200).send(new HttpResponse(null, result.result, null, null, result.totalResult, query.pageNo));
+                response.status(200).send(new HttpResponse("get all admin", result.result, null, null, result.totalResult, query.pageNo));
             }
         });
     } catch (error) {

@@ -51,6 +51,7 @@ export default class App {
      this.app.use(cookieParser());
      this.app.enable("trust proxy");
      this.app.use(bodyParser.json());
+     
      this.app.use(cors({
       origin: process.env
         .CORS_OPTIONS
@@ -59,6 +60,7 @@ export default class App {
      morgan.token("time", () => Date().toString());
      this.app.use(morgan("[:time] :remote-addr :method :url :status :res[content-length] :response-time ms"));
      this.app.use(helmet());
+    
   }
 
 

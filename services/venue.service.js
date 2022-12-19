@@ -12,16 +12,17 @@ class VenueService {
 
   async createVenue(VenueDoc, next) {
     try {
-      const similarVenue = await new CrudOperations(
-        Venue
-      ).getDocument({ name: VenueDoc.name, isDeleted: false }, {});
+      const similarVenue = await new CrudOperations(Venue).getDocument(
+        { name: VenueDoc.name, isDeleted: false },
+        {}
+      );
       if (similarVenue) {
         return next("Venue already exists");
       }
       VenueDoc.isDeleted = false;
-      const Venue = new Venue(VenueDoc);
+      const venue = new Venue(VenueDoc);
       await new CrudOperations(Venue)
-        .save(Venue)
+        .save(venue)
         .then((result) => {
           next(null, result);
         })
@@ -33,12 +34,34 @@ class VenueService {
       next("Something went wrong");
     }
   }
-
-  async updateVenue(id,userId ,VenueDoc, next) {
+  async postMultipeVenue(VenueDoc, next) {
     try {
-      const oldVenueDoc = await new CrudOperations(
-        Venue
-      ).getDocument({ _id: id, isDeleted: false,members:userId }, {});
+      for (const i in VenueDoc) {
+        VenueDoc[i].name = VenueDoc[i].NAME;
+        VenueDoc[i].cusineCategory = VenueDoc[i].CUSINE_CATEGORY;
+        VenueDoc[i].city = VenueDoc[i].CITY;
+        VenueDoc[i].region = VenueDoc[i].REGION;
+        VenueDoc[i].cusineType = VenueDoc[i].CUSINE_TYPE;
+         VenueDoc[i].type="Non Claimed";
+         VenueDoc[i].isDeleted = false
+         VenueDoc[i].isVenueActive = false
+
+
+        const venue = new Venue(VenueDoc[i]);
+        await new CrudOperations(Venue).save(venue);
+      }
+      next(null, "Venues added  successfully")
+    } catch (err) {
+      logger.error("CreateVenues->", err);
+      next("Something went wrong");
+    }
+  }
+  async updateVenue(id, userId, VenueDoc, next) {
+    try {
+      const oldVenueDoc = await new CrudOperations(Venue).getDocument(
+        { _id: id, isDeleted: false, members: userId },
+        {}
+      );
 
       const updatedGameDoc = _.extend(oldVenueDoc, VenueDoc);
 
@@ -56,18 +79,23 @@ class VenueService {
     }
   }
 
-  
   //   /**
   //    * @method:  Delete Venue.
   //    */
-  async deleteVenue(id, userId,next) {
+  async deleteVenue(id, next) {
     try {
-        const Venue = await new CrudOperations( Venue).getDocument({ _id: id, isDeleted: false,members:userId }, { });
-          if(Venue){
-            Venue.isDeleted =true;
-            const deletedVenue = await new CrudOperations( Venue).updateDocument({ _id: id }, Venue );
-            next(null, deletedVenue);
-         } else {
+      const venue = await new CrudOperations(Venue).getDocument(
+        { _id: id, isDeleted: false },
+        {}
+      );
+      if (venue) {
+        venue.isDeleted = true;
+        const deletedVenue = await new CrudOperations(Venue).updateDocument(
+          { _id: id },
+          venue
+        );
+        next(null, deletedVenue);
+      } else {
         next("No Venue Found To Delete!");
       }
     } catch (err) {
@@ -82,9 +110,9 @@ class VenueService {
   async getVenue(clauses, projections, options, sort, next) {
     try {
       clauses.isDeleted = false;
-      const totalResult = await new CrudOperations(
-        Venue
-      ).countAllDocuments(clauses);
+      const totalResult = await new CrudOperations(Venue).countAllDocuments(
+        clauses
+      );
       const results = await new CrudOperations(Venue).getAllDocuments(
         clauses,
         projections,

@@ -1,9 +1,10 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
 import VenuePhotosService from "../../../../services/venuePhoto.service.js";
-
+import mongoose from "mongoose";
 class VenuePhotosController {
     createVenuePhotos(request, response, next) {
+        console.log(request.body)
         try {
             const VenuePhotos = request.body;
              VenuePhotos.members = [request?.currentUser?.id] ;
@@ -23,9 +24,8 @@ class VenuePhotosController {
     updateVenuePhotos(request, response, next) {
         try {
             const VenuePhotos = request.body;
-            const userId =request.currentUser.id;
             const id = request.params.id;
-            VenuePhotosService.updateVenuePhotos(id, userId,VenuePhotos, (err, result) => {
+            VenuePhotosService.updateVenuePhotos(id,VenuePhotos, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -39,46 +39,15 @@ class VenuePhotosController {
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            VenuePhotosService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
-    addToVenuePhotos(request, response, next) {
-        try {
-            const { VenuePhotosId, role } = request.body;
-            const userId = request.currentUser?.id;
-            VenuePhotosService.addToVenuePhotos(VenuePhotosId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToVenuePhotos", result, "Added In VenuePhotos", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToVenuePhotosController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
+  
+    
 
     
 
     deleteVenuePhotos(request, response, next) {
         try {
             const id = request.params.id;
-            const userId = request.currentUser?.id
-            VenuePhotosService.deleteVenuePhotos(id,userId ,(err, result) => {
+            VenuePhotosService.deleteVenuePhotos(id ,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -95,6 +64,7 @@ class VenuePhotosController {
         try {
             
             const query = request.query;
+            query.venue = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -116,7 +86,6 @@ class VenuePhotosController {
                 clauses = { ...clauses, ...searchTerm };
                 delete clauses.searchTerm, delete clauses.searchValue;
             }
-            clauses.members = request.currentUser?.id;
             
             VenuePhotosService.getVenuePhotos(clauses, projections, options, sort, (err, result) => {
                 if (err) {

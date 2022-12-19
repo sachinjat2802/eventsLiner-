@@ -166,6 +166,10 @@ async socialSignIn(user, typeOfLogin, state, next) {
       next(null, userData);
     }
   }
+
+
+
+
 }
 
 export default new UserController();
