@@ -96,7 +96,7 @@ class VenueMenusController {
         }
     }
 
-    async getMyVenueMenuss(request, response, next) {
+    async getMyVenueMenus(request, response, next) {
         try {
             const id = request.currentUser?.id;
             logger.info(id);

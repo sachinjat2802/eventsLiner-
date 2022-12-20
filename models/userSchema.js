@@ -19,8 +19,10 @@ const UserSchema = new mongoose.Schema({
     role: { type: String, required: false, default: "USER" },
     profilePicture: { type: Object, required: false },
     uuid:{ type:String},
+    venueId:{type:mongoose.Types.ObjectId, ref:'venue'},
     location:{type:Object},
     deviceInfo:{type:Object},
+    addToFavourites:{type:[Object]},
     // sellerHistory:{type:[Object]},
     last_logged_in_time:{type:Date, default:Date.now},
     bookMarks:{type: [String], required: false }

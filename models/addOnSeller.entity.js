@@ -2,7 +2,7 @@ import mongoose, { Mongoose } from "mongoose";
 
 
 
-const VenueSchema = new mongoose.Schema({
+const AddOnSellerSchema = new mongoose.Schema({
     organization:{type:mongoose.Schema.Types.ObjectId,required:false,ref:"Organization"},
     name: { type: String, required: true, index: true },
     contactPersonName: { type: String, required: false },
@@ -10,16 +10,16 @@ const VenueSchema = new mongoose.Schema({
     logo: { type: Object, required: false },
     coverImage: { type: Object, required: false },
     bio: { type: String, required: false },
-    isVenueActive:{ type: Boolean, required: true },
+    isAddOnSellerActive:{ type: Boolean, required: true },
     isDeleted: { type: Boolean, required: true },
     socialMediaDetails: { type: Object, required: false },
-    VenueRating: { type: Number, required: false },
+    AddOnSellerRating: { type: Number, required: false },
     kycVerified: { type: Boolean, required: false, default: false },
     block: { type: Boolean, required: false },
     ban: { type: Boolean, required: false },
     type:{ type: String, required: false },
-    cusineCategory:{type: [String], required: false},
-    cusineType:{type: String, required: false},
+    productCategory:{type: [String], required: false},
+    productType:{type: String, required: false},
     address: { type: String, required: false },
     region:{ type: String, required: false },
     city: { type: String, required: false },
@@ -29,19 +29,20 @@ const VenueSchema = new mongoose.Schema({
     rating:{type:Number,required:false,default:0},
     totalReviews:{type:Number,required:false,default:0},
     kycDocuments: { type: Object, required: false },
+    panRadius:{type:Object, required:false},
     members:{type:[mongoose.Types.ObjectId],required:false}
 
     });
 
-VenueSchema.set("timestamps", true);
+AddOnSellerSchema.set("timestamps", true);
 
-VenueSchema.statics.build = (attrs) => {
-    return new Venue(attrs);
+AddOnSellerSchema.statics.build = (attrs) => {
+    return new AddOnSeller(attrs);
 };
 
-const Venue = mongoose.model(
-    "Venue",
-    VenueSchema
+const AddOnSeller = mongoose.model(
+    "AddOnSeller",
+    AddOnSellerSchema
 );
 
-export { Venue };
+export { AddOnSeller };
