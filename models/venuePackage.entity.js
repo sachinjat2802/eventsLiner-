@@ -14,7 +14,8 @@ const VenuePackageSchema = new mongoose.Schema({
     totalReviews:{type:Number,required:false,default:0},
     addOnService: {type:[mongoose.Types.ObjectId], required:false},
     guestCapacity:{type:Number,required:false},
-    offers:{type:[String], required:false}
+    offers:{type:[String], required:false},
+    isConfirmByAdmin:{type:Boolean,default:false}
     });
 
 VenuePackageSchema.set("timestamps", true);
