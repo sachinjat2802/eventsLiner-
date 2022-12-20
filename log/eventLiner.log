@@ -1,8 +1,5 @@
-[19 12 2022 15:56:27.154] [INFO] - [
-  new ObjectId("63a0173d91d8af2bdfe6cf02"),
-  new ObjectId("63a03c2b3f213a5d913e3f42")
-]
-[19 12 2022 15:56:34.316] [INFO] - [
-  new ObjectId("63a0173d91d8af2bdfe6cf02"),
-  new ObjectId("63a03c2b3f213a5d913e3f42")
-]
+[19 12 2022 16:02:02.008] [DEBUG] - Server Started At Port 8000
+[19 12 2022 16:02:03.991] [INFO] - 
+*************MONGODB connected**************
+
+[19 12 2022 16:02:42.765] [INFO] - undefined

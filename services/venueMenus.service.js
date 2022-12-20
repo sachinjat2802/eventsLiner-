@@ -113,7 +113,7 @@ console.log(oldVenueMenusDoc)
   //       next("Something went wrong");
   //     }
   //   }
-  
+
   //   /**
   //    * @method: Update VenueMenus.
   //    */

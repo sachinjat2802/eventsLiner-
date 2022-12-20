@@ -4,7 +4,7 @@ import { Password } from "../utils/index.js";
 const UserSchema = new mongoose.Schema({
     email: { type: String, required: false, index: true, unique: true },
     typeOfLogin:{type: [String], required:true },
-    phone:{type:Number, required:true},
+    phone:{type:Number, required:false},
     userName:{type:String, required:false},
     is18AndAbove:{type:Boolean, default: false},
     isVerified:{type:Boolean, default:false},
