@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
 
 
@@ -28,7 +28,9 @@ const VenueSchema = new mongoose.Schema({
     location:{type: Object, required: false},
     rating:{type:Number,required:false,default:0},
     totalReviews:{type:Number,required:false,default:0},
-    kycDocuments: { type: Object, required: false }
+    kycDocuments: { type: Object, required: false },
+    addOnService: {type:[mongoose.Types.ObjectId], required:false},
+    Packages: {type:[mongoose.Types.ObjectId], required:false}
 
     });
 
