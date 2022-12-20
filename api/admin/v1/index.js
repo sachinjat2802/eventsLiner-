@@ -9,7 +9,7 @@ import organizationServiceRoutes from "./OrganizationModule/Organization.router.
 import venuePackage from "./VenuePackageModule /VenuePackage.router.js"
 
 import venueRoutes from "./venueModule/venue.router.js";
-
+import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js"
 
 
 const router = Router();
@@ -24,7 +24,6 @@ router.use("/customer",customerRoutes);
 router.use("/userSearch",userSearchRoutes)
 router.use("/organizations",organizationServiceRoutes)
 router.use("/venue",venueRoutes)
-router.use("/venuePackage", venuePackage)
 
 
 
