@@ -1,28 +1,28 @@
 import logger from "../logger/logger.js";
-import { VenueBooking } from "../models/venueBooking.entity.js";
+import { VenuePackage } from "../models/venuePackage.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";
 //import { Types } from "mongoose";
 
-class VenueBookingService {
+class VenuePackageService {
   /**
-   * @method:  Create VenueBooking.
+   * @method:  Create VenuePackage.
    */
 
-  async createVenueBooking(VenueBookingDoc, next) {
+  async createVenuePackage(VenuePackageDoc, next) {
     try {
-     const similarVenueBooking = await new CrudOperations(
-        VenueBooking
-      ).getDocument({"slotStartTime":VenueBookingDoc.slotStartTime }, {});
-      if (similarVenueBooking) {
-        return next("VenueBooking already exists");
+     const similarVenuePackage = await new CrudOperations(
+        VenuePackage
+      ).getDocument({"name":VenuePackageDoc.name }, {});
+      if (similarVenuePackage) {
+        return next("VenuePackage already exists");
       }
-      VenueBookingDoc.isDeleted = false;
-      const VenueBooking = new VenueBooking(VenueBookingDoc);
+      VenuePackageDoc.isDeleted = false;
+      const venuePackage = new VenuePackage(VenuePackageDoc);
       
-      await new CrudOperations(VenueBooking)
-        .save(VenueBooking)
+      await new CrudOperations(VenuePackage)
+        .save(venuePackage)
         .then(async (result) => {
         next(null, result);
 
@@ -31,21 +31,22 @@ class VenueBookingService {
           next(error);
         });
     } catch (err) {
-      logger.error("CreateVenueBookings->", err);
+      logger.error("CreateVenuePackages->", err);
       next("Something went wrong");
     }
   }
 
-  async updateVenueBooking(id ,VenueBookingDoc, next) {
+  async updateVenuePackage(id ,VenuePackageDoc, next) {
     try {
-      const oldVenueBookingDoc = await new CrudOperations(
-        VenueBooking
+      const oldVenuePackageDoc = await new CrudOperations(
+        VenuePackage
       ).getDocument({ _id: id, isDeleted: false}, {});
+      logger.info(oldVenuePackageDoc)
 
-      const updatedVenueBookingDoc = _.extend(oldVenueBookingDoc, VenueBookingDoc);
+      const updatedVenuePackageDoc = _.extend(oldVenuePackageDoc, VenuePackageDoc);
 
-      await new CrudOperations(VenueBooking)
-        .save(updatedVenueBookingDoc)
+      await new CrudOperations(VenuePackage)
+        .save(updatedVenuePackageDoc)
         .then((result) => {
           next(null, result);
         })
@@ -53,43 +54,43 @@ class VenueBookingService {
           next(error);
         });
     } catch (err) {
-      logger.error("Update VenueBookings->", err);
+      logger.error("Update VenuePackages->", err);
       next("Something went wrong");
     }
   }
 
  
   //   /**
-  //    * @method:  Delete VenueBooking.
+  //    * @method:  Delete VenuePackage.
   //    */
-  async deleteVenueBooking(id,next) {
+  async deleteVenuePackage(id,next) {
     try {
-        const VenueBooking = await new CrudOperations(VenueBooking).getDocument({ _id: id, isDeleted: false }, { });
-          if(VenueBooking){
-            VenueBooking.isDeleted =true;
-            const deletedVenueBooking = await new CrudOperations(VenueBooking).updateDocument({ _id: id }, VenueBooking );
-            next(null, deletedVenueBooking);
+        const venuePackage = await new CrudOperations(VenuePackage).getDocument({ _id: id, isDeleted: false }, { });
+          if(venuePackage){
+            venuePackage.isDeleted =true;
+            const deletedVenuePackage = await new CrudOperations(VenuePackage).updateDocument({ _id: id }, venuePackage );
+            next(null, deletedVenuePackage);
          } else {
-        next("No VenueBooking Found To Delete!");
+        next("No VenuePackage Found To Delete!");
       }
     } catch (err) {
-      logger.error("DeleteVenueBooking->", err);
+      logger.error("DeleteVenuePackage->", err);
       next("Something went wrong");
     }
   }
 
   //   /**
-  //    * @method:  Get VenueBooking.
+  //    * @method:  Get VenuePackage.
   //    */
-  async getVenueBooking(clauses, projections, options, sort, next) {
+  async getVenuePackage(clauses, projections, options, sort, next) {
     try {
       logger.info(clauses);
 
       clauses.isDeleted = false;
       const totalResult = await new CrudOperations(
-        VenueBooking
+        VenuePackage
       ).countAllDocuments(clauses);
-      const results = await new CrudOperations(VenueBooking).getAllDocuments(
+      const results = await new CrudOperations(VenuePackage).getAllDocuments(
         clauses,
         projections,
         options,
@@ -102,11 +103,11 @@ class VenueBookingService {
     } catch (err) {
       logger.info(err);
       
-      logger.error("GetVenueBooking-> ", err);
+      logger.error("GetVenuePackage-> ", err);
       logger.info(err);
       next("Something went wrong");
     }
   }
 }
 
-export default new VenueBookingService();
+export default new VenuePackageService();
