@@ -1,8 +1,2 @@
-[19 12 2022 17:40:29.117] [DEBUG] - Server Started At Port 8000
-[19 12 2022 17:40:29.614] [INFO] - 
-*************MONGODB connected**************
-
-[19 12 2022 17:40:47.070] [DEBUG] - Server Started At Port 8000
-[19 12 2022 17:40:47.529] [INFO] - 
-*************MONGODB connected**************
-
+[20 12 2022 13:03:35.953] [INFO] - { _id: new ObjectId("63a1604597b62d7eacd9d0de") }
+[20 12 2022 13:03:36.077] [INFO] - []

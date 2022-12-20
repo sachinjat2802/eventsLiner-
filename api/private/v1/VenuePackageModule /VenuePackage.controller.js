@@ -1,98 +1,68 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueReviewsService from "../../../../services/venueReview.service.js";
+import VenuePackageService from "../../../../services/VenuePackage.service.js";
 import mongoose from "mongoose";
 
-class VenueReviewsController {
-    createVenueReviews(request, response, next) {
+class VenuePackageController {
+    createVenuePackage(request, response, next) {
         try {
-            const VenueReviews = request.body;
-            VenueReviews.venue =mongoose.Types.ObjectId(request.params.id);
-            VenueReviews.userId=mongoose.Types.ObjectId(request.currentUser.id);
-            VenueReviewsService.createVenueReviews(VenueReviews, (err, result) => {
+            const VenuePackage = request.body;
+           
+            VenuePackage.venue =mongoose.Types.ObjectId(request.params.id);
+            VenuePackageService.createVenuePackage(VenuePackage, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("CreateVenueReviews", result, "VenueReviews Created", null, null, null));
+                    response.status(200).send(new HttpResponse("CreateVenuePackage", result, "VenuePackage Created", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("CreateVenueReviewsController->", err);
+            logger.error("CreateVenuePackageController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    updateVenueReviews(request, response, next) {
+    updateVenuePackage(request, response, next) {
         try {
-            const VenueReviews = request.body;
+            const VenuePackage = request.body;
             
             const id = request.params.id;
-            VenueReviewsService.updateVenueReviews(id,VenueReviews, (err, result) => {
+            VenuePackageService.updateVenuePackage(id,VenuePackage, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("UpdateVenueReviews", result, "VenueReviews Updated", null, null, null));
+                    response.status(200).send(new HttpResponse("UpdateVenuePackage", result, "VenuePackage Updated", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("UpdateVenueReviewsController->", err);
+            logger.error("UpdateVenuePackageController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            VenueReviewsService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
-    addToVenueReviews(request, response, next) {
-        try {
-            const { VenueReviewsId, role } = request.body;
-            const userId = request.currentUser?.id;
-            VenueReviewsService.addToVenueReviews(VenueReviewsId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToVenueReviews", result, "Added In VenueReviews", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToVenueReviewsController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
+    
+    
 
     
 
-    deleteVenueReviews(request, response, next) {
+    deleteVenuePackage(request, response, next) {
         try {
             const id = request.params.id;
-            VenueReviewsService.deleteVenueReviews(id,(err, result) => {
+            VenuePackageService.deleteVenuePackage(id,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("DeleteVenueReviews", result, "VenueReviews Delted", null, null, null));
+                    response.status(200).send(new HttpResponse("DeleteVenuePackage", result, "VenuePackage Delted", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("DeleteVenueReviewsController->", err);
+            logger.error("DeleteVenuePackageController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getVenueReviews(request, response, next) {
+    async getVenuePackages(request, response, next) {
         try {
             
             const query = request.query;
@@ -119,20 +89,20 @@ class VenueReviewsController {
             }
             clauses.members = request.currentUser?.id;
             
-            VenueReviewsService.getVenueReviews(clauses, projections, options, sort, (err, result) => {
+            VenuePackageService.getVenuePackage(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("GetVenueReviews", result.results, "VenueReviewss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("GetVenuePackage", result.results, "VenuePackages Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetVenueReviewssController->", err);
+            logger.error("GetVenuePackagesController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getMyVenueReviews(request, response, next) {
+    async getMyVenuePackage(request, response, next) {
         try {
            
             const query = request.query;
@@ -160,23 +130,30 @@ class VenueReviewsController {
             }
            console.log(clauses);
             
-            VenueReviewsService.getVenueReviews(clauses, projections, options, sort, (err, result) => {
+            VenuePackageService.getVenuePackage(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("My VenueReviewss", result.results, "VenueReviewss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("My VenuePackages", result.results, "VenuePackages Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetMyVenueReviewssController->", err);
+            logger.error("GetMyVenuePackagesController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
-    async getVenueReviewsByUid(request, response, next) {
+
+    async getVenuePackage(request, response, next) {
         try {
            
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.id)
+            if(request.params.userId){
+                query.userId = mongoose.Types.ObjectId(request.params.userId)
+            }
+            else{
+                query._id = mongoose.Types.ObjectId(request.params.id)
+
+            }
             const sort = {};
             const projections = {};
             let options = {
@@ -200,18 +177,19 @@ class VenueReviewsController {
             }
            console.log(clauses);
             
-            VenueReviewsService.getVenueReviews(clauses, projections, options, sort, (err, result) => {
+            VenuePackageService.getVenuePackage(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("My VenueReviewss", result.results, "VenueReviewss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("My VenuePackages", result.results, "VenuePackages Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetMyVenueReviewssController->", err);
+            logger.error("GetMyVenuePackagesController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
+   
 }
 
-export default new VenueReviewsController();
+export default new VenuePackageController();

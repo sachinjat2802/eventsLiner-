@@ -10,9 +10,14 @@ const VenueBookingSchema = new mongoose.Schema({
     timeSlots:{type:[mongoose.Schema.Types.ObjectId],required:false},
     noOfGuest:{type:Number,required:false},
     status:{type:String,required:false},
-    bookingType:{type:String,required:true},
+    bookingType:{type:String,required:false},
     paymentType:{type:String,required:false},
-    paymentStatus:{type:String,required:false}
+    paymentStatus:{type:String,required:false},
+    isDeleted:{type:Boolean,default:false},
+    isCanceled:{type:Boolean,default:false},
+    canceledBy:{type:String,default:false},
+    canceledDescription:{type:String,default:false},
+    canceledAt:{type:Date,default:false}
     }
 );
 

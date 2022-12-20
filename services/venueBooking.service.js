@@ -14,15 +14,15 @@ class VenueBookingService {
     try {
      const similarVenueBooking = await new CrudOperations(
         VenueBooking
-      ).getDocument({"slotStartTime":VenueBookingDoc.slotStartTime }, {});
+      ).getDocument({"timeSlots":VenueBookingDoc.timeSlots,userId:VenueBookingDoc.userId,venueId:VenueBookingDoc.venue }, {});
       if (similarVenueBooking) {
         return next("VenueBooking already exists");
       }
       VenueBookingDoc.isDeleted = false;
-      const VenueBooking = new VenueBooking(VenueBookingDoc);
+      const venueBooking = new VenueBooking(VenueBookingDoc);
       
       await new CrudOperations(VenueBooking)
-        .save(VenueBooking)
+        .save(venueBooking)
         .then(async (result) => {
         next(null, result);
 
@@ -64,10 +64,10 @@ class VenueBookingService {
   //    */
   async deleteVenueBooking(id,next) {
     try {
-        const VenueBooking = await new CrudOperations(VenueBooking).getDocument({ _id: id, isDeleted: false }, { });
-          if(VenueBooking){
-            VenueBooking.isDeleted =true;
-            const deletedVenueBooking = await new CrudOperations(VenueBooking).updateDocument({ _id: id }, VenueBooking );
+        const venueBooking = await new CrudOperations(VenueBooking).getDocument({ _id: id, isDeleted: false }, { });
+          if(venueBooking){
+            venueBooking.isDeleted =true;
+            const deletedVenueBooking = await new CrudOperations(VenueBooking).updateDocument({ _id: id }, venueBooking );
             next(null, deletedVenueBooking);
          } else {
         next("No VenueBooking Found To Delete!");

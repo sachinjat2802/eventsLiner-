@@ -9,9 +9,7 @@ router.put("/changeVenueReviews/:id",VenueReviewsController.updateVenueReviews);
 
 router.delete("/deleteVenueReviews/:id",  VenueReviewsController.deleteVenueReviews);
 
-router.get("/getVenueReviews/:id", VenueReviewsController.getMyVenueReviews);
-
-router.get('/getVenueReviewsByUid/:id', VenueReviewsController.getVenueReviewsByUid);
+router.get("/getVenueReviewss", VenueReviewsController.getVenueReviews);
 
 
 export default router;

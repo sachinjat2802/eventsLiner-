@@ -7,8 +7,9 @@ const VenueReviewsSchema = new mongoose.Schema({
     venue:{type:mongoose.Schema.Types.ObjectId,required:true},
     rating:{type:Number,required:true},
     review:{type:String,required:false},
-    isDeleted:{type:Boolean,default:false}}
-    );
+    isDeleted:{type:Boolean,default:false},
+    type:{type:String, default:false}
+ } );
 
 VenueReviewsSchema.set("timestamps", true);
 
