@@ -7,6 +7,7 @@ class VenueBookingController {
     createVenueBooking(request, response, next) {
         try {
             const VenueBooking = request.body;
+            VenueBooking.userId= mongoose.Types.ObjectId(request?.currentUser?.id);
             VenueBooking.venue =mongoose.Types.ObjectId(request.params.id);
             VenueBookingService.createVenueBooking(VenueBooking, (err, result) => {
                 if (err) {
@@ -40,38 +41,8 @@ class VenueBookingController {
     }
     
 
-    getMicroWebsiteLink(request, response, next) {
-        try {
-            const { name } = request.body;
-            VenueBookingService.getMicroWebsiteLink(name, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("getMicroWebsiteLink", result, "Link Returned", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("getMicroWebsiteLinkController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
-
-    addToVenueBooking(request, response, next) {
-        try {
-            const { VenueBookingId, role } = request.body;
-            const userId = request.currentUser?.id;
-            VenueBookingService.addToVenueBooking(VenueBookingId, role, userId, (err, result) => {
-                if (err) {
-                    next(new HttpException(400, err));
-                } else {
-                    response.status(200).send(new HttpResponse("AddToVenueBooking", result, "Added In VenueBooking", null, null, null));
-                }
-            });
-        } catch (err) {
-            logger.error("addToVenueBookingController->", err);
-            next(new HttpException(400, "Something went wrong"));
-        }
-    }
+    
+    
 
     
 
@@ -171,11 +142,18 @@ class VenueBookingController {
             next(new HttpException(400, "Something went wrong"));
         }
     }
-    async getVenueBookingByUid(request, response, next) {
+
+    async getVenueBooking(request, response, next) {
         try {
            
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.id)
+            if(request.params.userId){
+                query.userId = mongoose.Types.ObjectId(request.params.userId)
+            }
+            else{
+                query._id = mongoose.Types.ObjectId(request.params.id)
+
+            }
             const sort = {};
             const projections = {};
             let options = {
@@ -211,6 +189,7 @@ class VenueBookingController {
             next(new HttpException(400, "Something went wrong"));
         }
     }
+   
 }
 
 export default new VenueBookingController();

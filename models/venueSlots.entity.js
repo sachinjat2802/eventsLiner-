@@ -16,7 +16,6 @@ const VenueSlotsSchema = new mongoose.Schema({
     slotStopTime:{type:Date,required:true},
     slotStatus:{type:Boolean,required:true,default:true},
     isDeleted:{type:Boolean,required:false,default:false}
-
 }
 );
 
