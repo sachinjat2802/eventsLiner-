@@ -1,0 +1,16 @@
+[20 12 2022 15:28:17.435] [INFO] - {
+  from: '2022-12-20T09:25:42.250Z',
+  to: '2022-12-20T09:25:48.662Z',
+  userId: new ObjectId("63999ae6365258da51daed36")
+}
+[20 12 2022 15:28:17.510] [INFO] - [
+  {
+    _id: new ObjectId("63a17f96771475a4c89202cd"),
+    userId: new ObjectId("63999ae6365258da51daed36"),
+    venue: new ObjectId("639eac5a835477f48252d3f1"),
+    isDeleted: false,
+    createdAt: 2022-12-20T09:25:42.250Z,
+    updatedAt: 2022-12-20T09:25:42.250Z,
+    __v: 0
+  }
+]

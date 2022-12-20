@@ -28,8 +28,10 @@ const VenueSchema = new mongoose.Schema({
     location:{type: Object, required: false},
     rating:{type:Number,required:false,default:0},
     totalReviews:{type:Number,required:false,default:0},
-    kycDocuments: { type: Object, required: false }
-
+    kycDocuments: { type: Object, required: false },
+    userVisits:{type:Number,default:0},
+    userBookTable:{type:Number,default:0},
+    userBookPackages:{type:Number,default:0}
     });
 
 VenueSchema.set("timestamps", true);

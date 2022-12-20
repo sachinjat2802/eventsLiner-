@@ -10,7 +10,7 @@ import venueReviewRoutes from "./VenueReviewModule/VenueReview.router.js";
 import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js";
 import venueSlotsRoutes from "./VenueSlotsModule/VenueSlots.router.js";
 import venueBookingRoutes from "./VenueBookingModule/VenueBooking.router.js";
-
+import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js";
 
 const router = Router();
 
@@ -23,6 +23,7 @@ router.use("/venueMenu",venueMenuRoutes)
 router.use("/venueReview",venueReviewRoutes)
 router.use("/venueSlots",venueSlotsRoutes)
 router.use("/venueBooking",venueBookingRoutes)
+router.use("/venueVisitHistory",venueVisitHistoryRoutes)
 
 export default router;
 
