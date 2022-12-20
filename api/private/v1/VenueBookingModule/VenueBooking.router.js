@@ -5,13 +5,18 @@ const router = Router();
 
 router.post("/createVenueBooking/:id", VenueBookingController.createVenueBooking);
 
-router.put("/changeVenueBooking/:id",VenueBookingController.updateVenueBooking);
+router.put("/updateVenueBooking/:id",VenueBookingController.updateVenueBooking);
 
 router.delete("/deleteVenueBooking/:id",  VenueBookingController.deleteVenueBooking);
 
-router.get("/getVenueBooking/:id", VenueBookingController.getMyVenueBooking);
+router.get("/getVenueBookingByVenueId/:id", VenueBookingController.getMyVenueBooking);
 
-router.get('/getVenueBookingByUid/:id', VenueBookingController.getVenueBookingByUid);
+router.get("/getVenueBooking/:id", VenueBookingController.getVenueBooking);
+
+router.get("/getVenueBookingwithUserId/:userId", VenueBookingController.getVenueBooking);
+
+
+// router.get('/getVenueBookingByUid/:id', VenueBookingController.getVenueBookingByUid);
 
 
 export default router;
