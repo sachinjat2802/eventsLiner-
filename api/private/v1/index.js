@@ -14,6 +14,7 @@ import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js";
 import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js";
 import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js"
 import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
+import addOnSellerReviewRoutes from "./addOnSellerReviewModule/addOnSellerReview.router.js"
 const router = Router();
 
 router.use("/user", userRoutes)
@@ -29,6 +30,7 @@ router.use("/venuePackage", venuePackageRoutes)
 router.use("/venueVisitHistory",venueVisitHistoryRoutes)
 router.use("/addOnSeller", addOnSellerRoutes)
 router.use("/addOnSellerProduct", addOnSellerProductRoutes)
+router.use("/addOnSellerReview", addOnSellerReviewRoutes)
 
 export default router;
 
