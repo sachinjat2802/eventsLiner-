@@ -29,7 +29,7 @@ const AddOnSellerSchema = new mongoose.Schema({
     rating:{type:Number,required:false,default:0},
     totalReviews:{type:Number,required:false,default:0},
     kycDocuments: { type: Object, required: false },
-    panRadius:{type:Object, required:false},
+    panRadius:{type:String, required:false},
     members:{type:[mongoose.Types.ObjectId],required:false}
 
     });

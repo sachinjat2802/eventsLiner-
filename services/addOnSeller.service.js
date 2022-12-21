@@ -61,7 +61,7 @@ class AddOnSellerService {
   async updateAddOnSeller(id, userId, AddOnSellerDoc, next) {
     try {
       const oldAddOnSellerDoc = await new CrudOperations(AddOnSeller).getDocument(
-        { _id: id, isDeleted: false, members: userId },
+        { _id: id, isDeleted: false },
         {}
       );
 
@@ -86,15 +86,15 @@ class AddOnSellerService {
   //    */
   async deleteAddOnSeller(id, next) {
     try {
-      const AddOnSeller = await new CrudOperations(AddOnSeller).getDocument(
+      const addOnSeller = await new CrudOperations(AddOnSeller).getDocument(
         { _id: id, isDeleted: false },
         {}
       );
-      if (AddOnSeller) {
-        AddOnSeller.isDeleted = true;
+      if (addOnSeller) {
+        addOnSeller.isDeleted = true;
         const deletedAddOnSeller = await new CrudOperations(AddOnSeller).updateDocument(
           { _id: id },
-          AddOnSeller
+          addOnSeller
         );
         next(null, deletedAddOnSeller);
       } else {
