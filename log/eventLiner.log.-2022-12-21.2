@@ -1,16 +1,34 @@
-[21 12 2022 15:57:17.334] [DEBUG] - Server Started At Port 8000
-[21 12 2022 15:57:17.796] [INFO] - 
-*************MONGODB connected**************
-
-[21 12 2022 15:57:19.963] [INFO] - { name: 'gstn', type: 'venue', percent: 18, taxDescription: {} }
-[21 12 2022 15:57:19.965] [ERROR] - CreateTaxs-> ReferenceError: Cannot access 'Tax' before initialization
-    at TaxService.createTax (file:///E:/New%20folder%20(4)/Eve-backend/services/Tax.service.js:16:9)
-    at createTax (file:///E:/New%20folder%20(4)/Eve-backend/api/admin/v1/TaxModule/Tax.controller.js:11:24)
+[21 12 2022 16:51:29.508] [INFO] - {
+  results: [
+    {
+      _id: new ObjectId("63a2eb277c1b13186791da90"),
+      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      assert: [Object],
+      isDeleted: false,
+      createdAt: 2022-12-21T11:16:55.640Z,
+      updatedAt: 2022-12-21T11:18:20.894Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("63a2ec2e69c15558391e926b"),
+      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      assert: [Object],
+      isDeleted: false,
+      createdAt: 2022-12-21T11:21:18.032Z,
+      updatedAt: 2022-12-21T11:21:18.032Z,
+      __v: 0
+    }
+  ],
+  totalResult: 2
+}
+[21 12 2022 16:52:42.884] [ERROR] - DeleteAddOnSellerPhoto-> ReferenceError: Cannot access 'AddOnSellerPhoto' before initialization
+    at AddOnSellerPhotoService.deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/services/addOnSellerPhoto.service.js:63:60)
+    at deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/api/private/v1/AddOnSellerPhotosModule/AddOnSellerPhotos.controller.js:49:37)
     at Layer.handle [as handle_request] (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:144:13)
     at Route.dispatch (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:114:3)
     at Layer.handle [as handle_request] (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\layer.js:95:5)
     at E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:284:15
-    at Function.process_params (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:346:12)
-    at next (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:280:10)
-    at Function.handle (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:175:3)
+    at param (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:365:14)
+    at param (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\index.js:421:3)

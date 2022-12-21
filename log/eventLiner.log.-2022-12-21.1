@@ -1,35 +1,6 @@
-[21 12 2022 15:57:48.306] [DEBUG] - Server Started At Port 8000
-[21 12 2022 15:57:48.768] [INFO] - 
-*************MONGODB connected**************
-
-[21 12 2022 15:57:52.336] [INFO] - { name: 'gstn', type: 'venue', percent: 18, taxDescription: {} }
-[21 12 2022 16:00:36.350] [INFO] - {
-  name: 'gstn',
-  type: 'venue',
-  percent: 18,
-  taxDescription: { name: 'gstn' }
-}
-[21 12 2022 16:01:18.570] [DEBUG] - Server Started At Port 8000
-[21 12 2022 16:01:19.015] [INFO] - 
-*************MONGODB connected**************
-
-[21 12 2022 16:03:30.655] [INFO] - {}
-[21 12 2022 16:03:30.730] [INFO] - [
-  {
-    _id: new ObjectId("63a2e04c288273caa0f10ee1"),
-    name: 'gstn',
-    type: 'venue',
-    percent: 23,
-    isDeleted: false,
-    taxDescription: { name: 'gstn' },
-    createdAt: 2022-12-21T10:30:36.388Z,
-    updatedAt: 2022-12-21T10:32:50.264Z,
-    __v: 0
-  }
-]
-[21 12 2022 16:04:37.815] [ERROR] - DeleteTax-> ReferenceError: Cannot access 'Tax' before initialization
-    at TaxService.deleteTax (file:///E:/New%20folder%20(4)/Eve-backend/services/Tax.service.js:68:46)
-    at deleteTax (file:///E:/New%20folder%20(4)/Eve-backend/api/admin/v1/TaxModule/Tax.controller.js:81:24)
+[21 12 2022 16:52:44.684] [ERROR] - DeleteAddOnSellerPhoto-> ReferenceError: Cannot access 'AddOnSellerPhoto' before initialization
+    at AddOnSellerPhotoService.deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/services/addOnSellerPhoto.service.js:63:60)
+    at deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/api/private/v1/AddOnSellerPhotosModule/AddOnSellerPhotos.controller.js:49:37)
     at Layer.handle [as handle_request] (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:144:13)
     at Route.dispatch (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:114:3)

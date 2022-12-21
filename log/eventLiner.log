@@ -1,14 +1,27 @@
-[21 12 2022 16:04:58.397] [DEBUG] - Server Started At Port 8000
-[21 12 2022 16:04:59.440] [INFO] - 
+[21 12 2022 16:53:12.043] [DEBUG] - Server Started At Port 8000
+[21 12 2022 16:53:12.538] [INFO] - 
 *************MONGODB connected**************
 
-[21 12 2022 16:05:14.350] [INFO] - {
-  name: 'gstn',
-  type: 'venue',
-  percent: 18,
-  taxDescription: { name: 'gstn' }
+[21 12 2022 16:55:13.845] [INFO] - {
+  results: [
+    {
+      _id: new ObjectId("63a2eb277c1b13186791da90"),
+      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      assert: [Object],
+      isDeleted: false,
+      createdAt: 2022-12-21T11:16:55.640Z,
+      updatedAt: 2022-12-21T11:24:37.642Z,
+      __v: 0
+    },
+    {
+      _id: new ObjectId("63a2ecc2ae1f326570464225"),
+      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      assert: [Object],
+      isDeleted: false,
+      createdAt: 2022-12-21T11:23:46.347Z,
+      updatedAt: 2022-12-21T11:23:46.347Z,
+      __v: 0
+    }
+  ],
+  totalResult: 2
 }
-[21 12 2022 16:06:46.885] [DEBUG] - Server Started At Port 8000
-[21 12 2022 16:06:47.356] [INFO] - 
-*************MONGODB connected**************
-
