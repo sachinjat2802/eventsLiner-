@@ -1,29 +1,29 @@
-[21 12 2022 16:51:29.508] [INFO] - {
+[21 12 2022 17:57:19.559] [INFO] - {
   results: [
     {
-      _id: new ObjectId("63a2eb277c1b13186791da90"),
-      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      _id: new ObjectId("63a2fa6db236491a772bf03d"),
+      product: new ObjectId("639bf92e7a342654473d175c"),
       assert: [Object],
       isDeleted: false,
-      createdAt: 2022-12-21T11:16:55.640Z,
-      updatedAt: 2022-12-21T11:18:20.894Z,
+      createdAt: 2022-12-21T12:22:05.962Z,
+      updatedAt: 2022-12-21T12:23:16.335Z,
       __v: 0
     },
     {
-      _id: new ObjectId("63a2ec2e69c15558391e926b"),
-      addOnSeller: new ObjectId("639bf92e7a342654473d175c"),
+      _id: new ObjectId("63a2fb8caa2978b9282ac845"),
+      product: new ObjectId("639bf92e7a342654473d175c"),
       assert: [Object],
       isDeleted: false,
-      createdAt: 2022-12-21T11:21:18.032Z,
-      updatedAt: 2022-12-21T11:21:18.032Z,
+      createdAt: 2022-12-21T12:26:52.458Z,
+      updatedAt: 2022-12-21T12:26:52.458Z,
       __v: 0
     }
   ],
   totalResult: 2
 }
-[21 12 2022 16:52:42.884] [ERROR] - DeleteAddOnSellerPhoto-> ReferenceError: Cannot access 'AddOnSellerPhoto' before initialization
-    at AddOnSellerPhotoService.deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/services/addOnSellerPhoto.service.js:63:60)
-    at deleteAddOnSellerPhoto (file:///E:/New%20folder%20(4)/Eve-backend/api/private/v1/AddOnSellerPhotosModule/AddOnSellerPhotos.controller.js:49:37)
+[21 12 2022 17:58:15.793] [ERROR] - DeleteAddOnSellerProductPhoto-> ReferenceError: Cannot access 'AddOnSellerProductPhoto' before initialization
+    at AddOnSellerProductPhotoService.deleteAddOnSellerProductPhoto (file:///E:/New%20folder%20(4)/Eve-backend/services/addOnSellerProductPhoto.service.js:63:67)
+    at deleteAddOnSellerProductPhoto (file:///E:/New%20folder%20(4)/Eve-backend/api/private/v1/AddOnSellerProductPhotosModule/AddOnSellerProductPhotos.controller.js:49:44)
     at Layer.handle [as handle_request] (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\layer.js:95:5)
     at next (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:144:13)
     at Route.dispatch (E:\New folder (4)\Eve-backend\node_modules\express\lib\router\route.js:114:3)
