@@ -58,14 +58,14 @@ class AddOnSellerReviewsService {
       next("Something went wrong");
     }
   }
-
+ 
  
   //   /**
   //    * @method:  Delete AddOnSellerReviews.
   //    */
-  async deleteAddOnSellerReviews(id, userId,next) {
+  async deleteAddOnSellerReviews(id, next) {
     try {
-        const addOnSellerReviews = await new CrudOperations( AddOnSellerReviews).getDocument({ _id: id, isDeleted: false,userId:userId }, { });
+        const addOnSellerReviews = await new CrudOperations( AddOnSellerReviews).getDocument({ _id: id, isDeleted: false}, { });
           if(addOnSellerReviews){
             addOnSellerReviews.isDeleted =true;
             const deletedAddOnSellerReviews = await new CrudOperations( AddOnSellerReviews).updateDocument({ _id: id }, addOnSellerReviews );

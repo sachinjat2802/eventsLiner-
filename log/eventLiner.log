@@ -1,46 +1,4 @@
-[21 12 2022 19:16:34.101] [INFO] - { userId: '63a032a7b16e0cb0cc17f057' }
-[21 12 2022 19:16:34.277] [INFO] - [
-  {
-    _id: new ObjectId("63a2f820fd67edd20d83ef90"),
-    userId: new ObjectId("63a032a7b16e0cb0cc17f057"),
-    addOnSeller: new ObjectId("63a298084900282e386ba56a"),
-    rating: 1,
-    review: '45',
-    isDeleted: false,
-    type: 'false',
-    createdAt: 2022-12-21T12:12:16.692Z,
-    updatedAt: 2022-12-21T12:24:16.468Z,
-    __v: 0
-  }
-]
-[21 12 2022 19:29:03.038] [DEBUG] - Server Started At Port 8000
-[21 12 2022 19:29:03.773] [INFO] - {}
-[21 12 2022 19:29:04.259] [INFO] - 
+[21 12 2022 19:52:16.685] [DEBUG] - Server Started At Port 8000
+[21 12 2022 19:52:18.116] [INFO] - 
 *************MONGODB connected**************
 
-[21 12 2022 19:29:06.810] [INFO] - [
-  {
-    _id: new ObjectId("63a2f820fd67edd20d83ef90"),
-    userId: new ObjectId("63a032a7b16e0cb0cc17f057"),
-    addOnSeller: new ObjectId("63a298084900282e386ba56a"),
-    rating: 1,
-    review: '45',
-    isDeleted: false,
-    type: 'false',
-    createdAt: 2022-12-21T12:12:16.692Z,
-    updatedAt: 2022-12-21T12:24:16.468Z,
-    __v: 0
-  },
-  {
-    _id: new ObjectId("63a30bf8e781731826e6542a"),
-    userId: new ObjectId("63a30bb5e781731826e65421"),
-    addOnSeller: new ObjectId("63a198084900282e086ba56a"),
-    rating: 3,
-    review: '45568',
-    isDeleted: false,
-    type: 'false',
-    createdAt: 2022-12-21T13:36:56.944Z,
-    updatedAt: 2022-12-21T13:36:56.944Z,
-    __v: 0
-  }
-]
