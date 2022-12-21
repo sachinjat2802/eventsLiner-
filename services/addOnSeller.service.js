@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { AddOnSeller } from "../models/AddOnSeller.entity.js";
+import { AddOnSeller } from "../models/addOnSeller.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";
@@ -43,13 +43,11 @@ class AddOnSellerService {
         AddOnSellerDoc[i].cusineCategory = AddOnSellerDoc[i].CUSINE_CATEGORY;
         AddOnSellerDoc[i].city = AddOnSellerDoc[i].CITY;
         AddOnSellerDoc[i].region = AddOnSellerDoc[i].REGION;
-        AddOnSellerDoc[i].productCategory = AddOnSellerDoc[i].productCategory;
+        AddOnSellerDoc[i].productCategory = AddOnSellerDoc[i].product_Category;
          AddOnSellerDoc[i].productType="Non Claimed";
          AddOnSellerDoc[i].isDeleted = false
          AddOnSellerDoc[i].isAddOnSellerActive = false
-
-
-        const AddOnSeller = new AddOnSeller(AddOnSellerDoc[i]);
+         const AddOnSeller = new AddOnSeller(AddOnSellerDoc[i]);
         await new CrudOperations(AddOnSeller).save(AddOnSeller);
       }
       next(null, "AddOnSellers added  successfully")
@@ -63,7 +61,7 @@ class AddOnSellerService {
   async updateAddOnSeller(id, userId, AddOnSellerDoc, next) {
     try {
       const oldAddOnSellerDoc = await new CrudOperations(AddOnSeller).getDocument(
-        { _id: id, isDeleted: false, members: userId },
+        { _id: id, isDeleted: false },
         {}
       );
 
@@ -88,15 +86,15 @@ class AddOnSellerService {
   //    */
   async deleteAddOnSeller(id, next) {
     try {
-      const AddOnSeller = await new CrudOperations(AddOnSeller).getDocument(
+      const addOnSeller = await new CrudOperations(AddOnSeller).getDocument(
         { _id: id, isDeleted: false },
         {}
       );
-      if (AddOnSeller) {
-        AddOnSeller.isDeleted = true;
+      if (addOnSeller) {
+        addOnSeller.isDeleted = true;
         const deletedAddOnSeller = await new CrudOperations(AddOnSeller).updateDocument(
           { _id: id },
-          AddOnSeller
+          addOnSeller
         );
         next(null, deletedAddOnSeller);
       } else {

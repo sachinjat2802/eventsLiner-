@@ -10,8 +10,10 @@ import venueReviewRoutes from "./VenueReviewModule/VenueReview.router.js";
 import venuePhotoRoutes from "./VenuePhotosModule/VenuePhoto.router.js";
 import venueSlotsRoutes from "./VenueSlotsModule/VenueSlots.router.js";
 import venueBookingRoutes from "./VenueBookingModule/VenueBooking.router.js";
-import venuePackageRoutes from "./VenuePackageModule /VenuePackage.router.js"
-
+import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js";
+import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js";
+import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js"
+import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
 const router = Router();
 
 router.use("/user", userRoutes)
@@ -24,6 +26,9 @@ router.use("/venueReview", venueReviewRoutes)
 router.use("/venueSlots", venueSlotsRoutes)
 router.use("/venueBooking", venueBookingRoutes)
 router.use("/venuePackage", venuePackageRoutes)
+router.use("/venueVisitHistory",venueVisitHistoryRoutes)
+router.use("/addOnSeller", addOnSellerRoutes)
+router.use("/addOnSellerProduct", addOnSellerProductRoutes)
 
 export default router;
 
