@@ -30,7 +30,10 @@ const AddOnSellerSchema = new mongoose.Schema({
     totalReviews:{type:Number,required:false,default:0},
     kycDocuments: { type: Object, required: false },
     panRadius:{type:String, required:false},
-    members:{type:[mongoose.Types.ObjectId],required:false}
+    members:{type:[mongoose.Types.ObjectId],required:false},
+    commissions:{type:mongoose.Types.ObjectId,required:false,ref :"Commission"},
+    tax:{type:mongoose.Types.ObjectId,required:false,ref :"Tax"}
+
 
     });
 
