@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { AddOnSeller } from "../models/AddOnSeller.entity.js";
+import { AddOnSeller } from "../models/addOnSeller.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";
@@ -43,13 +43,11 @@ class AddOnSellerService {
         AddOnSellerDoc[i].cusineCategory = AddOnSellerDoc[i].CUSINE_CATEGORY;
         AddOnSellerDoc[i].city = AddOnSellerDoc[i].CITY;
         AddOnSellerDoc[i].region = AddOnSellerDoc[i].REGION;
-        AddOnSellerDoc[i].productCategory = AddOnSellerDoc[i].productCategory;
+        AddOnSellerDoc[i].productCategory = AddOnSellerDoc[i].product_Category;
          AddOnSellerDoc[i].productType="Non Claimed";
          AddOnSellerDoc[i].isDeleted = false
          AddOnSellerDoc[i].isAddOnSellerActive = false
-
-
-        const AddOnSeller = new AddOnSeller(AddOnSellerDoc[i]);
+         const AddOnSeller = new AddOnSeller(AddOnSellerDoc[i]);
         await new CrudOperations(AddOnSeller).save(AddOnSeller);
       }
       next(null, "AddOnSellers added  successfully")

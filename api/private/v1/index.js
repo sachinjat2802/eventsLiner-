@@ -14,7 +14,7 @@ import venueBookingRoutes from "./VenueBookingModule/VenueBooking.router.js";
 import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js"
 
 import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js"
-
+import addOnSellerRoutes from "./addOnSellerModule/AddOnSeller.router.js";
 
 const router = Router();
 
@@ -29,6 +29,7 @@ router.use("/venueSlots", venueSlotsRoutes)
 router.use("/venueBooking", venueBookingRoutes)
 router.use("/venuePackage", venuePackageRoutes)
 router.use("/venueVisitHistory",venueVisitHistoryRoutes)
+router.use("/addOnSeller", addOnSellerRoutes)
 
 export default router;
 
