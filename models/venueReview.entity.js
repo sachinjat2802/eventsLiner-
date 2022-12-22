@@ -8,7 +8,7 @@ const VenueReviewsSchema = new mongoose.Schema({
     rating:{type:Number,required:true},
     review:{type:String,required:false},
     isDeleted:{type:Boolean,default:false},
-    type:{type:String, default:false}
+    type:{type:String, required:false}
  } );
 
 VenueReviewsSchema.set("timestamps", true);

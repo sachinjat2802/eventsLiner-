@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 
 
@@ -29,9 +29,10 @@ const VenueSchema = new mongoose.Schema({
     rating:{type:Number,required:false,default:0},
     totalReviews:{type:Number,required:false,default:0},
     kycDocuments: { type: Object, required: false },
-    members:{type:[mongoose.Types.ObjectId],required:false}
-
-    });
+    members:{type:[mongoose.Types.ObjectId],required:false},
+    commission:{type:mongoose.Types.ObjectId,required:false,ref :"Commission"},
+    tax:{type:mongoose.Types.ObjectId,required:false,ref :"Tax"}
+});
 
 VenueSchema.set("timestamps", true);
 
