@@ -22,6 +22,7 @@ import addOnSellerReviewRoutes from "./AddOnSellerReviewModule/addOnSellerReview
 import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
 import eventManagerRoutes from "./EventManagerModule/EventManager.router.js"
+import eventRoutes from  "./EventModule/EventModule.router.js"
 const router = Router();
 
 router.use("/user", userRoutes)
@@ -40,23 +41,15 @@ router.use("/venueVisitHistory",venueVisitHistoryRoutes)
 router.use("/addOnSeller", addOnSellerRoutes)
 router.use("/addOnSellerPhotos", addOnSellerPhotosRoutes)
 router.use("/addOnSellerProduct", addOnSellerProductRoutes)
-
 router.use("/addOnSellerProductPhoto", addOnSellerProductPhotoRoutes)
-
-
-
-
+router.use("/addOnProductsCart",addOnProductCartRoutes)
+router.use("/addOnProductOrder",addOnProductOrderRoutes)
 router.use("/addOnSellerReview", addOnSellerReviewRoutes)
+
+router.use("/eventManager",eventManagerRoutes)
+router.use("/event", eventRoutes)
+
+
 
 
 export default router;
-
-
-
-
-
-
-
-
-
-
