@@ -1,41 +1,4 @@
-[21 12 2022 19:38:00.315] [DEBUG] - Server Started At Port 8000
-[21 12 2022 19:38:02.675] [INFO] - 
+[21 12 2022 19:52:16.685] [DEBUG] - Server Started At Port 8000
+[21 12 2022 19:52:18.116] [INFO] - 
 *************MONGODB connected**************
 
-[21 12 2022 19:38:06.047] [INFO] - { userId: '63a032a7b16e0cb0cc17f057' }
-[21 12 2022 19:38:06.209] [INFO] - [
-  {
-    _id: new ObjectId("63a2f820fd67edd20d83ef90"),
-    userId: new ObjectId("63a032a7b16e0cb0cc17f057"),
-    addOnSeller: new ObjectId("63a298084900282e386ba56a"),
-    rating: 1,
-    review: '45',
-    isDeleted: false,
-    type: 'false',
-    createdAt: 2022-12-21T12:12:16.692Z,
-    updatedAt: 2022-12-21T12:24:16.468Z,
-    __v: 0
-  }
-]
-[21 12 2022 19:41:25.138] [ERROR] - DeleteAddOnSellerReviews-> CastError: Cast to ObjectId failed for value "[Function (anonymous)]" (type function) at path "userId" for model "AddOnSellerReviews"
-    at model.Query.exec (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/query.js:4897:21)
-    at model.Query.Query.then (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/query.js:4996:15)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
-  messageFormat: undefined,
-  stringValue: '"[Function (anonymous)]"',
-  kind: 'ObjectId',
-  value: [Function (anonymous)],
-  path: 'userId',
-  reason: BSONTypeError: Argument passed in must be a string of 12 bytes or a string of 24 hex characters or an integer
-      at new BSONTypeError (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/bson/lib/error.js:41:28)
-      at new ObjectId (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/bson/lib/objectid.js:67:23)
-      at castObjectId (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/cast/objectid.js:25:12)
-      at ObjectId.cast (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/schema/objectid.js:246:12)
-      at ObjectId.SchemaType.applySetters (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/schematype.js:1201:12)
-      at ObjectId.SchemaType._castForQuery (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/schematype.js:1648:15)
-      at ObjectId.SchemaType.castForQuery (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/schematype.js:1636:15)
-      at ObjectId.SchemaType.castForQueryWrapper (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/schematype.js:1612:20)
-      at cast (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/cast.js:342:32)
-      at model.Query.Query.cast (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/query.js:5325:12),
-  valueType: 'function'
-}

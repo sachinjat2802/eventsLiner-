@@ -1,8 +1,23 @@
-[21 12 2022 19:34:46.595] [DEBUG] - Server Started At Port 8000
-[21 12 2022 19:34:47.809] [INFO] - 
+[21 12 2022 19:38:00.315] [DEBUG] - Server Started At Port 8000
+[21 12 2022 19:38:02.675] [INFO] - 
 *************MONGODB connected**************
 
-[21 12 2022 19:34:54.044] [ERROR] - DeleteAddOnSellerReviews-> CastError: Cast to ObjectId failed for value "[Function (anonymous)]" (type function) at path "userId" for model "AddOnSellerReviews"
+[21 12 2022 19:38:06.047] [INFO] - { userId: '63a032a7b16e0cb0cc17f057' }
+[21 12 2022 19:38:06.209] [INFO] - [
+  {
+    _id: new ObjectId("63a2f820fd67edd20d83ef90"),
+    userId: new ObjectId("63a032a7b16e0cb0cc17f057"),
+    addOnSeller: new ObjectId("63a298084900282e386ba56a"),
+    rating: 1,
+    review: '45',
+    isDeleted: false,
+    type: 'false',
+    createdAt: 2022-12-21T12:12:16.692Z,
+    updatedAt: 2022-12-21T12:24:16.468Z,
+    __v: 0
+  }
+]
+[21 12 2022 19:41:25.138] [ERROR] - DeleteAddOnSellerReviews-> CastError: Cast to ObjectId failed for value "[Function (anonymous)]" (type function) at path "userId" for model "AddOnSellerReviews"
     at model.Query.exec (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/query.js:4897:21)
     at model.Query.Query.then (/Volumes/Untitled 2/AgileMantraConsulting_services_llp/EventsLiner/Eve-backend/node_modules/mongoose/lib/query.js:4996:15)
     at processTicksAndRejections (node:internal/process/task_queues:96:5) {
