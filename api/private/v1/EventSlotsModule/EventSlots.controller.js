@@ -1,40 +1,40 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueSlotsService from "../../../../services/eventSlots.service.js";
+import EventSlotsService from "../../../../services/eventSlots.service.js";
 import mongoose from "mongoose";
 
-class VenueSlotsController {
-    createVenueSlots(request, response, next) {
+class EventSlotsController {
+    createEventSlots(request, response, next) {
         try {
-            const VenueSlots = request.body;
-            VenueSlots.venue =mongoose.Types.ObjectId(request.params.id);
-            VenueSlotsService.createVenueSlots(VenueSlots, (err, result) => {
+            const EventSlots = request.body;
+            EventSlots.event =mongoose.Types.ObjectId(request.params.id);
+            EventSlotsService.createEventSlots(EventSlots, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("CreateVenueSlots", result, "VenueSlots Created", null, null, null));
+                    response.status(200).send(new HttpResponse("CreateEventSlots", result, "EventSlots Created", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("CreateVenueSlotsController->", err);
+            logger.error("CreateEventSlotsController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    updateVenueSlots(request, response, next) {
+    updateEventSlots(request, response, next) {
         try {
-            const VenueSlots = request.body;
+            const EventSlots = request.body;
             
             const id = request.params.id;
-            VenueSlotsService.updateVenueSlots(id,VenueSlots, (err, result) => {
+            EventSlotsService.updateEventSlots(id,EventSlots, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("UpdateVenueSlots", result, "VenueSlots Updated", null, null, null));
+                    response.status(200).send(new HttpResponse("UpdateEventSlots", result, "EventSlots Updated", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("UpdateVenueSlotsController->", err);
+            logger.error("UpdateEventSlotsController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
@@ -43,7 +43,7 @@ class VenueSlotsController {
     getMicroWebsiteLink(request, response, next) {
         try {
             const { name } = request.body;
-            VenueSlotsService.getMicroWebsiteLink(name, (err, result) => {
+            EventSlotsService.getMicroWebsiteLink(name, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
@@ -56,42 +56,42 @@ class VenueSlotsController {
         }
     }
 
-    addToVenueSlots(request, response, next) {
+    addToEventSlots(request, response, next) {
         try {
-            const { VenueSlotsId, role } = request.body;
+            const { EventSlotsId, role } = request.body;
             const userId = request.currentUser?.id;
-            VenueSlotsService.addToVenueSlots(VenueSlotsId, role, userId, (err, result) => {
+            EventSlotsService.addToEventSlots(EventSlotsId, role, userId, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("AddToVenueSlots", result, "Added In VenueSlots", null, null, null));
+                    response.status(200).send(new HttpResponse("AddToEventSlots", result, "Added In EventSlots", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("addToVenueSlotsController->", err);
+            logger.error("addToEventSlotsController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
     
 
-    deleteVenueSlots(request, response, next) {
+    deleteEventSlots(request, response, next) {
         try {
             const id = request.params.id;
-            VenueSlotsService.deleteVenueSlots(id,(err, result) => {
+            EventSlotsService.deleteEventSlots(id,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("DeleteVenueSlots", result, "VenueSlots Delted", null, null, null));
+                    response.status(200).send(new HttpResponse("DeleteEventSlots", result, "EventSlots Delted", null, null, null));
                 }
             });
         } catch (err) {
-            logger.error("DeleteVenueSlotsController->", err);
+            logger.error("DeleteEventSlotsController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getVenueSlotss(request, response, next) {
+    async getEventSlotss(request, response, next) {
         try {
             
             const query = request.query;
@@ -118,24 +118,24 @@ class VenueSlotsController {
             }
             clauses.members = request.currentUser?.id;
             
-            VenueSlotsService.getVenueSlots(clauses, projections, options, sort, (err, result) => {
+            EventSlotsService.getEventSlots(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("GetVenueSlots", result.results, "VenueSlotss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("GetEventSlots", result.results, "EventSlotss Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetVenueSlotssController->", err);
+            logger.error("GetEventSlotssController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 
-    async getMyVenueSlots(request, response, next) {
+    async getMyEventSlots(request, response, next) {
         try {
            
             const query = request.query;
-            query.venue = mongoose.Types.ObjectId(request.params.id)
+            query.event = mongoose.Types.ObjectId(request.params.id)
             const sort = {};
             const projections = {};
             let options = {
@@ -159,19 +159,19 @@ class VenueSlotsController {
             }
            console.log(clauses);
             
-            VenueSlotsService.getVenueSlots(clauses, projections, options, sort, (err, result) => {
+            EventSlotsService.getEventSlots(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("My VenueSlotss", result.results, "VenueSlotss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("My EventSlotss", result.results, "EventSlotss Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetMyVenueSlotssController->", err);
+            logger.error("GetMyEventSlotssController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
-    async getVenueSlotsByUid(request, response, next) {
+    async getEventSlotsByUid(request, response, next) {
         try {
            
             const query = request.query;
@@ -199,18 +199,18 @@ class VenueSlotsController {
             }
            console.log(clauses);
             
-            VenueSlotsService.getVenueSlots(clauses, projections, options, sort, (err, result) => {
+            EventSlotsService.getEventSlots(clauses, projections, options, sort, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
                 } else {
-                    response.status(200).send(new HttpResponse("My VenueSlotss", result.results, "VenueSlotss Returned", null, result.totalResult, null));
+                    response.status(200).send(new HttpResponse("My EventSlotss", result.results, "EventSlotss Returned", null, result.totalResult, null));
                 }
             });
         } catch (err) {
-            logger.error("GetMyVenueSlotssController->", err);
+            logger.error("GetMyEventSlotssController->", err);
             next(new HttpException(400, "Something went wrong"));
         }
     }
 }
 
-export default new VenueSlotsController();
+export default new EventSlotsController();

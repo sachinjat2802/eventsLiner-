@@ -26,6 +26,8 @@ import eventRoutes from  "./EventModule/EventModule.router.js"
 import eventPhotosRoutes from "./EventsPhotosModule/EventsPhotos.router.js"
 import addOnSellerVisitHistoryRoutes from "./AddOnSellerVisitHistoryModule/AddOnSellerVisitHistory.router.js"
 import eventVisitHistoryRoutes from "./EventsVisitHistoryModule/EventsVisitHistory.router.js";
+import eventSlotsRoutes from "./EventSlotsModule/EventSlots.router.js";
+import eventBookingRoutes from "./EventBookingModule/EventBooking.router.js";
 
 const router = Router();
 
@@ -57,6 +59,8 @@ router.use("/eventManager",eventManagerRoutes)
 router.use("/event", eventRoutes)
 router.use("/eventPhotos", eventPhotosRoutes)
 router.use("/eventVisitHistory", eventVisitHistoryRoutes)
+router.use("/eventSlots", eventSlotsRoutes)
+router.use("/eventBooking",eventBookingRoutes)
 
 
 
