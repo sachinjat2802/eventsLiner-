@@ -23,6 +23,8 @@ import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
 import eventManagerRoutes from "./EventManagerModule/EventManager.router.js"
 import eventRoutes from  "./EventModule/EventModule.router.js"
+import addOnSellerProductReviews from "./addOnSellerProductReviewModule/addOnSellerProductReview.router.js"
+
 const router = Router();
 
 router.use("/user", userRoutes)
@@ -48,6 +50,8 @@ router.use("/addOnSellerReview", addOnSellerReviewRoutes)
 
 router.use("/eventManager",eventManagerRoutes)
 router.use("/event", eventRoutes)
+
+router.use("/addOnSellerProductReviews", addOnSellerProductReviews)
 
 
 
