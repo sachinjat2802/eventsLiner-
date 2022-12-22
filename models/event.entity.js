@@ -2,18 +2,18 @@ import mongoose from "mongoose";
 
 
 
-const EventManagerSchema = new mongoose.Schema({
-    organization:{type:mongoose.Schema.Types.ObjectId,required:false,ref:"Organization"},
+const EventSchema = new mongoose.Schema({
+    eventManager:{type:mongoose.Schema.Types.ObjectId,required:false,ref:"EventManager"},
     name: { type: String, required: true, index: true },
     contactPersonName: { type: String, required: false },
     contactPersonNumber: { type: Object, required: false },
     logo: { type: Object, required: false },
     coverImage: { type: Object, required: false },
     bio: { type: String, required: false },
-    isEventManagerActive:{ type: Boolean, required: false },
+    isEventActive:{ type: Boolean, required: false },
     isDeleted: { type: Boolean, required: true },
     socialMediaDetails: { type: Object, required: false },
-    EventManagerRating: { type: Number, required: false },
+    EventRating: { type: Number, required: false },
     kycVerified: { type: Boolean, required: false, default: false },
     block: { type: Boolean, required: false },
     ban: { type: Boolean, required: false },
@@ -36,15 +36,15 @@ const EventManagerSchema = new mongoose.Schema({
 
     });
 
-EventManagerSchema.set("timestamps", true);
+EventSchema.set("timestamps", true);
 
-EventManagerSchema.statics.build = (attrs) => {
-    return new EventManager(attrs);
+EventSchema.statics.build = (attrs) => {
+    return new Event(attrs);
 };
 
-const EventManager = mongoose.model(
-    "EventManager",
-    EventManagerSchema
+const Event = mongoose.model(
+    "Event",
+    EventSchema
 );
 
-export { EventManager };
+export { Event };

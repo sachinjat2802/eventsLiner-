@@ -21,11 +21,13 @@ import addOnSellerProductRoutes from "./AddOnSellerProductModule/addOnSellerProd
 import addOnSellerReviewRoutes from "./AddOnSellerReviewModule/addOnSellerReview.router.js"
 import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
+import eventManagerRoutes from "./EventManagerModule/EventManager.router.js"
 const router = Router();
 
 router.use("/user", userRoutes)
 router.use("/organizations", organizationServiceRoutes)
 router.use("/userSearch", userSearchRoutes)
+
 router.use("/venue", venueRoutes)
 router.use("/venuePhoto", venuePhotoRoutes)
 router.use("/venueMenu", venueMenuRoutes)
@@ -34,16 +36,19 @@ router.use("/venueSlots", venueSlotsRoutes)
 router.use("/venueBooking", venueBookingRoutes)
 router.use("/venuePackage", venuePackageRoutes)
 router.use("/venueVisitHistory",venueVisitHistoryRoutes)
+
 router.use("/addOnSeller", addOnSellerRoutes)
 router.use("/addOnSellerPhotos", addOnSellerPhotosRoutes)
 router.use("/addOnSellerProduct", addOnSellerProductRoutes)
 router.use("/addOnSellerProductPhoto", addOnSellerProductPhotoRoutes)
 router.use("/addOnProductsCart",addOnProductCartRoutes)
 router.use("/addOnProductOrder",addOnProductOrderRoutes)
-
-
-
 router.use("/addOnSellerReview", addOnSellerReviewRoutes)
+
+router.use("/eventManager",eventManagerRoutes)
+
+
+
 
 export default router;
 
