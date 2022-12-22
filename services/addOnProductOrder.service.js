@@ -1,5 +1,6 @@
 import logger from "../logger/logger.js";
 import { AddOnProductOrder } from "../models/AddOnProductOrder.entity.js";
+import { AddOnProductCart } from "../models/addOnproductsCart.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";
@@ -12,18 +13,20 @@ class AddOnProductOrderService {
 
   async createAddOnProductOrder(AddOnProductOrderDoc, next) {
     try {
-      const similarAddOnProductOrder = await new CrudOperations(AddOnProductOrder).getDocument(
-        { name: AddOnProductOrderDoc.name, isDeleted: false },
-        {}
-      );
-      if (similarAddOnProductOrder) {
-        return next("AddOnProductOrder already exists");
+      const cart =await new CrudOperations(AddOnProductCart).getDocument({
+        userId: AddOnProductOrderDoc.userId
+      })
+     if (cart.items.length==0) {
+        return next("Add item to cart first");
       }
-      AddOnProductOrderDoc.isDeleted = false;
+      AddOnProductOrderDoc.items=cart.items
+      AddOnProductOrderDoc.totalPrice=cart.totalPrice;
+      AddOnProductOrderDoc.totalItems=cart.totalItems;
       const addOnProductOrder = new AddOnProductOrder(AddOnProductOrderDoc);
       await new CrudOperations(AddOnProductOrder)
         .save(addOnProductOrder)
         .then((result) => {
+          new CrudOperations(AddOnProductCart).updateDocument({ userId: AddOnProductOrderDoc.userId }, { items: [], totalPrice: 0, totalItems: 0 })
           next(null, result);
         })
         .catch((error) => {
@@ -35,10 +38,10 @@ class AddOnProductOrderService {
     }
   }
   
-  async updateAddOnProductOrder(id, userId, AddOnProductOrderDoc, next) {
+  async updateAddOnProductOrder(id, AddOnProductOrderDoc, next) {
     try {
       const oldAddOnProductOrderDoc = await new CrudOperations(AddOnProductOrder).getDocument(
-        { _id: id, isDeleted: false, members: userId },
+        { _id: id, isDeleted: false },
         {}
       );
 

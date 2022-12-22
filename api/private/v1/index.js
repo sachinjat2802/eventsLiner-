@@ -38,8 +38,8 @@ router.use("/addOnSeller", addOnSellerRoutes)
 router.use("/addOnSellerPhotos", addOnSellerPhotosRoutes)
 router.use("/addOnSellerProduct", addOnSellerProductRoutes)
 router.use("/addOnSellerProductPhoto", addOnSellerProductPhotoRoutes)
-router.use("/addOnProductOrder",addOnProductOrderRoutes)
 router.use("/addOnProductsCart",addOnProductCartRoutes)
+router.use("/addOnProductOrder",addOnProductOrderRoutes)
 
 
 

@@ -8,7 +8,6 @@ class AddOnProductOrderController {
         try {
             const AddOnProductOrder = request.body;
             AddOnProductOrder.userId= mongoose.Types.ObjectId(request?.currentUser?.id);
-            AddOnProductOrder.venue =mongoose.Types.ObjectId(request.params.id);
             AddOnProductOrderService.createAddOnProductOrder(AddOnProductOrder, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));

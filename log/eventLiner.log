@@ -1,42 +1,4 @@
-[22 12 2022 12:39:34.950] [DEBUG] - Server Started At Port 8000
-[22 12 2022 12:39:35.460] [INFO] - 
+[22 12 2022 14:53:40.325] [DEBUG] - Server Started At Port 8000
+[22 12 2022 14:53:40.795] [INFO] - 
 *************MONGODB connected**************
 
-[22 12 2022 12:39:37.977] [INFO] - new ObjectId("63999ae6365258da51daed36")
-[22 12 2022 12:39:39.027] [INFO] - new ObjectId("63999ae6365258da51daed36")
-[22 12 2022 12:40:34.223] [DEBUG] - Server Started At Port 8000
-[22 12 2022 12:40:34.710] [INFO] - 
-*************MONGODB connected**************
-
-[22 12 2022 12:40:38.366] [INFO] - null
-[22 12 2022 12:41:14.211] [INFO] - {
-  _id: new ObjectId("63a4011e033dd07a58958164"),
-  userId: new ObjectId("63999ae6365258da51daed36"),
-  items: [
-    {
-      productId: new ObjectId("63a2b4d3312391bba4ccde3c"),
-      quantity: 100,
-      _id: new ObjectId("63a4011e033dd07a58958165")
-    }
-  ],
-  totalPrice: 30000,
-  totalItems: 100,
-  createdAt: 2022-12-22T07:02:54.379Z,
-  updatedAt: 2022-12-22T07:02:54.379Z,
-  __v: 0
-}
-[22 12 2022 12:41:36.418] [INFO] - {
-  results: [
-    {
-      _id: new ObjectId("63a4011e033dd07a58958164"),
-      userId: new ObjectId("63999ae6365258da51daed36"),
-      items: [Array],
-      totalPrice: 60000,
-      totalItems: 200,
-      createdAt: 2022-12-22T07:02:54.379Z,
-      updatedAt: 2022-12-22T07:11:14.219Z,
-      __v: 1
-    }
-  ],
-  totalResult: 1
-}
