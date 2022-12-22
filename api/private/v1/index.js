@@ -28,6 +28,7 @@ import addOnSellerVisitHistoryRoutes from "./AddOnSellerVisitHistoryModule/AddOn
 import eventVisitHistoryRoutes from "./EventsVisitHistoryModule/EventsVisitHistory.router.js";
 import eventSlotsRoutes from "./EventSlotsModule/EventSlots.router.js";
 import eventBookingRoutes from "./EventBookingModule/EventBooking.router.js";
+import addOnSellerProductReviews from "./addOnSellerProductReviewModule/addOnSellerProductReview.router.js"
 
 const router = Router();
 
@@ -62,6 +63,8 @@ router.use("/eventVisitHistory", eventVisitHistoryRoutes)
 router.use("/eventSlots", eventSlotsRoutes)
 router.use("/eventBooking",eventBookingRoutes)
 
+
+router.use("/addOnSellerProductReviews", addOnSellerProductReviews)
 
 
 
