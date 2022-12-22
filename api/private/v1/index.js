@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 
-import userRoutes from "./userModule/user.router.js";
-import userSearchRoutes from "./userSearchModule/user.router.js";
+import userRoutes from "./UserModule/user.router.js";
+import userSearchRoutes from "./UserSearchModule/user.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venueRoutes from "./venueModule/venue.router.js";
 import venueMenuRoutes from "./VenueMenuModule/VenueMenu.router.js"
@@ -17,7 +17,10 @@ import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory
 import addOnSellerRoutes from "./addOnSellerModule/AddOnSeller.router.js";
 import addOnSellerPhotosRoutes from "./AddOnSellerPhotosModule/AddOnSellerPhotos.router.js";
 import addOnSellerProductPhotoRoutes from "./AddOnSellerProductPhotosModule/AddOnSellerProductPhotos.router.js"
-import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
+import addOnSellerProductRoutes from "./AddOnSellerProductModule/addOnSellerProduct.router.js"
+import addOnSellerReviewRoutes from "./AddOnSellerReviewModule/addOnSellerReview.router.js"
+import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
+import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
 const router = Router();
 
 router.use("/user", userRoutes)
@@ -35,9 +38,12 @@ router.use("/addOnSeller", addOnSellerRoutes)
 router.use("/addOnSellerPhotos", addOnSellerPhotosRoutes)
 router.use("/addOnSellerProduct", addOnSellerProductRoutes)
 router.use("/addOnSellerProductPhoto", addOnSellerProductPhotoRoutes)
+router.use("/addOnProductOrder",addOnProductOrderRoutes)
+router.use("/addOnProductsCart",addOnProductCartRoutes)
 
 
 
+router.use("/addOnSellerReview", addOnSellerReviewRoutes)
 
 export default router;
 
