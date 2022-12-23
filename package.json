@@ -37,6 +37,7 @@
     "passport": "^0.6.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
+    "razorpay": "^2.8.4",
     "satelize": "^0.2.0",
     "short-uuid": "^4.2.2",
     "uuid": "^9.0.0"

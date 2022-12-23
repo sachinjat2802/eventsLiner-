@@ -53,6 +53,7 @@ router.use("/addOnProductsCart",addOnProductCartRoutes)
 router.use("/addOnProductOrder",addOnProductOrderRoutes)
 router.use("/addOnSellerReview", addOnSellerReviewRoutes)
 router.use("/addOnSellerVisitHistory", addOnSellerVisitHistoryRoutes)
+router.use("/addOnSellerProductReviews", addOnSellerProductReviews)
 
 
 
@@ -64,7 +65,6 @@ router.use("/eventSlots", eventSlotsRoutes)
 router.use("/eventBooking",eventBookingRoutes)
 
 
-router.use("/addOnSellerProductReviews", addOnSellerProductReviews)
 
 
 
