@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AddOnSellerReviewsController from "./addOnSellerReview.controller.js";
+import AddOnSellerReviewsController from "./AddOnSellerReview.controller.js";
 
 const router = Router();
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 
-import userRoutes from "./UserModule/User.router.js";
+import userRoutes from "./UsersModule/User.router.js";
 import userSearchRoutes from "./UserSearchModule/User.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venueRoutes from "./VenueModule/Venue.router.js";
