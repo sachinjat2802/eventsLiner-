@@ -18,7 +18,7 @@ import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js";
 import addOnSellerPhotosRoutes from "./AddOnSellerPhotosModule/AddOnSellerPhotos.router.js";
 import addOnSellerProductPhotoRoutes from "./AddOnSellerProductPhotosModule/AddOnSellerProductPhotos.router.js"
 import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
-import addOnSellerReviewRoutes from "./AddOnSellerReviewModule/addOnSellerReview.router.js"
+import addOnSellerReviewRoutes from "./addOnSellerReviewModule/addOnSellerReview.router.js"
 import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
 import eventManagerRoutes from "./EventManagerModule/EventManager.router.js"
