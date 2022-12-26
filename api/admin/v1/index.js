@@ -3,8 +3,8 @@ import { Router } from "express";
 
 
 import adminUserRoutes from "./AdminUserModule/AdminUsersAuth.router.js";
-import customerRoutes from "./UserSModule/User.router.js.js";
-import userSearchRoutes from "./UsersSearchModule/User.router.js.js";
+import customerRoutes from "./UserSModule/User.router.js";
+import userSearchRoutes from "./UsersSearchModule/User.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js"
 

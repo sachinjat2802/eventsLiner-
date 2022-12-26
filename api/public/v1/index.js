@@ -1,7 +1,7 @@
 import { Router } from "express";
-import AssetUploadRoutes from "./AssetsModule/assets.router.js";
-import adminUserRoutes from "./AdminUserModule/adminUserAuth.router.js";
-import userRoutes from "./userModule/user.route.js"
+import AssetUploadRoutes from "./AssetsModule/Assets.router.js";
+import adminUserRoutes from "./AdminUserModule/AdminUserAuth.router.js";
+import userRoutes from "./UserModule/User.route.js"
 import venueRoutes from "./VenueModule/Venue.router.js"
 import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js";
 
