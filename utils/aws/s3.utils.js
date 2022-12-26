@@ -1,5 +1,6 @@
 import aws from "aws-sdk";
 import fs from "fs";
+import logger from "../../logger/logger.js";
 import { UuidUtil } from "../index.js";
 
 export class S3Util {
@@ -20,17 +21,19 @@ export class S3Util {
     }
 
     generateAWSParams = (file, key, bucketName) => {
+
         const s3Params = {
             ACL: "public-read",
-            Body: fs.readFileSync(file.path),
+            Body: fs.readFileSync(file?.filepath),
             Bucket: bucketName ?? this.bucket,
             Key: `${key}/${UuidUtil.generateUudiV1()}`,
-            ContentType: file.type,
+            ContentType: file.mimetype,
         };
         return s3Params;
     };
 
     uploadToS3 = (file, key) => {
+        logger.info(file.filepath)
         if (file.size > 3000000) {
             return "Strings.file_size_too_big";
         } else {
@@ -45,11 +48,14 @@ export class S3Util {
     };
 
     singleFileUpload = (file, key, next, bucketName) => {
+        logger.info(file.size,key,bucketName)
         if (file.size > 30000000) {
             next("Strings.file_size_too_big");
         } else {
             this.s3.upload(this.generateAWSParams(file, key, bucketName), (err, data) => {
                 if (err) {
+                    logger.info(err,data)
+
                     next(err);
                 } else {
                     next(null, data);

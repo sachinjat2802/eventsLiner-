@@ -61,7 +61,7 @@ class AssetUploadController {
 
      uploadDocument(request, response, next) {
         try {
-            let data = {};
+            // let data = {};
             const form = new formidable.IncomingForm(options);
             form.parse(request, async (err, fields, files) => {
                 if (err) {
@@ -69,20 +69,21 @@ class AssetUploadController {
                     return;
                 }
                 const file = Object.values(files)[0];
-                await s3Utils.singleFileUpload(file, documentsFolder, (err, result) => {
-                    result.Location = result.Location.replace(
+                await s3Utils.singleFileUpload(file, documentsFolder, async (err, result) => {
+                    result.Location = await result.Location.replace(
                         uncompressedAssetsBucket,
                         assetsBucket
                     );
-                    data = {
+                    result = {
                         url: result.Location,
                         name: Object.keys(files)[0],
                         size: file.size,
                         type: file.type,
                     };
+                    await  response.status(200).send(new HttpResponse("Upload Document", result, "Document Uploaded", null, null, null));
+
                 });
 
-                response.status(200).send(new HttpResponse("Upload Document", data, "Document Uploaded", null, null, null));
             });
         }
         catch (err) {
@@ -102,7 +103,9 @@ class AssetUploadController {
                     if (files.file.size > 5242880) {
                         return next(new HttpException(400, "You cannot upload image larger than 5Mb"));
                     }
+                    console.log(files.file.size, imageFolder)
                     s3Utils.singleFileUpload(files.file, imageFolder, async (err, result) => {
+                       
                         if (err) {
                             next(err);
                         } else {
