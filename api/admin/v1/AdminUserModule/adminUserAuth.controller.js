@@ -1,5 +1,5 @@
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import AdminAuthService from "../../../../services/adminAuth.service.js";
+import AdminAuthService from "../../../../services/AdminAuth.service.js";
 //import  logger  from "../../../../logger/logger.js";
 
 export class AdminUserController {

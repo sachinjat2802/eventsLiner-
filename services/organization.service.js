@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { Organization } from "../models/organizations.entity.js";
+import { Organization } from "../Models/Organizations.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

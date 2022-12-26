@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { EventManager } from "../models/EventManager.entity.js";
+import { EventManager } from "../Models/EventManager.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

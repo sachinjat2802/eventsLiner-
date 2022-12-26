@@ -1,9 +1,9 @@
 
 
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import userServices from "../../../../services/user.services.js";
+import userServices from "../../../../services/User.service.js";
 import  logger  from "../../../../logger/logger.js";
-import { User} from "../../../../models/userSchema.js";
+import { User} from "../../../../Models/userSchema.js";
 import CrudOperations  from "../../../../utils/db/mongo.crud.js";
 import {JwtGenerator} from "../../../../utils/index.js";
 import dotenv from "dotenv";

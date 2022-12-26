@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 
 
@@ -21,7 +21,7 @@ const VenuePackageSchema = new mongoose.Schema({
 VenuePackageSchema.set("timestamps", true);
 
 VenuePackageSchema.statics.build = (attrs) => {
-    return new Venue(attrs);
+    return new VenuePackage(attrs);
 };
 
 const VenuePackage = mongoose.model(

@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { EventVisitHistory } from "../models/eventVisitHistory.entity.js";
+import { EventVisitHistory } from "../Models/EventVisitHistory.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

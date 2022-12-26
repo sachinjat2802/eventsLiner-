@@ -1,5 +1,5 @@
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import userServices from "../../../../services/user.services.js";
+import userServices from "../../../../services/User.service.js";
 
 export class UserController {
   

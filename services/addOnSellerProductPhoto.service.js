@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { AddOnSellerProductPhoto } from "../models/addOnSellerProductPhoto.entity.js";
+import { AddOnSellerProductPhoto } from "../Models/AddOnSellerProductPhoto.entity.js";
 import mongoose from "mongoose";
 
 import CrudOperations from "../utils/db/mongo.crud.js";

@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { Commission } from "../models/commission.entity.js";
+import { Commission } from "../Models/Commission.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

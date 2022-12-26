@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueService from "../../../../services/venue.service.js";
+import VenueService from "../../../../services/Venue.service.js";
 
 class VenueController {
    

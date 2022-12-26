@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { VenueBooking } from "../models/venueBooking.entity.js";
+import { VenueBooking } from "../Models/VenueBooking.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

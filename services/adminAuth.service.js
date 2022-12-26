@@ -1,5 +1,5 @@
 import  logger  from "../logger/logger.js";
-import { AdminUser} from "../models/adminUser.entity.js";
+import { AdminUser} from "../Models/AdminUser.entity.js";
 import CrudOperations  from "../utils/db/mongo.crud.js";
 import {Password,JwtGenerator} from "../utils/index.js"
 import dotenv from "dotenv";

@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import OrganizationService from "../../../../services/organization.service.js";
+import OrganizationService from "../../../../services/Organization.service.js";
 
 class OrganizationController {
     createOrganization(request, response, next) {

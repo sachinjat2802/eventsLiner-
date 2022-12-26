@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { AddOnSellerVisitHistory } from "../models/AddOnSellerVisitHistory.entity.js";
+import { AddOnSellerVisitHistory } from "../Models/AddOnSellerVisitHistory.entity.js";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
 import _ from "lodash";

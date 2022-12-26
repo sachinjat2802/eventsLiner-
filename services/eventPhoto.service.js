@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { EventPhotos } from "../models/eventPhoto.entity.js";
+import { EventPhotos } from "../Models/EventPhoto.entity.js";
 import mongoose from "mongoose";
 
 import CrudOperations from "../utils/db/mongo.crud.js";
