@@ -17,7 +17,7 @@ import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory
 import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js";
 import addOnSellerPhotosRoutes from "./AddOnSellerPhotosModule/AddOnSellerPhotos.router.js";
 import addOnSellerProductPhotoRoutes from "./AddOnSellerProductPhotosModule/AddOnSellerProductPhotos.router.js"
-import addOnSellerProductRoutes from "./AddOnSellerProductModule/addOnSellerProduct.router.js"
+import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
 import addOnSellerReviewRoutes from "./AddOnSellerReviewModule/addOnSellerReview.router.js"
 import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
