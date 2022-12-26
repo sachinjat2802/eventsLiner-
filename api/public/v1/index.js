@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AssetUploadRoutes from "./AssetModule/Assets.router.js.js";
+import AssetUploadRoutes from "./AssetModule/Assets.router.js";
 import adminUserRoutes from "./AdminUserModule/AdminUserAuth.router.js";
 import userRoutes from "./UserModule/User.route.js"
 import venueRoutes from "./VenueModule/Venue.router.js"
