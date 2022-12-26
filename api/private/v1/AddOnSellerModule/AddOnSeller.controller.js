@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import AddOnSellerService from "../../../../services/AddOnSeller.service.js";
+import AddOnSellerService from "../../../../services/addOnSeller.service.js";
 import mongoose from "mongoose";
 class AddOnSellerController {
     createAddOnSeller(request, response, next) {
