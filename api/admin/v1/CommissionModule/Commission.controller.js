@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import CommissionService from "../../../../services/Commission.service.js";
+import CommissionService from "../../../../services/commission.service.js";
 import mongoose from "mongoose";
 
 class CommissionController {
