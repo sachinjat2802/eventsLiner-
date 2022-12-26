@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import EventService from "../../../../services/event.service.js";
+import EventService from "../../../../services/Event.service.js";
 import mongoose from "mongoose";
 
 class EventController {
