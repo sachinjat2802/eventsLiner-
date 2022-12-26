@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AdminUserController from "./AdminUserAuth.controller.js";
+import AdminUserController from "./AdminUsersAuth.controller.js";
 const router = Router();
 
 router.get("/getAdmins", AdminUserController.getAdmins);

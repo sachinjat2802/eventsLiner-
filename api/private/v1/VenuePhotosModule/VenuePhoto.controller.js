@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenuePhotosService from "../../../../services/venuePhoto.service.js";
+import VenuePhotosService from "../../../../services/VenuePhoto.service.js";
 import mongoose from "mongoose";
 class VenuePhotosController {
     createVenuePhotos(request, response, next) {

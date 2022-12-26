@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueMenusService from "../../../../services/venueMenus.service.js";
+import VenueMenusService from "../../../../services/VenueMenus.service.js";
 import mongoose from "mongoose";
 class VenueMenusController {
     createVenueMenus(request, response, next) {

@@ -1,6 +1,6 @@
 import  logger from "../../../../logger/logger.js";
 import { HttpException, HttpResponse } from "../../../../utils/index.js";
-import VenueReviewsService from "../../../../services/venueReview.service.js";
+import VenueReviewsService from "../../../../services/VenueReview.service.js";
 import mongoose from "mongoose";
 
 class VenueReviewsController {

@@ -1,5 +1,5 @@
 import formidable from "formidable";
-import AssetUploadService from "../../../../services/asset.service.js";
+import AssetUploadService from "../../../../services/Asset.service.js";
 import dotenv from "dotenv";
 import process from "node:process"
 
