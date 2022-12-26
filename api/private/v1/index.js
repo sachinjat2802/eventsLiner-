@@ -28,7 +28,7 @@ import addOnSellerVisitHistoryRoutes from "./AddOnSellerVisitHistoryModule/AddOn
 import eventVisitHistoryRoutes from "./EventsVisitHistoryModule/EventsVisitHistory.router.js";
 import eventSlotsRoutes from "./EventSlotsModule/EventSlots.router.js";
 import eventBookingRoutes from "./EventBookingModule/EventBooking.router.js";
-import addOnSellerProductReviews from "./AddOnSellerProductReviewModule/addOnSellerProductReview.router.js"
+import addOnSellerProductReviews from "./AddOnSellerProductReviewModule/AddOnSellerProductReview.router.js"
 
 const router = Router();
 
