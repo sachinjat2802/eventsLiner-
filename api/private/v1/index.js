@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 
-import userRoutes from "./userModule/user.router.js";
-import userSearchRoutes from "./userSearchModule/user.router.js";
+import userRoutes from "./UserModule/User.router.js";
+import userSearchRoutes from "./UserSearchModule/User.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venueRoutes from "./VenueModule/Venue.router.js";
 import venueMenuRoutes from "./VenueMenuModule/VenueMenu.router.js"
@@ -17,8 +17,8 @@ import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory
 import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js";
 import addOnSellerPhotosRoutes from "./AddOnSellerPhotosModule/AddOnSellerPhotos.router.js";
 import addOnSellerProductPhotoRoutes from "./AddOnSellerProductPhotosModule/AddOnSellerProductPhotos.router.js"
-import addOnSellerProductRoutes from "./addOnSellerProductModule/addOnSellerProduct.router.js"
-import addOnSellerReviewRoutes from "./addOnSellerReviewModule/addOnSellerReview.router.js"
+import addOnSellerProductRoutes from "./AddOnSellerProductModule/AddOnSellerProduct.router.js"
+import addOnSellerReviewRoutes from "./addOnSellerReviewModule/AddOnSellerReview.router.js"
 import addOnProductOrderRoutes from "./AddOnProductOrderModule/AddOnProductOrder.router.js"
 import addOnProductCartRoutes from "./AddOnProductCartModule/AddOnProductCart.router.js";
 import eventManagerRoutes from "./EventManagerModule/EventManager.router.js"
@@ -28,7 +28,7 @@ import addOnSellerVisitHistoryRoutes from "./AddOnSellerVisitHistoryModule/AddOn
 import eventVisitHistoryRoutes from "./EventsVisitHistoryModule/EventsVisitHistory.router.js";
 import eventSlotsRoutes from "./EventSlotsModule/EventSlots.router.js";
 import eventBookingRoutes from "./EventBookingModule/EventBooking.router.js";
-import addOnSellerProductReviews from "./addOnSellerProductReviewModule/addOnSellerProductReview.router.js"
+import addOnSellerProductReviews from "./AddOnSellerProductReviewModule/addOnSellerProductReview.router.js"
 
 const router = Router();
 

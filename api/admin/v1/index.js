@@ -2,9 +2,9 @@ import { Router } from "express";
 
 
 
-import adminUserRoutes from "./AdminUserModule/adminUserAuth.router.js";
-import customerRoutes from "./userModule/user.router.js";
-import userSearchRoutes from "./userSearchModule/user.router.js";
+import adminUserRoutes from "./AdminUserModule/AdminUserAuth.router.js";
+import customerRoutes from "./userModule/User.router.js";
+import userSearchRoutes from "./userSearchModule/User.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js"
 
