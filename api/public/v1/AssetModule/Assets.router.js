@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AssetUploadController from "./assets.controller.js";
+import AssetUploadController from "./Assets.controller.js.js";
 const router = Router();
 
 router.post("/uploadSingleImage", AssetUploadController.uploadSingleImage);
