@@ -8,7 +8,7 @@ import userSearchRoutes from "./userSearchModule/user.router.js";
 import organizationServiceRoutes from "./OrganizationModule/Organization.router.js";
 import venuePackageRoutes from "./VenuePackageModule/VenuePackage.router.js"
 
-import venueRoutes from "./VenueModule/venue.router.js";
+import venueRoutes from "./VenueModule/Venue.router.js";
 import venueVisitHistoryRoutes from "./VenueVisitHistoryModule/VenueVisitHistory.router.js"
 import addOnSellerRoutes from "./AddOnSellerModule/AddOnSeller.router.js";
 import commissionRoutes from "./CommissionModule/Commission.router.js";
