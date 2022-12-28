@@ -1,5 +1,5 @@
 import logger from "../logger/logger.js";
-import { User } from "../Models/userSchema.js";
+import { User } from "../Models/UserSchema.js";
 import { UserSearchHistory } from "../Models/UserSearchHistory.entity.js";
 import { LocationHistory } from "../Models/LocationHistory.entity.js";
 import CrudOperations from "../utils/db/mongo.crud.js";
