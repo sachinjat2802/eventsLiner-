@@ -113,20 +113,21 @@ export class UserController {
 // ));
 
 async socialSignIn(user, typeOfLogin, state, next) {
+  
     const loginId = user.id;
-    if (state.type === "LOGIN") {
+  
       const existingUser = await new CrudOperations(User).getDocument({ email: user.email }, {});
       if (existingUser) {
         if (!existingUser.typeOfLogin.includes(typeOfLogin)) {
           await new CrudOperations(User).updateDocument({ email: user.email }, { $push: { typeOfLogin: typeOfLogin } });
         }
-        const userJwt = new JwtGenerator(process.env.JWT_KEY).generateJwtClient(existingUser._id, existingUser.username);
-        const userData = { redirectQuery: state, accessToken: userJwt, user: existingUser, refreshToken: "" };
+        logger.info(existingUser)
+
+        const userJwt = new JwtGenerator(process.env.jwtKey).generateJwtClient(existingUser._id, existingUser.username);
+         const userData = { redirectQuery: state, accessToken: userJwt, user: existingUser, refreshToken: "" };
         next(null, userData);
-      } else {
-        return next("Account Does Not Exist! Please SignUp");
-      }
-    } else {
+      } 
+    else {
       
       
       let username = user.email ? user.email.replace(/@.*$/, "") : `${user.name.replace(/ /g, "")}${Math.floor(1000 + Math.random() * 9000)}`;
@@ -161,7 +162,7 @@ async socialSignIn(user, typeOfLogin, state, next) {
       const savedUser = await new CrudOperations(User).save(userModel);
     
      
-      const userJwt = new JwtGenerator(process.env.JWT_KEY).generateJwtClient(savedUser._id, savedUser.username);
+      const userJwt = new JwtGenerator(process.env.jwtKey).generateJwtClient(savedUser._id, savedUser.username);
       const userData = { redirectQuery: state, accessToken: userJwt, user: savedUser, refreshToken: "" };
       next(null, userData);
     }

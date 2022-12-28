@@ -6,6 +6,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import process from "node:process"
+import session from "express-session"
 
 import bodyParser from "body-parser";
 import morgan from "morgan";
@@ -60,6 +61,11 @@ export default class App {
      morgan.token("time", () => Date().toString());
      this.app.use(morgan("[:time] :remote-addr :method :url :status :res[content-length] :response-time ms"));
      this.app.use(helmet());
+     this.app.use(session({
+      secret: "secret",
+      resave: false ,
+      saveUninitialized: true ,
+    }))
     
   }
 

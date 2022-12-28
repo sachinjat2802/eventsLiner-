@@ -152,54 +152,61 @@ class AssetUploadController {
         }
     }
 
-     uploadVideo( request, response, next) {
+     uploadVideo(  request, response, next ) {
         try {
             const form = new formidable.IncomingForm(options);
             form.parse(request, async (err, fields, files) => {
                 if (err) {
                     next(err);
                 } else {
-                   
-                    await s3Utils.singleFileUpload(files.file, videoFolder, async(err, result) => {
+                    logger.info(files.file.size);
+                    if (files.file.size > 5242880) {
+                        return next(new HttpException(400, "You cannot upload image larger than 5Mb"));
+                    }
+                    console.log(files.file.size, videoFolder)
+                    s3Utils.singleFileUpload(files.file, imageFolder, async (err, result) => {
+                       
                         if (err) {
                             next(err);
                         } else {
-                           
-                            const originalURL = result.Location;
-                            
-                            
-                            const videoData = {
-                                url: originalURL,
+
+                            result.Location = result.Location.replace(uncompressedAssetsBucket, assetsBucket);
+                            const imageData = {
+                                url: result.Location,
                                 name: Object.keys(files)[0],
                                 size: files.file.size,
                                 type: files.file.type,
                             };
 
-                            // Print Error from S3
 
-                            // const getParams = {
-                            //     Bucket: assetsBucket,
-                            //     Key: result.Key
-                            // };
+                            console.log("###########3 videoData :: ",imageData);
+
+                            // Print Error from S3
+                            const getParams = {
+                                Bucket: assetsBucket,
+                                Key: result.Key
+                            };
                             
-                            // let compressedObject: any = null;
-                            // do {
-                            //     try {
-                            //         compressedObject = await s3.getObject(getParams).promise();
-                            //         logger.info(compressedObject);
-                            //     } catch (err) {
-                            //         compressedObject = null;
-                            //         logger.error("Here");
-                            //     }
-                            // } while (compressedObject == null || compressedObject == undefined);
+                            let compressedObject = null;
+                            
+                            do {
+                                try {
+                                    compressedObject = await s3.getObject(getParams).promise();
+                                    logger.info(compressedObject);
+                                } catch (err) {
+                                    compressedObject = null;
+                                    logger.error("Here");
+                                }
+                            } while (compressedObject == null || compressedObject == undefined);
                             // Returning the response
-                            response.status(200).send(new HttpResponse("Upload Video", videoData, "Video Uploaded", null, null, null));
+                            response.status(200).send(new HttpResponse("Upload video", imageData, "video Uploaded", null, null, null));
                         }
                     },
-                        assetsBucket
+                        uncompressedAssetsBucket
                     );
                 }
             });
+
         } catch (err) {
             next(new HttpException(400, "Something went wrong"));
         }

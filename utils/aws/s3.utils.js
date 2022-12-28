@@ -48,7 +48,7 @@ export class S3Util {
     };
 
     singleFileUpload = (file, key, next, bucketName) => {
-        logger.info(file.size,key,bucketName)
+        logger.info(file)
         if (file.size > 30000000) {
             next("Strings.file_size_too_big");
         } else {
