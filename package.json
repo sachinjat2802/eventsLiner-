@@ -10,14 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend.git"
+    "url": "git+https://github.com/sachinjat2802/eventsLiner.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend/issues"
-  },
-  "homepage": "https://github.com/AGILEMANTRA-CONSULTING-SERVICES-LLP/Eve-backend#readme",
+  "homepage": "https://github.com/sachinjat2802/eventsLiner.git/Eve-backend#readme",
   "dependencies": {
     "aws-sdk": "^2.1272.0",
     "body-parser": "^1.20.1",
