@@ -104,7 +104,7 @@ class AddOnSellerProductController {
         try {
            
             const query = request.query;
-            query.venue = mongoose.Types.ObjectId(request.params.id)
+            query.venue = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -146,10 +146,10 @@ class AddOnSellerProductController {
            
             const query = request.query;
             if(request.params.addOnSellerId){
-                query.addOnSeller = mongoose.Types.ObjectId(request.params.addOnSellerId)
+                query.addOnSeller = mongoose.Types.ObjectId(request.params.addOnSellerId);
             }
             else{
-                query._id = mongoose.Types.ObjectId(request.params.id)
+                query._id = mongoose.Types.ObjectId(request.params.id);
 
             }
             const sort = {};

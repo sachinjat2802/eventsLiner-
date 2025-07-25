@@ -4,7 +4,7 @@ import AddOnSellerProductPhotoService from "../../../../services/AddOnSellerProd
 import mongoose from "mongoose";
 class AddOnSellerProductPhotoController {
     createAddOnSellerProductPhoto(request, response, next) {
-        console.log(request.body)
+        console.log(request.body);
         try {
             const AddOnSellerProductPhoto = request.body;
             AddOnSellerProductPhotoService.createAddOnSellerProductPhoto(AddOnSellerProductPhoto, (err, result) => {

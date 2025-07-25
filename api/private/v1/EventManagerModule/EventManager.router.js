@@ -12,7 +12,7 @@ router.delete("/deleteEventManager/:id",  EventManagerController.deleteEventMana
 
 router.get("/getEventManagers", EventManagerController.getEventManagers);
 
-router.get("/getEventManagersWithOrganization/:id",EventManagerController.getEventManagers)
+router.get("/getEventManagersWithOrganization/:id",EventManagerController.getEventManagers);
 
 
 export default router;

@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 import App from "./app.js";
 
 dotenv.config({ silent: process.env });

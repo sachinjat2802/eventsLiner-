@@ -12,7 +12,7 @@ class ProductReviewsService {
 
   async createProductReviews(ProductReviewsDoc, next) {
     try {
-      logger.info(ProductReviewsDoc)
+      logger.info(ProductReviewsDoc);
       const similarProductReviews = await new CrudOperations(
         ProductReviews
       ).getDocument({ userId: ProductReviewsDoc.userId, isDeleted: false }, {});
@@ -42,7 +42,7 @@ class ProductReviewsService {
       const oldProductReviewsDoc = await new CrudOperations(
         ProductReviews
       ).getDocument({ _id: id, isDeleted: false}, {});
-       logger.info(oldProductReviewsDoc, id)
+       logger.info(oldProductReviewsDoc, id);
       const updatedProductReviewsDoc = _.extend(oldProductReviewsDoc, ProductReviewsDoc);
        
       await new CrudOperations(ProductReviews)

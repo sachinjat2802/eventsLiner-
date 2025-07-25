@@ -136,7 +136,7 @@ class AddOnSellerVisitHistoryController {
         try {
            
             const query = request.query;
-            query.addOnSeller = mongoose.Types.ObjectId(request.params.id)
+            query.addOnSeller = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -176,7 +176,7 @@ class AddOnSellerVisitHistoryController {
         try {
            
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.userId)
+            query.userId = mongoose.Types.ObjectId(request.params.userId);
             const sort = {};
             const projections = {};
             let options = {

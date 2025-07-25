@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node-dev index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -15,7 +17,8 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-  "homepage": "https://github.com/sachinjat2802/eventsLiner.git/Eve-backend#readme",
+    "homepage": "https://github.com/sachinjat2802/eventsLiner.git/Eve-backend#readme"
+  },
   "dependencies": {
     "aws-sdk": "^2.1272.0",
     "body-parser": "^1.20.1",
@@ -39,9 +42,12 @@
     "razorpay": "^2.8.4",
     "satelize": "^0.2.0",
     "short-uuid": "^4.2.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.29.0"
+    "eslint": "^8.29.0",
+    "prettier": "^3.6.2"
   }
 }

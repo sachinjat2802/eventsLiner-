@@ -1,10 +1,10 @@
 
-import passport from ('passport');
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
   
 passport.serializeUser((user , done) => {
     done(null , user);
-})
+});
 passport.deserializeUser(function(user, done) {
     done(null, user);
 });

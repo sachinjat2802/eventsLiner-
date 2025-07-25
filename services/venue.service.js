@@ -43,14 +43,14 @@ class VenueService {
         VenueDoc[i].region = VenueDoc[i].REGION;
         VenueDoc[i].cusineType = VenueDoc[i].CUSINE_TYPE;
          VenueDoc[i].type="Non Claimed";
-         VenueDoc[i].isDeleted = false
-         VenueDoc[i].isVenueActive = false
+         VenueDoc[i].isDeleted = false;
+         VenueDoc[i].isVenueActive = false;
 
 
         const venue = new Venue(VenueDoc[i]);
         await new CrudOperations(Venue).save(venue);
       }
-      next(null, "Venues added  successfully")
+      next(null, "Venues added  successfully");
     } catch (err) {
       logger.error("CreateVenues->", err);
       next("Something went wrong");

@@ -33,7 +33,7 @@ export class S3Util {
     };
 
     uploadToS3 = (file, key) => {
-        logger.info(file.filepath)
+        logger.info(file.filepath);
         if (file.size > 3000000) {
             return "Strings.file_size_too_big";
         } else {
@@ -48,13 +48,13 @@ export class S3Util {
     };
 
     singleFileUpload = (file, key, next, bucketName) => {
-        logger.info(file)
+        logger.info(file);
         if (file.size > 30000000) {
             next("Strings.file_size_too_big");
         } else {
             this.s3.upload(this.generateAWSParams(file, key, bucketName), (err, data) => {
                 if (err) {
-                    logger.info(err,data)
+                    logger.info(err,data);
 
                     next(err);
                 } else {

@@ -13,7 +13,7 @@ router.get("/getAddOnSellerProductByVenueId/:id", AddOnSellerProductController.g
 
 router.get("/getAddOnSellerProduct/:id", AddOnSellerProductController.getAddOnSellerProduct);
 
-router.get("/getAddOnSellerProductBySellerId/:addOnSellerId", AddOnSellerProductController.getAddOnSellerProduct)
+router.get("/getAddOnSellerProductBySellerId/:addOnSellerId", AddOnSellerProductController.getAddOnSellerProduct);
 
 //router.get("/getAddOnSellerProductwithUserId/:userId", AddOnSellerProductController.getAddOnSellerProduct);
 

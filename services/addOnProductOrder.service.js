@@ -15,18 +15,18 @@ class AddOnProductOrderService {
     try {
       const cart =await new CrudOperations(AddOnProductCart).getDocument({
         userId: AddOnProductOrderDoc.userId
-      })
+      });
      if (cart.items.length==0) {
         return next("Add item to cart first");
       }
-      AddOnProductOrderDoc.items=cart.items
+      AddOnProductOrderDoc.items=cart.items;
       AddOnProductOrderDoc.totalPrice=cart.totalPrice;
       AddOnProductOrderDoc.totalItems=cart.totalItems;
       const addOnProductOrder = new AddOnProductOrder(AddOnProductOrderDoc);
       await new CrudOperations(AddOnProductOrder)
         .save(addOnProductOrder)
         .then((result) => {
-          new CrudOperations(AddOnProductCart).updateDocument({ userId: AddOnProductOrderDoc.userId }, { items: [], totalPrice: 0, totalItems: 0 })
+          new CrudOperations(AddOnProductCart).updateDocument({ userId: AddOnProductOrderDoc.userId }, { items: [], totalPrice: 0, totalItems: 0 });
           next(null, result);
         })
         .catch((error) => {

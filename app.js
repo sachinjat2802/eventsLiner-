@@ -4,23 +4,20 @@
  * 
  */
 import express from "express";
-import dotenv from "dotenv";
-import process from "node:process"
-import session from "express-session"
-
+import process from "node:process";
+import session from "express-session";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import publicV1APIs from "./api/public/index.js";
-import adminPrivateV1APIs from "./api/admin/index.js";
-import privateV1APIs from "./api/private/index.js";
 import logger from "./logger/logger.js";
 import MongoDBConnection from "./utils/db/mongodb.connection.js";
-import errorMiddleware from "./utils/httpErrorHandlerMiddleware.js"
+import { errorMiddleware } from "../middleware/index.js";
 import cors from "cors";
-import { requireAuth, verifyTokenAdmin,verifyTokenClient } from "./utils/commons/authUtils/index.js";
 import passport from "passport";
+import initializeAPIs from "./api/routes/index.js";
+import dotenv from "dotenv";
+import swaggerDocs from "./utils/swagger.js";
 dotenv.config({ silent: process.env });
 
 export default class App {
@@ -36,12 +33,11 @@ export default class App {
     this.initializeAPIs();
     this.initializeErrorHandling();
     this.echo();
+    swaggerDocs(this.app);
   }
 
     initializeAPIs(){
-    this.app.use("/public", publicV1APIs);
-    this.app.use("/private", verifyTokenClient, requireAuth, privateV1APIs);
-   this.app.use("/admin/private",verifyTokenAdmin, requireAuth, adminPrivateV1APIs);
+    initializeAPIs(this.app);
 }
    initializeErrorHandling() {
     this.app.use(errorMiddleware);
@@ -61,11 +57,12 @@ export default class App {
      morgan.token("time", () => Date().toString());
      this.app.use(morgan("[:time] :remote-addr :method :url :status :res[content-length] :response-time ms"));
      this.app.use(helmet());
+     this.app.disable('x-powered-by');
      this.app.use(session({
       secret: "secret",
-      resave: false ,
+      resave: false,
       saveUninitialized: true ,
-    }))
+    }));
     
   }
 

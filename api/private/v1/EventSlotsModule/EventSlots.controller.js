@@ -135,7 +135,7 @@ class EventSlotsController {
         try {
            
             const query = request.query;
-            query.event = mongoose.Types.ObjectId(request.params.id)
+            query.event = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -175,7 +175,7 @@ class EventSlotsController {
         try {
            
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.id)
+            query.userId = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
