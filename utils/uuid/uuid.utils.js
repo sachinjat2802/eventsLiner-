@@ -2,7 +2,7 @@ import { v4 as uuidv4, validate as validateId, v1 as uuidv1, v3 as uuidv3 } from
 import shortUuid from "short-uuid";
 class uuidUtil {
 
-      v4Options = {}
+      v4Options = {};
 
      generateCustomDocumentId() {
           return uuidv4(this.v4Options);

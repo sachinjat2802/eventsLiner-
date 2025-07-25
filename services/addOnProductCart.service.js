@@ -41,7 +41,7 @@ class AddOnProductCartService {
         { _id: id, userId: userId },
         {}
       );
-      logger.log(oldAddOnProductCartDoc)
+      logger.log(oldAddOnProductCartDoc);
 
       const updatedGameDoc = _.extend(oldAddOnProductCartDoc, AddOnProductCartDoc);
 
@@ -70,8 +70,8 @@ class AddOnProductCartService {
       );
       if (addOnProductCart) {
         addOnProductCart.items =[];
-        addOnProductCart.totalPrice = 0
-        addOnProductCart.totalItems = 0
+        addOnProductCart.totalPrice = 0;
+        addOnProductCart.totalItems = 0;
         const deletedAddOnProductCart = await new CrudOperations(AddOnProductCart).updateDocument(
           { _id: id },
           addOnProductCart

@@ -12,7 +12,7 @@ class AddOnSellerReviewsService {
 
   async createAddOnSellerReviews(AddOnSellerReviewsDoc, next) {
     try {
-      logger.info(AddOnSellerReviewsDoc)
+      logger.info(AddOnSellerReviewsDoc);
       const similarAddOnSellerReviews = await new CrudOperations(
         AddOnSellerReviews
       ).getDocument({ userId: AddOnSellerReviewsDoc.userId, isDeleted: false }, {});

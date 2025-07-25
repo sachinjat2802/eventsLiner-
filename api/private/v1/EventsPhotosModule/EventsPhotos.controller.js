@@ -4,7 +4,7 @@ import EventPhotosService from "../../../../services/EventPhoto.service.js";
 import mongoose from "mongoose";
 class EventPhotosController {
     createEventPhotos(request, response, next) {
-        console.log(request.body)
+        console.log(request.body);
         try {
             const EventPhotos = request.body;
             EventPhotosService.createEventPhotos(EventPhotos, (err, result) => {

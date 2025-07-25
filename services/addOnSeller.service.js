@@ -45,12 +45,12 @@ class AddOnSellerService {
         AddOnSellerDoc[i].region = AddOnSellerDoc[i].REGION;
         AddOnSellerDoc[i].productCategory = AddOnSellerDoc[i].product_Category;
          AddOnSellerDoc[i].productType="Non Claimed";
-         AddOnSellerDoc[i].isDeleted = false
-         AddOnSellerDoc[i].isAddOnSellerActive = false
+         AddOnSellerDoc[i].isDeleted = false;
+         AddOnSellerDoc[i].isAddOnSellerActive = false;
          const AddOnSeller = new AddOnSeller(AddOnSellerDoc[i]);
         await new CrudOperations(AddOnSeller).save(AddOnSeller);
       }
-      next(null, "AddOnSellers added  successfully")
+      next(null, "AddOnSellers added  successfully");
     } catch (err) {
       logger.error("CreateAddOnSellers->", err);
       next("Something went wrong");

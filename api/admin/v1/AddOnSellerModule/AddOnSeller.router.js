@@ -12,7 +12,7 @@ router.delete("/deleteAddOnSeller/:id",  AddOnSellerController.deleteAddOnSeller
 
 router.get("/getAddOnSellers", AddOnSellerController.getAddOnSellers);
 
-router.get("/getAddOnSellersWithOrganization/:id",AddOnSellerController.getAddOnSellers)
+router.get("/getAddOnSellersWithOrganization/:id",AddOnSellerController.getAddOnSellers);
 
 
 export default router;

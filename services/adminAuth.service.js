@@ -1,9 +1,9 @@
 import  logger  from "../logger/logger.js";
 import { AdminUser} from "../Models/AdminUser.entity.js";
 import CrudOperations  from "../utils/db/mongo.crud.js";
-import {Password,JwtGenerator} from "../utils/index.js"
+import {Password,JwtGenerator} from "../utils/index.js";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 dotenv.config({ silent: process.env });
 import _ from "lodash";
 
@@ -16,7 +16,7 @@ class AdminAuthService {
 
   jwtKey;
   jwtGenerator;
-  redisCrudOperations
+  redisCrudOperations;
     constructor(jwtKey) {
         this.jwtKey = jwtKey;
         this.jwtGenerator = new JwtGenerator(this.jwtKey);
@@ -32,7 +32,7 @@ class AdminAuthService {
             adminUser.isDeleted = false;
             const admin = new AdminUser(adminUser);
             let savedAdminUser = await new CrudOperations(AdminUser).save(admin);
-            savedAdminUser=savedAdminUser.toObject()
+            savedAdminUser=savedAdminUser.toObject();
             delete savedAdminUser.password;
              next(null, "User Created",savedAdminUser);
         } catch (error) {

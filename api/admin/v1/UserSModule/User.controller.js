@@ -14,12 +14,12 @@ export class UserController {
                     next(new HttpException(400, err));
                 }
                 else {
-                    response.status(200).send(new HttpResponse("getUserById", result, null, null, null, null))
+                    response.status(200).send(new HttpResponse("getUserById", result, null, null, null, null));
                 }
-            })
+            });
         }
         catch(error){
-            next(new HttpException(400, "Something went Wrong"))
+            next(new HttpException(400, "Something went Wrong"));
         }
      }
 

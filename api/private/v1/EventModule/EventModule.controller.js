@@ -104,7 +104,7 @@ class EventController {
         try {
            
             const query = request.query;
-            query.eventManager = mongoose.Types.ObjectId(request.params.id)
+            query.eventManager = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -146,10 +146,10 @@ class EventController {
            
             const query = request.query;
             if(request.params.addOnSellerId){
-                query.addOnSeller = mongoose.Types.ObjectId(request.params.addOnSellerId)
+                query.addOnSeller = mongoose.Types.ObjectId(request.params.addOnSellerId);
             }
             else{
-                query._id = mongoose.Types.ObjectId(request.params.id)
+                query._id = mongoose.Types.ObjectId(request.params.id);
 
             }
             const sort = {};

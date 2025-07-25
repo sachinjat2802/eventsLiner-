@@ -1,7 +1,7 @@
 import formidable from "formidable";
 import AssetUploadService from "../../../../services/Asset.service.js";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 
 dotenv.config({ silent: process.env });
 
@@ -103,7 +103,7 @@ class AssetUploadController {
                     if (files.file.size > 5242880) {
                         return next(new HttpException(400, "You cannot upload image larger than 5Mb"));
                     }
-                    console.log(files.file.size, imageFolder)
+                    console.log(files.file.size, imageFolder);
                     s3Utils.singleFileUpload(files.file, imageFolder, async (err, result) => {
                        
                         if (err) {
@@ -163,7 +163,7 @@ class AssetUploadController {
                     if (files.file.size > 5242880) {
                         return next(new HttpException(400, "You cannot upload image larger than 5Mb"));
                     }
-                    console.log(files.file.size, videoFolder)
+                    console.log(files.file.size, videoFolder);
                     s3Utils.singleFileUpload(files.file, imageFolder, async (err, result) => {
                        
                         if (err) {

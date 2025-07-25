@@ -41,7 +41,7 @@ class VenuePackageService {
       const oldVenuePackageDoc = await new CrudOperations(
         VenuePackage
       ).getDocument({ _id: id, isDeleted: false}, {});
-      logger.info(oldVenuePackageDoc)
+      logger.info(oldVenuePackageDoc);
 
       const updatedVenuePackageDoc = _.extend(oldVenuePackageDoc, VenuePackageDoc);
 

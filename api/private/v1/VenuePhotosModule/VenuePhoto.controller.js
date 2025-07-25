@@ -4,7 +4,7 @@ import VenuePhotosService from "../../../../services/VenuePhoto.service.js";
 import mongoose from "mongoose";
 class VenuePhotosController {
     createVenuePhotos(request, response, next) {
-        console.log(request.body)
+        console.log(request.body);
         try {
             const VenuePhotos = request.body;
              VenuePhotos.members = [request?.currentUser?.id] ;

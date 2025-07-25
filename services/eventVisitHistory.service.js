@@ -81,7 +81,7 @@ class EventVisitHistoryService {
     try {
       logger.info(clauses);
       if(clauses.from && clauses.to){
-        // eslint-disable-next-line no-undef
+
         clauses.createdAt={ $gte:`${clauses.from}`, $lte:`${clauses.to}`};
         delete clauses.from;
         delete clauses.to;

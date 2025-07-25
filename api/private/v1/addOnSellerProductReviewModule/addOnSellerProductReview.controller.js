@@ -79,7 +79,7 @@ class ProductReviewsController {
     deleteProductReviews(request, response, next) {
         try {
             const id = request.params.id;
-            logger.info(id)
+            logger.info(id);
             ProductReviewsService.deleteProductReviews(id, (err, result) => {
                 if (err) {
                     next(new HttpException(400, err));
@@ -137,7 +137,7 @@ class ProductReviewsController {
         try {
 
             const query = request.query;
-            query.Product = mongoose.Types.ObjectId(request.params.id)
+            query.Product = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -177,7 +177,7 @@ class ProductReviewsController {
         try {
 
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.id)
+            query.userId = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {

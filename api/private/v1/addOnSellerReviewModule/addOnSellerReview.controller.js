@@ -136,7 +136,7 @@ class AddOnSellerReviewsController {
         try {
            
             const query = request.query;
-            query.AddOnSeller = mongoose.Types.ObjectId(request.params.id)
+            query.AddOnSeller = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {
@@ -176,7 +176,7 @@ class AddOnSellerReviewsController {
         try {
            
             const query = request.query;
-            query.userId = mongoose.Types.ObjectId(request.params.id)
+            query.userId = mongoose.Types.ObjectId(request.params.id);
             const sort = {};
             const projections = {};
             let options = {

@@ -13,7 +13,7 @@ router.get("/getEventByEventOrganiserId/:id", EventController.getMyEvent);
 
 router.get("/getEvent/:id", EventController.getEvent);
 
-router.get("/getEvents",EventController.getEvents )
+router.get("/getEvents",EventController.getEvents );
 
 //router.get("/getEventBySellerId/:addOnSellerId", EventController.getEvent)
 

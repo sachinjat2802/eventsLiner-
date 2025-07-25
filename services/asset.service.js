@@ -1,6 +1,6 @@
 import { S3Util } from "../utils/aws/s3.utils.js";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 
 dotenv.config({ silent: process.env });
 import aws from "aws-sdk";

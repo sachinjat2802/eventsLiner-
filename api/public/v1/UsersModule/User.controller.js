@@ -7,7 +7,7 @@ import { User} from "../../../../Models/UserSchema.js";
 import CrudOperations  from "../../../../utils/db/mongo.crud.js";
 import {JwtGenerator} from "../../../../utils/index.js";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 dotenv.config({ silent: process.env });
 
 export class UserController {
@@ -54,12 +54,12 @@ export class UserController {
                     next(new HttpException(400, err));
                 }
                 else {
-                    response.status(200).send(new HttpResponse("getUserById", result, null, null, null, null))
+                    response.status(200).send(new HttpResponse("getUserById", result, null, null, null, null));
                 }
-            })
+            });
         }
         catch(error){
-            next(new HttpException(400, "Something went Wrong"))
+            next(new HttpException(400, "Something went Wrong"));
         }
      }
 
@@ -121,7 +121,7 @@ async socialSignIn(user, typeOfLogin, state, next) {
         if (!existingUser.typeOfLogin.includes(typeOfLogin)) {
           await new CrudOperations(User).updateDocument({ email: user.email }, { $push: { typeOfLogin: typeOfLogin } });
         }
-        logger.info(existingUser)
+        logger.info(existingUser);
 
         const userJwt = new JwtGenerator(process.env.jwtKey).generateJwtClient(existingUser._id, existingUser.username);
          const userData = { redirectQuery: state, accessToken: userJwt, user: existingUser, refreshToken: "" };

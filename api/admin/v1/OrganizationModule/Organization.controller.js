@@ -31,7 +31,7 @@ class OrganizationController {
     deleteOrganization(request, response, next) {
         try {
             const id = request.params.id;
-            const userId = request.currentUser?.id
+            const userId = request.currentUser?.id;
             OrganizationService.deleteOrganization(id,userId ,(err, result) => {
                 if (err) {
                     next(new HttpException(400, err));

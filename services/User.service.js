@@ -3,12 +3,12 @@ import { User } from "../Models/UserSchema.js";
 import { UserSearchHistory } from "../Models/UserSearchHistory.entity.js";
 import { LocationHistory } from "../Models/LocationHistory.entity.js";
 import CrudOperations from "../utils/db/mongo.crud.js";
-import { Password, JwtGenerator } from "../utils/index.js"
+import { Password, JwtGenerator } from "../utils/index.js";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 import _ from "lodash";
-import satelize from 'satelize'
-import ipware from 'ipware'
+import satelize from 'satelize';
+import ipware from 'ipware';
 import mongoose from "mongoose";
 import { Venue } from "../Models/Venue.entity.js";
 dotenv.config({ silent: process.env });
@@ -38,7 +38,7 @@ class userService {
             user.isDeleted = false;
             const newUser = new User(user);
             const savedUser = await new CrudOperations(User).save(newUser);
-            console.log(savedUser)
+            console.log(savedUser);
             next(null, "User Created", savedUser);
         } catch (error) {
             logger.error("Error creating admin user", error);
@@ -48,8 +48,8 @@ class userService {
 
     async signIn(req, email, password, next) {
         try {
-            console.log(req)
-            let user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
+            console.log(req);
+            const user = await new CrudOperations(User).getDocument({ email: email, isDeleted: false }, {});
 
             if (!user) {
                 return next("No User Found");
@@ -60,11 +60,11 @@ class userService {
             }
 
 
-            let getIP = ipware().get_ip;
+            const getIP = ipware().get_ip;
 
-            let location = {}
-            let ipInfo = getIP(req)
-            console.log(ipInfo)
+            let location = {};
+            const ipInfo = getIP(req);
+            console.log(ipInfo);
             satelize.satelize({ ip: '49.204.165.186' }, (err, payload) => {
                 if (err)
                     next(err);
@@ -77,20 +77,20 @@ class userService {
                         "longitude": payload.longitude,
                         "timezone": payload.timezone
 
-                    }
+                    };
                 }
-            })
-            user.location = location
+            });
+            user.location = location;
 
             const object =
             {
                 userId: mongoose.Types.ObjectId(user),
                 locations: user.location
-            }
+            };
             const newSearch = new LocationHistory(object);
             await new CrudOperations(LocationHistory).save(newSearch);
 
-            user.save()
+            user.save();
             const userJwt = this.jwtGenerator.generateJwtClient(user._id, user.email);
             const userData = { accessToken: userJwt, user: user, refreshToken: "" };
             next(null, userData);
@@ -138,7 +138,7 @@ class userService {
 
     async getAllUsers(clauses, projections, options, sort, next) {
         try {
-            logger.info(clauses)
+            logger.info(clauses);
             const count = await new CrudOperations(User).countAllDocuments({ ...clauses, isDeleted: false });
             const results = await new CrudOperations(User).getAllDocuments({ ...clauses, isDeleted: false }, projections, options, sort);
             const response = {
@@ -171,15 +171,13 @@ class userService {
     async search(user, searchText, next) {
 
         try {
-            let searchHistory
-
             const object =
             {
                 userId: mongoose.Types.ObjectId(user),
                 searchText: searchText,
-            }
+            };
             const newSearch = new UserSearchHistory(object);
-            searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
+            const searchHistory = await new CrudOperations(UserSearchHistory).save(newSearch);
 
             next(null, "searchHistory created", searchHistory);
         } catch (error) {
@@ -190,11 +188,11 @@ class userService {
 
     async addToFavourites(id, venueId, next) {
         try {
-            let userExist = await new CrudOperations(User).getDocument({ _id: id, isDeleted: false }, {});
+            const userExist = await new CrudOperations(User).getDocument({ _id: id, isDeleted: false }, {});
             if (userExist) {
-                for (let i in userExist.addToFavourites) {
+                for (const i in userExist.addToFavourites) {
                     if (userExist.addToFavourites[i] == venueId)
-                        return next("venue already exist")
+                        return next("venue already exist");
 
                 }
 
@@ -202,8 +200,8 @@ class userService {
                 if (venueExist) {
 
 
-                    userExist.addToFavourites.push(venueExist._id)
-                    userExist.save()
+                    userExist.addToFavourites.push(venueExist._id);
+                    userExist.save();
                 }
                 else {
                     next("No Venue Found to Add!");
@@ -214,8 +212,8 @@ class userService {
             else {
                 next("No User Found!");
             }
-            userExist.addToFavourites
-            logger.info(userExist)
+            userExist.addToFavourites;
+            logger.info(userExist);
 
             next(null, userExist.addToFavourites);
 
@@ -229,19 +227,19 @@ class userService {
 
     async removeFromFavourites(userId, venueId, next) {
         try {
-            let userExist = await new CrudOperations(User).getDocument({ _id: userId, isDeleted: false }, {});
+            const userExist = await new CrudOperations(User).getDocument({ _id: userId, isDeleted: false }, {});
             if (userExist) {
                 const index = userExist.addToFavourites.indexOf(venueId);
                 if (index > -1) {
                     userExist.addToFavourites.splice(index, 1);
                 }
-                userExist.save()
+                userExist.save();
             }
 
             else {
                 next("No User Found!");
             }
-            const data = userExist.addToFavourites
+            const data = userExist.addToFavourites;
             
 
             next(null, data);
@@ -254,9 +252,9 @@ class userService {
     }
     async getAllFavourites(userId, next) {
         try {
-            let userExist = await new CrudOperations(User).getDocument({ _id: userId, isDeleted: false }, {});
+            const userExist = await new CrudOperations(User).getDocument({ _id: userId, isDeleted: false }, {});
             if (userExist) {
-               return next(null, userExist.addToFavourites)
+               return next(null, userExist.addToFavourites);
             }
 
             else {

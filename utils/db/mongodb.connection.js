@@ -11,14 +11,14 @@ export default class MongoDBConnection {
 
      async connectToMongoDB() {
         try {
-            mongoose.set('strictQuery', false)
+            mongoose.set('strictQuery', false);
             await mongoose.connect(this.mongoUrl)
             .then(() => {
                 logger.info("\n*************MONGODB connected**************\n");
             }
               ).catch(err => {
                 logger.error("ERROR Connecting the database", JSON.stringify(err, null, 2));
-            })
+            });
         } 
         catch(err) {
             logger.error("ERROR Connecting the database", JSON.stringify(err, null, 2));

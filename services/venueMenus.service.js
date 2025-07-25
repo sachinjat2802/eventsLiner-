@@ -39,7 +39,7 @@ class VenueMenusService {
       const oldVenueMenusDoc = await new CrudOperations(
         VenueMenus
       ).getDocument({ _id: id, isDeleted: false}, {});
-console.log(oldVenueMenusDoc)
+console.log(oldVenueMenusDoc);
       const updatedVenueMenusDoc = _.extend(oldVenueMenusDoc, VenueMenusDoc);
 
       await new CrudOperations(VenueMenus)

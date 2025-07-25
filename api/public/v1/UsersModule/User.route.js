@@ -4,7 +4,7 @@ import passport from "passport";
 import strategy from "passport-google-oauth20";
  import facebookStrategy from "passport-facebook";
 import dotenv from "dotenv";
-import process from "node:process"
+import process from "node:process";
 import  logger  from "../../../../logger/logger.js";
 
 import { HttpResponse } from "../../../../utils/index.js";
@@ -113,6 +113,31 @@ router.get("/google/callback", passport.authenticate("google", { failureRedirect
 
   
 
+/**
+ * @swagger
+ * /public/v1/users/createUser:
+ *   post:
+ *     summary: Create a new user
+ *     description: Create a new user with the given details.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: User created successfully.
+ *       400:
+ *         description: Bad request.
+ */
 router.post("/createUser", userController.createUser ); 
 router.post("/signIn", userController.signIn);
 router.get("/getUser", userController.getUser);
